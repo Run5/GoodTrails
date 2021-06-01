@@ -82,10 +82,24 @@ router.post('/register', userValidators, csrfProtection, asyncHandler(async (req
 
   if (validatorErrors.isEmpty()) {
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+    user.hashedPassword = hashedPassword;
+
+    await user.save();
+
+  } else {
+
+    const errors = validatorErrors.array().map((error) => error.msg);
+
+      res.render('register', {
+        title: 'Registration',
+        user,
+        errors,
+        csrfToken: req.csrfToken()
+      });
+
   }
-
-}))
-
+}));
 
 
 module.exports = router;
