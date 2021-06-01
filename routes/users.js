@@ -69,12 +69,12 @@ const userValidators = [
 //registration POST
 router.post(
   "/register",
-  userValidators,
   csrfProtection,
+  userValidators,
   asyncHandler(async (req, res, next) => {
     const { email, username, password } = req.body;
 
-    const user = User.build({
+    const user = db.User.build({
       email,
       username,
     });
@@ -83,7 +83,7 @@ router.post(
 
     if (validatorErrors.isEmpty()) {
       const hashedPassword = await bcrypt.hash(password, 10);
-      user.hashedPassword = hashedPassword;
+      user.hashed_password = hashedPassword;
 
       await user.save();
       loginUser(req, res, user);
@@ -104,7 +104,10 @@ router.post(
 //login ROUTE
 
 router.get("/login", csrfProtection, (req, res) => {
+  const user = User.build();
+
   res.render("user-login", {
+    user,
     title: "Login",
     csrfToken: req.csrfToken(),
   });
@@ -134,7 +137,7 @@ router.post(
         }
       })
       if(user !== null){
-        const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString())
+        const passwordMatch = await bcrypt.compare(password, user.hashed_password.toString())
         if(passwordMatch){
           loginUser(req, res, user)
           return res.redirect('/')
@@ -145,7 +148,8 @@ router.post(
       errors = validatorErrors.array().map((err)=> {err.msg})
     }
     res.render('user-login', {
-      title: 'login',
+      user,
+      title: 'Login',
       email,
       errors,
       csrfToken: req.csrfToken()
@@ -155,7 +159,7 @@ router.post(
 
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
-  res.redirect('/login');
+  res.redirect('/users/login');
 });// End Logout POST route
 
 module.exports = router;
