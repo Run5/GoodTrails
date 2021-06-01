@@ -5,7 +5,7 @@ const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const { loginUser, logoutUser } = require("../auth");
 //internal packages
-const { csrfProtection, asyncHandler } = require("./utils");
+const { csrfProtection, asyncHandler } = require("../utils");
 const db = require("../db/models");
 const { User } = db;
 
@@ -22,8 +22,8 @@ router.get("/register", csrfProtection, (req, res, next) => {
     user,
     title: "Registration",
     csrfToken: req.csrfToken(),
-  });
-});
+  });//end render
+});//end GET route for register
 
 const userValidators = [
   check("username")
@@ -103,8 +103,8 @@ router.post(
 
 //login ROUTE
 
-route.get("/login", csrfProtection, (req, res) => {
-  res.render("login", {
+router.get("/login", csrfProtection, (req, res) => {
+  res.render("user-login", {
     title: "Login",
     csrfToken: req.csrfToken(),
   });
@@ -119,7 +119,7 @@ const loginValidators = [
     .withMessage("Please provide a value for Password"),
 ];
 
-route.post(
+router.post(
   "/login",
   csrfProtection,
   loginValidators,
@@ -144,13 +144,18 @@ route.post(
     }else{
       errors = validatorErrors.array().map((err)=> {err.msg})
     }
-    res.render('login', {
+    res.render('user-login', {
       title: 'login',
       email,
       errors,
       csrfToken: req.csrfToken()
     })
   })
-);
+);// End Login POST route
+
+router.post('/logout', (req, res) => {
+  logoutUser(req, res);
+  res.redirect('/login');
+});// End Logout POST route
 
 module.exports = router;
