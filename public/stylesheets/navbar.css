@@ -10,7 +10,8 @@
     flex-direction: row;
     justify-content: center;
     height: 50px;
-    box-shadow: 0 4px 2px -2px lightgray;
+    box-shadow: 0 4px 4px -2px rgb(182, 182, 182);
+    background-color: white;
 }
 
 /* Navbar Logo Text */
