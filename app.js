@@ -1,3 +1,4 @@
+/***********************External Imports***********************/
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -7,11 +8,17 @@ const { sequelize } = require('./db/models');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-//internal imports
+/***********************Internal Imports***********************/
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const trailsRouter = require('./routes/trails');
 const { asyncHandler, csrfProtection } = require('./utils')
 
+/**************************************************************/
+/*                         Handlers                           */
+/**************************************************************/
+
+// Express Name
 const app = express();
 
 // view engine setup
@@ -38,8 +45,10 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
+/*************** Paths ****************/
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/trails', trailsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
