@@ -1,0 +1,108 @@
+/* UNIVERSAL */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Container Div for Navbar */
+.navbar__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 50px;
+    box-shadow: 0 4px 2px -2px lightgray;
+}
+
+/* Navbar Logo Text */
+.nav__logo {
+    margin-left: -20px;
+    margin-right: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    align-self: center;
+}
+
+/* Span Tag inside Navbar Logo */
+span#logo-span {
+    font-weight: 500;
+    color:slategray;
+}
+
+/* Styles for the four left buttons */
+.home:hover,
+.trails:hover,
+.browse:hover,
+.community:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+
+.home,
+.trails,
+.browse,
+.community {
+    background-color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.home {
+    width: 73px;
+    border: none;
+
+}
+
+.trails {
+    width: 99px;
+    border: none;
+}
+
+.browse {
+    width: 100px;
+    border: none;
+}
+
+.community {
+    width: 130px;
+    border: none;
+    margin-right: 10px;
+}
+
+/* Search Bar Input Styles */
+.search__bar {
+    margin: 10px;
+    width: 388px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+
+.search__bar::placeholder {
+    text-indent: 10px;
+}
+
+.search__bar:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px lightgray;
+}
+
+/* Right side Icon styles */
+div img:hover {
+    cursor: pointer;
+}
+
+.bell {
+    margin: 10px;
+}
+
+.msg {
+    margin: 10px;
+}
+
+.mail {
+    margin: 10px;
+}
+
+.friends {
+    margin: 10px;
+}
