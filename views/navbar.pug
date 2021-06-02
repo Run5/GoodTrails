@@ -3,14 +3,22 @@ html
         link(rel="stylesheet", href="/stylesheets/navbar.css")
         title Navbar
 body
-    div
-        img(src="/images/NavbarLogo.png", alt="Logo")
-        button Home
-        button My Trails
-        button Browse
-        button Community
-        input(type="text" name="search")
-        img(src="/images/NavbarBell.png", alt="Notifications")
-        img(src="/images/NavbarMsg.png", alt="Messages")
-        img(src="/images/NavBarMail.png", alt="Mail")
-        img(src="/images/NavbarFriends.png", alt="Friends")
+    div.navbar__container
+        nav
+            img(src="/nav-images/NavbarLogo.PNG", alt="Logo").nav__logo
+            ul
+                <li> <a href="#">Home</a> </li>
+                <li> <a href="#">My Trails</a> </li>
+                <li> <a href="#">Browse</a>
+                    ul
+                        <li> <a href="#">By State</a> </li>
+                        <li> <a href="#">By Difficulty</a> </li>
+                        <li> <a href="#">Recommended</a> </li>
+                        <li> <a href="#">Home</a> </li>
+                </li>
+                <li> <a href="#">Community</a> </li>
+            input(type="text" name="search" placeholder="Search Trails").search__bar
+            img(src="/nav-images/NavbarBell.png", alt="Notifications").bell
+            img(src="/nav-images/NavbarMsg.png", alt="Messages").msg
+            img(src="/nav-images/NavBarMail.png", alt="Mail").mail
+            img(src="/nav-images/NavbarFriends.png", alt="Friends").friends
