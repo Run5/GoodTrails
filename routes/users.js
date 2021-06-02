@@ -1,12 +1,14 @@
-//external packages
+/***********************External Packages***********************/
 var express = require("express");
 var router = express.Router();
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
-const { loginUser, logoutUser } = require("../auth");
-//internal packages
+
+
+/***********************Internal Packages***********************/
 const { csrfProtection, asyncHandler } = require("../utils");
 const {User} = require("../db/models");
+const { loginUser, logoutUser } = require("../auth");
 
 // GET user registration
 router.get("/register", csrfProtection, (req, res, next) => {

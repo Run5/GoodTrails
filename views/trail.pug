@@ -1,0 +1,14 @@
+extends layout.pug
+
+block content
+    img(src=`/images/trail${trail.id}.jpg`)
+    button Visited
+    button Interested
+    h1= trail.name
+    h2= state.state_name
+    h3 Distance:
+    h3= trail.length
+    h2 This trail has a difficulty of:
+    h2= trail.difficulty
+    p= trail.description
+    //- reviews go here
