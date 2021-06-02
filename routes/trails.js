@@ -29,6 +29,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
 
 router.get(
   "/toggles/:id(\\d+)",
+  requireAuth,
   asyncHandler(async (req, res) => {
     const trailId = parseInt(req.params.id, 10);
     const userId = res.locals.user.id;
@@ -43,6 +44,25 @@ router.get(
     })
   })
 );
+
+router.put('/toggles/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+  const trailId = parseInt(req.params.id, 10);
+
+  const {
+    visited,
+    want_to_visit,
+  } = req.body;
+
+  const collection = Collection.build({
+    trail_id: trailId,
+    user_id: res.local.user.id,
+    visited,
+    want_to_visit
+  });
+
+  await collection.save();
+
+}));//endPostRoute
 
 
 module.exports = router;
