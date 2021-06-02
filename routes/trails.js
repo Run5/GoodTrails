@@ -7,7 +7,7 @@ var router = express.Router();
 
 /***********************Internal Packages***********************/
 const { csrfProtection, asyncHandler } = require("../utils");
-const { Trail, State } = require("../db/models");
+const { Trail, State, Collection } = require("../db/models");
 const { requireAuth } = require("../auth");
 
 
@@ -25,6 +25,24 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
     });//end render
 }));//end GET route for a single trail
 
+
+
+router.get(
+  "/toggles/:id(\\d+)",
+  asyncHandler(async (req, res) => {
+    const trailId = parseInt(req.params.id, 10);
+    const userId = res.locals.user.id;
+    const trailToggles = await Collection.findAll({
+      where: {
+        user_id: userId,
+        trail_id: trailId,
+      },
+    });
+    res.json({
+        trailToggles
+    })
+  })
+);
 
 
 module.exports = router;
