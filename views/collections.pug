@@ -1,0 +1,22 @@
+include navbar.pug
+    body
+        div.table__container
+            table
+                thead
+                    tr
+                        th Belongs To
+                        th Trail ID
+                        th Visited
+                        th Want to visit?
+                tbody
+                    tr
+                        each trail in collectionOfTrails
+                            td= trail.user_id
+                            td= trail.trail_id
+                            td= trail.visited
+                            td= trail.want_to_visit
+
+
+
+
+            //- put each visited trail here!
