@@ -1,13 +1,17 @@
 var express = require('express');
 var router = express.Router();
-const {stateCodes} = require('../utils') 
+//internal packages
+const { State } = require('../db/models')
+const { asyncHandler } = require('../utils')
 
 /* GET home page not logged in. */
-router.get('/', function (req, res, next) {
+router.get('/', asyncHandler(async (req, res, next) => {
+  const states = await State.findAll()
+  console.log(states[0]);
   res.render('landing', {
     title: 'Welcome to Good Trails',
-    states: stateCodes
+    states
   });
-});
+}));
 
 module.exports = router;
