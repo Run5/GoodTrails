@@ -157,7 +157,7 @@ router.post('/logout', (req, res) => {
   res.redirect('/users/login');
 });// End Logout POST route
 
-
+// temp route to render nav bar
 router.get('/navbar', (req, res) => {
   res.render('navbar')
 })
