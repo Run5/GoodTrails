@@ -1,8 +1,11 @@
 
+
 .splash-container
     .splash-image
-        img(src='../public/images/')
+        h2 image here
+        img(src='/images/trail0.jpeg', height='100px')
     .states-links-container
+        h2 list states here
         each state in states
-            a(href=`/`#{state}) | #{state}
+            a(href=`/states/${state.dataValues.id}`)  #{state.dataValues.state_code} |
 
