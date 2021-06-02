@@ -1,4 +1,4 @@
-body {
+* {
     margin: 0;
     padding: 0;
 }
@@ -8,4 +8,48 @@ body {
     flex-direction: row;
     justify-content: center;
     height: 50px;
+    background-color: rgb(247, 243, 238);
+}
+
+.nav__logo {
+margin-left: -20px;
+margin-right: 20px;
+}
+
+.home {
+    width: 73px;
+}
+
+.trails {
+    width: 99px;
+}
+
+.browse {
+    width: 100px;
+}
+
+.community {
+    width: 130px;
+    margin-right: 10px;
+}
+
+.search__bar {
+    margin: 10px;
+    width: 388px;
+}
+
+.bell {
+    margin: 10px;
+}
+
+.msg {
+    margin: 10px;
+}
+
+.mail {
+    margin: 10px;
+}
+
+.friends {
+    margin: 10px;
 }
