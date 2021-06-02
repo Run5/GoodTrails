@@ -1,11 +1,10 @@
+include navbar.pug
 
+link(rel="stylesheet" href="/stylesheets/index.css")
 
-.splash-container
-    .splash-image
-        h2 image here
-        img(src='/images/trail0.jpeg', height='100px')
-    .states-links-container
-        h2 list states here
+.grid-container
+    .links-container
+        h2 Pick a state
         each state in states
             a(href=`/states/${state.dataValues.id}`)  #{state.dataValues.state_code} |
 
