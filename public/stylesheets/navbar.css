@@ -8,48 +8,95 @@
     flex-direction: row;
     justify-content: center;
     height: 50px;
-    background-color: rgb(247, 243, 238);
+
+    box-shadow: 0 4px 2px -2px lightgray;
 }
 
 .nav__logo {
 margin-left: -20px;
 margin-right: 20px;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size: 30px;
+align-self: center;
+}
+span {
+    font-weight: 500;
+    color:slategray;
+}
+.home,
+.trails,
+.browse,
+.community:hover {
+    cursor: pointer;
+}
+
+.home,
+.trails,
+.browse,
+.community {
+    background-color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
 }
 
 .home {
     width: 73px;
+    border: none;
+
+}
+.home:hover {
+    background-color: lightgray;
 }
 
 .trails {
     width: 99px;
+    border: none;
 }
-
+.trails:hover {
+    background-color: lightgray;
+}
 .browse {
     width: 100px;
+    border: none;
 }
-
+.browse:hover {
+    background-color: lightgray;
+}
 .community {
     width: 130px;
+    border: none;
     margin-right: 10px;
+}
+.community:hover {
+    background-color: lightgray;
 }
 
 .search__bar {
     margin: 10px;
     width: 388px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
 }
-
+.search__bar::placeholder {
+    text-indent: 10px;
+}
+.search__bar:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px lightgray;
+}
+div img:hover {
+    cursor: pointer;
+}
 .bell {
     margin: 10px;
 }
-
 .msg {
     margin: 10px;
 }
-
 .mail {
     margin: 10px;
 }
-
 .friends {
     margin: 10px;
 }
