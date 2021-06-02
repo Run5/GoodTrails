@@ -12,8 +12,12 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const trailsRouter = require('./routes/trails');
-const { asyncHandler, csrfProtection } = require('./utils')
+
+const collectionsRouter = require('./routes/collections');
+const { asyncHandler, csrfProtection } = require('./utils');
+
 const { restoreUser } = require('./auth')
+
 
 /**************************************************************/
 /*                         Handlers                           */
@@ -46,13 +50,14 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
-app.use(restoreUser)
+app.use(restoreUser);
 
 
 /*************** Paths ****************/
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/trails', trailsRouter)
+app.use('/trails', trailsRouter);
+app.use('/my-trails', collectionsRouter);
 
 
 // catch 404 and forward to error handler
