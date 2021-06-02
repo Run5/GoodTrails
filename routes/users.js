@@ -158,4 +158,9 @@ router.post('/logout', (req, res) => {
   res.redirect('/login');
 });// End Logout POST route
 
+
+router.get('/navbar', (req, res) => {
+  res.render('navbar')
+})
+
 module.exports = router;
