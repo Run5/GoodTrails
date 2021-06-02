@@ -12,8 +12,12 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const trailsRouter = require('./routes/trails');
+
 const collectionsRouter = require('./routes/collections');
 const { asyncHandler, csrfProtection } = require('./utils');
+
+const { restoreUser} = require('./auth')
+
 
 /**************************************************************/
 /*                         Handlers                           */
@@ -46,11 +50,15 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
+app.use(restoreUser);
+
+
 /*************** Paths ****************/
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/trails', trailsRouter);
 app.use('/my-trails', collectionsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -62,7 +70,7 @@ app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
+  console.log(err)
   // render the error page
   res.status(err.status || 500);
   res.render('error');
