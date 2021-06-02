@@ -6,15 +6,9 @@ const bcrypt = require("bcryptjs");
 const { loginUser, logoutUser } = require("../auth");
 //internal packages
 const { csrfProtection, asyncHandler } = require("../utils");
-const db = require("../db/models");
-const { User } = db;
+const {User} = require("../db/models");
 
-/* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
-});
-
-//registration GET
+// GET user registration
 router.get("/register", csrfProtection, (req, res, next) => {
   const user = User.build();
 
@@ -66,7 +60,7 @@ const userValidators = [
     }),
 ];
 
-//registration POST
+// POST user registration
 router.post(
   "/register",
   csrfProtection,
@@ -101,8 +95,7 @@ router.post(
   })
 );
 
-//login ROUTE
-
+// GET user login
 router.get("/login", csrfProtection, (req, res) => {
   const user = User.build();
 
@@ -122,6 +115,7 @@ const loginValidators = [
     .withMessage("Please provide a value for Password"),
 ];
 
+// POST user login
 router.post(
   "/login",
   csrfProtection,
@@ -157,6 +151,7 @@ router.post(
   })
 );// End Login POST route
 
+// POST user logout
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
   res.redirect('/users/login');

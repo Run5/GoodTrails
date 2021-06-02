@@ -1,0 +1,8 @@
+
+.splash-container
+    .splash-image
+        img(src='../public/images/')
+    .states-links-container
+        each state in states
+            a(href=`/`#{state}) | #{state}
+
