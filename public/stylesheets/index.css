@@ -1,3 +1,40 @@
 h1 {
     color: #555555;
 }
+
+body{
+    background-image: url("/images/trail0.jpeg");
+    background-size:    cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+    overflow: hidden;
+    font-size: 10px;
+}
+
+.grid-container{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1.5fr .3fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "."
+    "footer";
+}
+
+.links-container {
+    flex-direction: space-around;
+    position:absolute;
+    bottom:50px;
+}
+
+.links-container a , h2{
+    grid-area: footer;
+    color:white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 0.2rem;
+}
+
+.links-container a:hover{
+    background-color: #9D8D8F
+}
