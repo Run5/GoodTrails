@@ -1,4 +1,11 @@
 extends layout.pug
 
+append head
+    script(src="/javascripts/states.js")
 
 //- make public javascript file to fetch correct state
+block content
+    each trail in trails
+        div(class = trail.id)= trail.name
+        div(class = trail.id)= trail.description
+
