@@ -14,16 +14,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 //_____________________________________________________________________________
                         //VISITED TRAILS
   const visitedButton = document.querySelector('.visitedButton');
-  const visitedContainer = document.querySelector('.visitedContainer');
 
   visitedButton.addEventListener('click', async (e) => {
     const res = await fetch('/my-trails/visited');
 
-    const visitedTrails = await res.json();
+    if(visitedButton.classList.contains('on')) {
+      visitedButton.classList.remove('on')
+    } else {
+      visitedButton.classList.add('on')
+    }
 
-        visitedContainer.innerHTML = [visitedTrails[0].Trail.name];
+    const visitedTrails = await res.json();
+        allContainer.innerHTML = [visitedTrails[0].Trail.name];
         console.log(visitedTrails)
-      
+
   })
 
   // const wantToVisitButton = document.querySelector('.wantToVisit');
