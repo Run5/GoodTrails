@@ -4,10 +4,17 @@ append head
     script(src="/javascripts/collections.js" type="module" defer)
     link(rel="stylesheet", href="/stylesheets/collections.css")
 block content
-    .buttonContainer
-        button.allButton All Trails
-        button.visitedButton Visited Trails
-        button.wantToVisit Trails that you want to visit
-    .allContainer
-    .errorContainer
-        p.actualError
+    .div
+        h1.header1 My Trails
+        p.subheader1 Here you'll find a list of your trails filtered by:
+            ul.ul1
+                li.li All
+                li.li Visited
+                li.li Trails you want to visit
+        .buttonContainer
+            button.allButton All Trails
+            button.visitedButton Visited Trails
+            button.wantToVisit Trails that you want to visit
+        .allContainer
+        .errorContainer
+            p.actualError
