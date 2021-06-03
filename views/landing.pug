@@ -1,10 +1,11 @@
-include navbar.pug
+extends layout.pug
 
-link(rel="stylesheet" href="/stylesheets/index.css")
+append head
+    link(rel="stylesheet" href="/stylesheets/index.css")
 
-.grid-container
-    .links-container
-        h2 View trails in your state:
-        each state in states
-            a(href=`/states/${state.dataValues.state_code}`)  #{state.dataValues.state_code} |
-
+block content
+    .grid-container
+        .links-container
+            h2 View trails in your state:
+            each state in states
+                a(href=`/states/${state.dataValues.state_code}`)  #{state.dataValues.state_code} |
