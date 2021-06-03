@@ -20,7 +20,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if(visitedButton.classList.contains('on')) {
       visitedButton.classList.remove('on')
+      visitedButton.classList.add('off')
     } else {
+      visitedButton.classList.remove('off')
       visitedButton.classList.add('on')
     }
 
