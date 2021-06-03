@@ -24,20 +24,14 @@ router.get('/', asyncHandler(async (req, res, next) => {
 // gy: this doesn't need to be an api route.
 router.get('/states/:state_code', asyncHandler(async (req, res) => {
 
-  const states = await State.findAll({
+  let [trails] = await State.findAll({
     include: Trail,
     where: { state_code: req.params.state_code }
   })
-  console.log("Arizona!!!!", trails);
-  if (!states) {
-    let error = {
-      status: 404,
-      typeOf: "state",
-      message: "no trails in this state"
-    };
-    next(error)
-  }
-  res.render('states', { state })
+  trails = trails.toJSON();
+  console.log(trails);
+
+  res.render('states', { trails})
 
 }))
 
