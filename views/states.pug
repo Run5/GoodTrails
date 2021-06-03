@@ -1,10 +1,6 @@
 extends layout.pug
-
-append head
     //- script(src="/javascripts/states.js"type="module" defer)
     link(rel='stylesheet' href='/stylesheets/states.css')
-
-
 block content
     if trails.Trails.length
         h2 These are the delightful trails in your state.
