@@ -1,7 +1,9 @@
 extends layout.pug
 
 block content
+    //- we have access to trail and state objs
     img(src=`/images/trail${trail.id}.jpg`).trail
+    br
     button.visited Visited
     button.interested Interested
     h1(id=`${trail.id}`)= trail.name
@@ -12,4 +14,16 @@ block content
     h2= trail.difficulty
     p= trail.description
     //- reviews go here
+    //- if locals.authenticated
+    //-     div.review-form
+    //-         p Your Review:
+    //-         form(action=`/reviews/${trail.id}`, method='post)
+    div.review-container
+        br
+        each review in trail.Reviews
+            div.each-review
+                p=review.review
+                p=`By user ${review.user_id}`
+
+
     script(src='/javascripts/trails.js' type='text/javascript')

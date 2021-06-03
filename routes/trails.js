@@ -7,7 +7,7 @@ var router = express.Router();
 
 /***********************Internal Packages***********************/
 const { csrfProtection, asyncHandler } = require("../utils");
-const { Trail, State, Collection } = require("../db/models");
+const { Trail, State, Collection, Review } = require("../db/models");
 const { requireAuth } = require("../auth");
 
 
@@ -15,7 +15,10 @@ const { requireAuth } = require("../auth");
 // GET /trails/:id
 router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
   const trailId = parseInt(req.params.id, 10);
-  const trail = await Trail.findByPk(trailId);
+  const trail = await Trail.findByPk(trailId, {
+    include: Review
+  });
+  console.log(trail.toJSON());
   const state = await State.findByPk(trail.state_id);
   req.session.save(() => {
     res.render("trail", {
