@@ -97,7 +97,7 @@ router.post(
   }) // close callback
 ); //close post
 
-// GET user login
+// GET /users/login
 router.get("/login", csrfProtection, (req, res) => {
   const user = User.build();
 
@@ -117,7 +117,7 @@ const loginValidators = [
     .withMessage("Please provide a value for Password"),
 ];
 
-// POST user login
+// POST /users/login
 router.post(
   "/login",
   csrfProtection,
