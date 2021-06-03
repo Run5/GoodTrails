@@ -18,12 +18,13 @@ block content
     //-     div.review-form
     //-         p Your Review:
     //-         form(action=`/reviews/${trail.id}`, method='post)
+    br
+    span=`WHO IS LOGGED IN? ${loggedInUser.username} id:${loggedInUser.id}`
     div.review-container
         br
         each review in trail.Reviews
             div.each-review
                 p=review.review
-                p=`By user ${review.user_id}`
-
+                p=`Reviewed by user ${review.user_id}`
 
     script(src='/javascripts/trails.js' type='text/javascript')
