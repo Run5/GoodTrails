@@ -6,8 +6,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   const actualError = document.querySelector('.actualError');
   const visitedButton = document.querySelector('.visitedButton');
 
-  allButton.addEventListener('click', async (e) => {
+hideButton = () => {
+  if(allContainer.style.visibility === 'hidden') {
+    allContainer.style.visibility === 'visible'
+  } else {
+    allContainer.style.visibility === 'hidden'
+  }
+}
 
+  allButton.addEventListener('click', async (e) => {
+    hideButton(allButton)
     try {
 
       const res = await fetch('/my-trails/all');
@@ -34,28 +42,31 @@ document.addEventListener("DOMContentLoaded", async () => {
 //_____________________________________________________________________________
                         //VISITED TRAILS
   visitedButton.addEventListener('click', async (e) => {
-
     try {
 
       const res = await fetch('/my-trails/visited');
 
+
       if(visitedButton.classList.contains('on')) {
-        visitedButton.classList.remove('on');
-        visitedButton.classList.add('off');
-      } else {
-        visitedButton.classList.remove('off');
-        visitedButton.classList.add('on');
-      }
+          // visitedButton.classList.remove('on');
+          visitedButton.classList.toggle('off')
+          allContainer.style.visibility = 'hidden';
+          // visitedButton.classList.add('off');
+        } else {
+            visitedButton.classList.toggle('on')
+            allContainer.style.visibility = 'visible';
+            // visitedButton.classList.remove('off');
+            // visitedButton.classList.add('on');
+          }
 
-      const visitedTrails = await res.json();
-      allContainer.innerHTML = [visitedTrails[0].Trail.name];
-      console.log(visitedTrails);
+          const visitedTrails = await res.json();
+          allContainer.innerHTML = [visitedTrails[0].Trail.name];
+          console.log(visitedTrails);
 
-    } catch (err) {
-      console.log('Sorry, we couldn\'t find any trails!', err);
-      actualError.innerHTML = 'Sorry, we couldn\'t find any trails that you\'ve visited';
-    }
-
+        } catch (err) {
+          console.log('Sorry, we couldn\'t find any trails!', err);
+          actualError.innerHTML = 'Sorry, we couldn\'t find any trails that you\'ve visited';
+        }
   })
 
   // const wantToVisitButton = document.querySelector('.wantToVisit');
