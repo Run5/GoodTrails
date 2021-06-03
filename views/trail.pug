@@ -3,8 +3,8 @@ extends layout.pug
 block content
     img(src=`/images/trail${trail.id}.jpg`).trail
     button.visited Visited
-    button Interested
-    h1= trail.name
+    button.interested Interested
+    h1(id=`${trail.id}`)= trail.name
     h2= state.state_name
     h3 Distance:
     h3= trail.length
@@ -12,22 +12,4 @@ block content
     h2= trail.difficulty
     p= trail.description
     //- reviews go here
-    script(type='text/javascript').
-        var trail =!{JSON.stringify(trail)}
-        const trailId = trail.id
-        console.log('========trailId==========',trailId )
-        document.addEventListener("DOMContentLoaded", async () => {
-            try {
-                const res = await fetch(`/trails/toggles/${trailId}`);
-                const { trailToggles} = await res.json();
-                console.log(`===================================`, trailToggles)
-                const visited = document.querySelector('.visited')
-                if(trailToggles[0].visited){
-                    console.log(visited)
-                    visited.classList.add('working')
-                }
-            }
-            catch (err){
-                console.error(err)
-            }
-        });
+    script(src='/javascripts/trails.js' type='text/javascript')
