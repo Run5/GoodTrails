@@ -1,29 +1,36 @@
 extends layout.pug
 
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/trail.css")
+  //- add page specific js
+  script(src='/javascripts/trails.js' type='text/javascript')
+
 block content
-    img(src=`/images/trail${trail.id}.jpg`).trail
-    br
-    button.visited Visited
-    button.interested Interested
-    h1(id=`${trail.id}`)= trail.name
-    h2= state.state_name
-    h3 Distance:
-    h3= trail.length
-    h2 This trail has a difficulty of:
-    h2= trail.difficulty
-    p= trail.description
-    //- reviews go here
-    //- if locals.authenticated
-    //-     div.review-form
-    //-         p Your Review:
-    //-         form(action=`/reviews/${trail.id}`, method='post)
-    br
-    span=`WHO IS LOGGED IN? ${loggedInUser.username} id:${loggedInUser.id}`
-    div.review-container
+  div.grid-container
+    div.trail-banner
+      div.trail-img
+        img(src=`/images/trail${trail.id}.jpg`).trail
+      div.trail-toggles
+        button.visited Visited
+        button.interested Interested
+    div.trail-content
+      h1(id=`${trail.id}`)= trail.name
+      h2= state.state_name
+      h3 Distance:
+      h3= trail.length
+      h2 This trail has a difficulty of:
+      h2= trail.difficulty
+      p= trail.description
+      //- reviews go here
+      //- if locals.authenticated
+      //-     div.review-form
+      //-         p Your Review:
+      //-         form(action=`/reviews/${trail.id}`, method='post)
+      span=`WHO IS LOGGED IN? ${loggedInUser.username} id:${loggedInUser.id}`
+      div.review-container
         br
         each review in trail.Reviews
-            div.each-review
-                p=review.review
-                p=`Reviewed by user ${review.user_id}`
-
-    script(src='/javascripts/trails.js' type='text/javascript')
+          div.each-review
+            p=review.review
+            p=`Reviewed by user ${review.user_id}`
