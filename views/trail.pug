@@ -1,15 +1,25 @@
 extends layout.pug
 
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/trail.css")
+  //- add page specific js
+  script(src='/javascripts/trails.js' type='text/javascript')
+
 block content
-    img(src=`/images/trail${trail.id}.jpg`).trail
-    button.visited Visited
-    button.interested Interested
-    h1(id=`${trail.id}`)= trail.name
-    h2= state.state_name
-    h3 Distance:
-    h3= trail.length
-    h2 This trail has a difficulty of:
-    h2= trail.difficulty
-    p= trail.description
-    //- reviews go here
-    script(src='/javascripts/trails.js' type='text/javascript')
+  div.grid-container
+    div.trail-banner
+      div.trail-img
+        img(src=`/images/trail${trail.id}.jpg`).trail
+      div.trail-toggles
+        button.visited Visited
+        button.interested Interested
+    div.trail-content
+      h1(id=`${trail.id}`)= trail.name
+      h2= state.state_name
+      h3 Distance:
+      h3= trail.length
+      h2 This trail has a difficulty of:
+      h2= trail.difficulty
+      p= trail.description
+      //- reviews go here
