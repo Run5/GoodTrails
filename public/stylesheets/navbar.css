@@ -26,6 +26,7 @@
 /* Span Tag inside Navbar Logo */
 span#logo-span {
     font-weight: 500;
+    font-size: 30px;
     color:slategray;
 }
 
