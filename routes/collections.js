@@ -5,16 +5,16 @@ const {User, Collection, Trail} = require('../db/models')
 const {asyncHandler} = require('../utils');
 
 /* GET THE COLLECTION OF TRAILS */
-router.get('/all', restoreUser, asyncHandler(async (req, res) => {
-    const collectionOfTrails = await Collection.findAll({
-        include: Trail
+router.get('/all/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
+    const trailId = parseInt(req.params.id, 10);
+    const specificTrail = await Trail.findOne({
+        where: {
+            id: trailId
+        }
     });
-        res.render('collections', {collectionOfTrails})
+    const collectionOfTrails = await Collection.findAll();
+    res.render('collections', {collectionOfTrails, specificTrail})
 }));
-
-// router.post('/all/:id', asyncHandler(async (req, res) => {
-
-// }))
 
 
 module.exports = router;

@@ -1,4 +1,6 @@
-include navbar.pug
+extends layout.pug
+
+block content
         div.table__container
             table
                 thead
@@ -7,6 +9,11 @@ include navbar.pug
                         th Trail ID
                         th Visited
                         th Want to visit?
+                    tr
+                        th Trail Name
+                        th Trail Desc
+                        th Trail Length
+                        th Trail Difficulty
                 tbody
                     tr
                         each trail in collectionOfTrails
@@ -14,6 +21,12 @@ include navbar.pug
                             td= trail.trail_id
                             td= trail.visited
                             td= trail.want_to_visit
+                    tr
+                        each specific in specificTrail
+                            td= specific.name
+                            td= specific.description
+                            td= specific.length
+                            td= specific.difficulty
 
 
 
