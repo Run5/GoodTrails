@@ -6,6 +6,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   allButton.addEventListener('click', async (e) => {
     const res = await fetch('/my-trails/all')
+
+    if(allButton.classList.contains('on')) {
+      allButton.classList.remove('on')
+      allButton.classList.add('off')
+    } else {
+      allButton.classList.remove('off')
+      allButton.classList.add('on')
+    }
+
     const allTrails = await res.json()
     allContainer.innerHTML = [allTrails[0].Trail.name];
     console.log(allTrails)
