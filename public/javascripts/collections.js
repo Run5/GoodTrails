@@ -47,18 +47,9 @@ hideButton = () => {
       const res = await fetch('/my-trails/visited');
 
 
-      if(visitedButton.classList.contains('on')) {
-          // visitedButton.classList.remove('on');
-          visitedButton.classList.toggle('off')
-          document.getElementById('container').style.visibility = 'hidden'
-          // visitedButton.classList.add('off');
-        } else {
-            visitedButton.classList.toggle('on')
-            document.getElementById('container').style.visibility = 'visible'
+      if(allContainer.classList.contains('hidden')) {
 
-            // visitedButton.classList.remove('off');
-            // visitedButton.classList.add('on');
-          }
+      }
 
           const visitedTrails = await res.json();
           allContainer.innerHTML = [visitedTrails[0].Trail.name];
