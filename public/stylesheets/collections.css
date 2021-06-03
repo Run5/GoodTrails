@@ -1,0 +1,46 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+}
+
+.allButton,
+.visitedButton,
+.wantToVisit {
+    height: 30px;
+    width: 150px;
+    background-color: lightgray;
+    color: black
+}
+/* 
+.allButton {
+
+}
+
+.visitedButton {
+
+}
+
+.wantToVisit {
+
+}
+
+.allButton.off ~ div {
+    visibility: hidden;
+    display: none;
+}
+
+.visitedButton.off ~ div {
+    visibility: hidden;
+    display: none;
+}
+
+.wantToVisit.off ~ div {
+    visibility: hidden;
+    display: none;
+} */
