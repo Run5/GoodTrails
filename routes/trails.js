@@ -14,16 +14,16 @@ const { requireAuth } = require("../auth");
 // GET route for displaying a single trail
 // GET /trails/:id
 router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
-    const trailId = parseInt(req.params.id, 10);
-    const trail = await Trail.findByPk(trailId);
-    const state = await State.findByPk(trail.state_id);
-    req.session.save(() => {
-        res.render("trail", {
-            trail,
-            state,
-            title: "Trail",
-        })
-    });//end render
+  const trailId = parseInt(req.params.id, 10);
+  const trail = await Trail.findByPk(trailId);
+  const state = await State.findByPk(trail.state_id);
+  req.session.save(() => {
+    res.render("trail", {
+      trail,
+      state,
+      title: "Trail",
+    })
+  });//end render
 }));//end GET route for a single trail
 
 
@@ -42,8 +42,7 @@ router.post('/:id/visited/:visitedBool'), requireAuth, asyncHandler(async (req, 
     })
     return res.send()
   }
-  // else throw error
-  const err = new Error("is this on msg key?"  )
+
 
 })
 
@@ -52,9 +51,14 @@ router.post('/:id/want_to_visit/:want_to_visitBool'), requireAuth, asyncHandler(
   const trail_id = parseInt(req.params.id, 10);
   const want_to_visit = req.params.want_to_visitBool == 'true'; // purposely not using strict equality
   const user_id = res.locals.user.id;
-
-  const collection = await Collection.create({ user_id, trail_id, visited })
-  res.send()
+  
+  if (want_to_visit === true) {
+    const collection = await Collection.create({ user_id, trail_id, want_to_visit })
+    return res.send()
+  } else {
+    await Collection.destroy({ where: { user_id, trail_id, want_to_visit } })
+    return res.send()
+  }
 })
 
 
@@ -71,7 +75,7 @@ router.get(
       },
     });
     res.json({
-        trailToggles
+      trailToggles
     })
   })
 );
