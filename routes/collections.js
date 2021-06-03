@@ -4,16 +4,34 @@ const {restoreUser} = require('../auth')
 const {User, Collection, Trail} = require('../db/models')
 const {asyncHandler} = require('../utils');
 
+router.get('/', restoreUser, (req, res) => {
+    res.render('collections')
+})
+
 /* GET THE COLLECTION OF TRAILS */
-router.get('/all/:id(\\d+)', restoreUser, asyncHandler(async (req, res) => {
-    const trailId = parseInt(req.params.id, 10);
-    const specificTrail = await Trail.findOne({
+router.get('/all', restoreUser, asyncHandler(async (req, res) => {
+    const user_id = req.session.auth.userId;
+    const collectionOfTrails = await Collection.findAll({
+        include: Trail,
         where: {
-            id: trailId
+            user_id
         }
     });
-    const collectionOfTrails = await Collection.findAll();
-    res.render('collections', {collectionOfTrails, specificTrail})
+    res.json(collectionOfTrails)
+}));
+
+
+router.get('/visited', restoreUser, asyncHandler(async(req, res) => {
+    const user_id = req.session.auth.userId;
+    const collectionOfTrails = await Collection.findAll({
+        include: Trail,
+        where: {
+            user_id,
+            visited: true
+        }
+    });
+    console.log(collectionOfTrails[0].toJSON())
+    res.json(collectionOfTrails)
 }));
 
 

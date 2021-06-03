@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if(trailToggles.visited === true){
         visited.classList.add('working')
     }
-
+    
   }
   catch (err){
     console.error(err)

@@ -1,32 +1,32 @@
 extends layout.pug
 
+append head
+    script(src="/javascripts/collections.js" type="module" defer)
 block content
-        div.table__container
-            table
-                thead
-                    tr
-                        th Belongs To
-                        th Trail ID
-                        th Visited
-                        th Want to visit?
-                    tr
-                        th Trail Name
-                        th Trail Desc
-                        th Trail Length
-                        th Trail Difficulty
-                tbody
-                    tr
-                        each trail in collectionOfTrails
-                            td= trail.user_id
-                            td= trail.trail_id
-                            td= trail.visited
-                            td= trail.want_to_visit
-                    tr
-                        each specific in specificTrail
-                            td= specific.name
-                            td= specific.description
-                            td= specific.length
-                            td= specific.difficulty
+
+    button.allButton All Trails
+    .allContainer
+    button.visitedButton Visited Trails
+    .visitedContainer
+    button.wantToVisit Trails that you want to visit
+    .wantToVisitContainer
+        //- div.table__container
+        //-     table
+        //-         thead
+        //-             tr
+        //-                 th Belongs To
+        //-                 th Trail ID
+        //-                 th Visited
+        //-                 th Want to visit?
+
+        //-         tbody
+        //-             tr
+        //-                 each trail in collectionOfTrails
+        //-                     td= trail.user_id
+        //-                     td= trail.trail_id
+        //-                     td= trail.visited
+        //-                     td= trail.want_to_visit
+
 
 
 
