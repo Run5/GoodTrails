@@ -1,11 +1,17 @@
 extends layout.pug
 
 append head
-    script(src="/javascripts/states.js")
+    //- script(src="/javascripts/states.js"type="module" defer)
+    link(rel='stylesheet' href='/stylesheets/states.css')
 
-//- make public javascript file to fetch correct state
+
 block content
-    each trail in trails
-        div(class = trail.id)= trail.name
-        div(class = trail.id)= trail.description
-
+    if trails.Trails.length
+        h2 These are the delightful trails in your state.
+        each trail in trails.Trails
+            div.state__trails( id=`trail${trail.id}`)
+                p=trail.id
+                p=trail.name
+                p=trail.description
+    else
+        p There are no trails in this state.
