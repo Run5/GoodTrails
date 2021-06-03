@@ -1,0 +1,71 @@
+h1 {
+  color: #FAED26;
+}
+
+body{
+  background-color: #46344E;
+  color: white;
+  overflow: hidden;
+  font-size: 10px;
+}
+
+.grid-container{
+  background-color: #5A5560;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2.5fr;
+  grid-template-areas:
+    "banner" "content";
+}
+
+.trail-banner {
+  background-color: #9D8D8F;
+  grid-area: "banner";
+}
+
+.trail-content {
+  background-color: #9B786F;
+  grid-area: "content";
+}
+
+button {
+    margin: 3px;
+    color: #FAED26;
+    background-color: #46344E;
+    background-image: none;
+    border-color: #FAED26;
+    display: block;
+    width: 100%;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+button:hover {
+    color: #46344E;
+    background-color: #FAED26;
+    background-image: none;
+    border-color: #FAED26;
+}
+
+button:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.toggled {
+    color: #46344E;
+    background-color: #FAED26;
+}
+
+.toggled:hover {
+    color: #FAED26;
+    background-color: #46344E;
+}
