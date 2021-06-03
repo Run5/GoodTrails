@@ -50,11 +50,12 @@ hideButton = () => {
       if(visitedButton.classList.contains('on')) {
           // visitedButton.classList.remove('on');
           visitedButton.classList.toggle('off')
-          allContainer.style.visibility = 'hidden';
+          document.getElementById('container').style.visibility = 'hidden'
           // visitedButton.classList.add('off');
         } else {
             visitedButton.classList.toggle('on')
-            allContainer.style.visibility = 'visible';
+            document.getElementById('container').style.visibility = 'visible'
+
             // visitedButton.classList.remove('off');
             // visitedButton.classList.add('on');
           }
