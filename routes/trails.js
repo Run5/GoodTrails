@@ -42,8 +42,6 @@ router.post('/:id/visited/:visitedBool'), requireAuth, asyncHandler(async (req, 
     })
     return res.send()
   }
-
-
 })
 
 // POST /trails/:id/want_to_visit/:want_to_visitBool (api)
@@ -51,7 +49,7 @@ router.post('/:id/want_to_visit/:want_to_visitBool'), requireAuth, asyncHandler(
   const trail_id = parseInt(req.params.id, 10);
   const want_to_visit = req.params.want_to_visitBool == 'true'; // purposely not using strict equality
   const user_id = res.locals.user.id;
-  
+
   if (want_to_visit === true) {
     const collection = await Collection.create({ user_id, trail_id, want_to_visit })
     return res.send()
@@ -74,6 +72,7 @@ router.get(
         trail_id: trailId,
       },
     });
+    console.log(trailToggles);
     res.json({
       trailToggles
     })

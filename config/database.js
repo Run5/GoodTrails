@@ -9,7 +9,13 @@ module.exports = {
     database,
     host,
     dialect: 'postgres',
+    // dialectOptions: {
+    //   ssl: {
+    //     require: true,
+    //     rejectUnauthorized: false,
+    //   },
     seederStorage: 'sequelize',
     logging: false
-  },
-};
+  }
+}
+
