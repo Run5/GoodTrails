@@ -11,15 +11,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const res = await fetch(`/trails/toggles/${trailId}`);
     const { trailToggles } = await res.json();
-
+    console.log(trailToggles);
     // Setting the initial state of the buttons from the database
-    if(trailToggles[0].visited) visited.classList.add('toggled');
+    if (trailToggles[0].visited) visited.classList.add('toggled');
     else visited.classList.remove('toggled');
-    if(trailToggles[0].want_to_visit) interested.classList.add('toggled');
+    if (trailToggles[0].want_to_visit) interested.classList.add('toggled');
     else interested.classList.remove('toggled');
 
   }//endTry
-  catch (err){
+  catch (err) {
 
     console.error(err);
 
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   visited.addEventListener("click", async (event) => {
 
-    if(visited.classList.contains('toggled')) {
+    if (visited.classList.contains('toggled')) {
 
       try {
 
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }//endTry
       catch (err) {
 
-        console.error(err);
+        console.log(err);
 
       }//endCatch
 
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       try {
 
-        if(interested.classList.contains('toggled')) {
+        if (interested.classList.contains('toggled')) {
 
           const res = await fetch(`/trails/toggles/${trailId}`, {
             headers: {

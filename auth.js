@@ -1,5 +1,5 @@
-const db = require('./db/models');
-const {User} = db;
+const {User} = require('./db/models');
+
 
 
 //loginUser
