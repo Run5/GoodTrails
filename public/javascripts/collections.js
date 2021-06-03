@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const allContainer = document.querySelector('.allContainer');
   const actualError = document.querySelector('.actualError');
   const visitedButton = document.querySelector('.visitedButton');
+  const wantVisitButton = document.querySelector('.wantToVisit');
 
   allButton.addEventListener('click', async (e) => {
     try {
@@ -36,3 +37,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 //________________________________________________________________________________
+                      //WANT TO VISIT TRAILS
+  wantVisitButton.addEventListener('click', (e) => {
+    try {
+
+    } catch (err) {
+      
+    }
+  })
