@@ -17,7 +17,7 @@ router.get('/all', restoreUser, asyncHandler(async (req, res) => {
             user_id
         }
     });
-    res.json(collectionOfTrails)
+    res.json(collectionOfTrails);
 }));
 
 
@@ -31,8 +31,18 @@ router.get('/visited', restoreUser, asyncHandler(async(req, res) => {
         }
     });
     console.log(collectionOfTrails[0].toJSON())
-    res.json(collectionOfTrails)
+    res.json(collectionOfTrails);
 }));
 
-
+router.get('/want-to-visit', restoreUser, asyncHandler(async(req, res) => {
+    const user_id = req.session.auth.userId;
+    const collectionOfTrails = await Collection.findAll({
+        include: Trail,
+        where: {
+            user_id,
+            want_to_visit: true
+        }
+    })
+    res.json(collectionOfTrails);
+}))
 module.exports = router;
