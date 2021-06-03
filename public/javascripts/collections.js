@@ -34,14 +34,18 @@ document.addEventListener("DOMContentLoaded", async () => {
           actualError.innerHTML = 'Sorry, we couldn\'t find any trails that you\'ve visited';
         }
   })
-});
 
-//________________________________________________________________________________
-                      //WANT TO VISIT TRAILS
-  wantVisitButton.addEventListener('click', (e) => {
+  //________________________________________________________________________________
+  //WANT TO VISIT TRAILS
+  wantVisitButton.addEventListener('click', async (e) => {
     try {
+      const res = await fetch('/my-trails/want-to-visit');
+      const wantToVisitTrails = await res.json();
+      allContainer.innerHTML = [wantToVisitTrails[0].Trail.name];
 
     } catch (err) {
-      
+      console.log('Sorry, we couldn\'t find the trail you were looking for', err)
+      actualError.innerHTML = 'Sorry, we couldn\'t find any trails that you\'d like to visit';
     }
   })
+});
