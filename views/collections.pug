@@ -1,21 +1,13 @@
-include navbar.pug
-        div.table__container
-            table
-                thead
-                    tr
-                        th Belongs To
-                        th Trail ID
-                        th Visited
-                        th Want to visit?
-                tbody
-                    tr
-                        each trail in collectionOfTrails
-                            td= trail.user_id
-                            td= trail.trail_id
-                            td= trail.visited
-                            td= trail.want_to_visit
+extends layout.pug
 
-
-
-
-            //- put each visited trail here!
+append head
+    script(src="/javascripts/collections.js" type="module" defer)
+    link(rel="stylesheet", href="/stylesheets/collections.css")
+block content
+    .buttonContainer
+        button.allButton All Trails
+        button.visitedButton Visited Trails
+        button.wantToVisit Trails that you want to visit
+    .allContainer#container
+    .errorContainer
+        p.actualError
