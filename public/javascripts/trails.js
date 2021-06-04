@@ -194,7 +194,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       e.preventDefault();
       const textToSend = document.querySelector(".review-text-area").value;
       const reviewId = postThing(`/reviews/${trailId}`, textToSend, userId, trailId)
-
       // dynamically display the new review
       const newReviewDiv = document.createElement("div");
       newReviewDiv.setAttribute("id", `review-${trailId}-div`);

@@ -5,20 +5,26 @@ block content
   div.grid-container
     div.trail-banner
       div.trail-img
-        img(src=`/images/trail${trail.id}.jpg`).trail
+        img(src=`/images/trail${trail.id}.jpg`).trail-image
       div.trail-toggles
         button.visited Visited
         button.interested Interested
     div.trail-content
-      h1(id=`${trail.id}`, class=`${loggedInUser.id} ${loggedInUser.username}`)= trail.name
-      h2= state.state_name
-      h3 Distance:
-      h3= trail.length
-      h2 This trail has a difficulty of:
-      h2= trail.difficulty
-      p= trail.description
+      div.trail-info
+        h1(id=`${trail.id}`, class=`${loggedInUser.id} ${loggedInUser.username}`)= trail.name
+        a(href=`/states/${state.state_code}`)
+          h2.trail-state= state.state_name
+        div.trail-dif-dis-container
+          div.trail-distance
+            h3 Distance:
+            h3= trail.length
+            h3 miles
+          div.trail-difficulty
+            h2 This trail has a difficulty of:
+            h2= trail.difficulty
+        p.trail-description= trail.description
       div.review-open-div
-        button.review-open-button.review-button Write Review
+          button.review-open-button.review-button Write Review
       //- Review Container
       div.review-form-container
         //- form
@@ -33,7 +39,7 @@ block content
           div.each-review(id=`review-${review.id}-div`)
             p=review.review
             p=`-Reviewed by ${review.User.username}`
-            
+
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/trail.css")

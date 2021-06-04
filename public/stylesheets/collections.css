@@ -1,13 +1,18 @@
 body {
+    color: white;
+    background-color: #2B2B2B;
     padding: 0;
     margin: 0;
 }
+
 .div {
+    background-color: #5A5A5A;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
 .buttonContainer {
     display: flex;
     flex-direction: row;
@@ -15,40 +20,86 @@ body {
 
 }
 
-.allButton,
-.visitedButton,
-.wantToVisit {
-    height: 50px;
-    width: 150px;
-    background-color: lightseagreen;
-    color: white;
-    font-weight: bold;
-    margin: 10px;
-    border: 1px solid white;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 5px;
-}
-button:hover {
-    cursor: pointer;
-    background-color: rgb(52, 139, 135);
-}
 .header1 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 70px;
     font-weight: bold;
     justify-content: center;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 .li {
     list-style: none;
 }
 
-.allContainer {
-    margin-top: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 20px;
+button {
+    margin-top: 6px;
+    color: #FAED26;
+    background-color: #2B2B2B;
+    background-image: none;
+    border-color: #FAED26;
+    display: block;
+    width: 100%;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
+button:hover {
+    color: #2B2B2B;
+    background-color: #FAED26;
+    background-image: none;
+    border-color: #FAED26;
+}
+
+button:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.toggled {
+    color: #2B2B2B;
+    background-color: #FAED26;
+}
+
+.toggled:hover {
+    color: #FAED26;
+    background-color: #2B2B2B;
+}
+
+.allContainer{
+    height: 100px;
+    width: 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    gap: 10px;
+}
+
+img.trail-image{
+    object-fit: cover;
+    width: 200px;
+}
+
+.trail-info{
+    width: 200px;
+    height: 100px;
+}
+
+.trail-container{
+    display: flex;
+    background-color: #7C7C7C;
+}
+
+.trail-name{
+    font-size: 1.5em;
+}
+
+
 /*
 .allButton {
 
