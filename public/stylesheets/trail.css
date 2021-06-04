@@ -1,9 +1,9 @@
 /* Set up color variables */
 :root{
-  --main-background: #46344e;
-  --secondary-background: #5a5560;
+  --main-background: #2B2B2B;
+  --secondary-background: #5A5A5A;
   --accent-color-neon: #faed26;
-  --accent-color-normal: #9d8d8f;
+  --accent-color-normal: #7c7c7c;
   --text-color: white;
 }
 
@@ -16,25 +16,6 @@ body{
   color: white;
   overflow: hidden;
   font-size: 10px;
-}
-
-.grid-container{
-  background-color: #5A5A5A;
-  max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-areas:
-    "banner" "content";
-}
-
-.trail-banner {
-  grid-area: "banner";
-  margin: 5px;
-}
-
-.trail-content {
-  grid-area: "content";
 }
 
 button {
@@ -67,6 +48,41 @@ button:hover {
 button:not(:disabled):not(.disabled) {
     cursor: pointer;
 }
+
+.grid-container{
+  background-color: #5A5A5A;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  height:1000px;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+    "banner" "content";
+}
+
+/* left panel */
+.trail-banner {
+  grid-area: "banner";
+  margin: 5px;
+  margin-top:100px;
+  display:absolute;
+  max-width: 400px;
+}
+
+/* right panel */
+.trail-content {
+  grid-area: "content";
+  max-width: 800px;
+  padding-left: 30px;
+  overflow-y: scroll;
+}
+
+img{
+  object-fit: cover;
+  width: 400px;
+}
+
+
 .toggled {
     color: #2B2B2B;
     background-color: #FAED26;
@@ -88,13 +104,54 @@ button:not(:disabled):not(.disabled) {
 .review-form-container{
   display:none;
   background-color: var(--secondary-background);
-  border-radius:2rem;
-  padding:30px;
-  width:300;
-  height: 300px;
+  overflow:hidden;
+  height: auto;
+  padding:auto;
+  margin-top:20px
   /* z-index: 10; */
 }
 
 .review-button{
   width : 10rem;
+}
+
+.review-open-button{
+  margin:1rem;
+  display:flex;
+}
+
+.review-open-div{
+  display:flex;
+  justify-content:center;
+}
+
+.review-form,
+.review-text-area,
+.submit-review,
+.cancel-review
+{
+  margin:10px;
+}
+
+.submit-button-container{
+  display:flex;
+  margin:auto;
+}
+.review-form{
+  /* justify-items:center; */
+  padding-left:50px;
+}
+
+.review-display-container{
+  margin-left:40px;
+}
+.review-display-container div{
+  margin:10px;
+  border:3px solid var(--main-background);
+  border-radius:3px;
+  padding:15px;
+  height: 100px;
+  width: 600px;
+  overflow-y: scroll;
+  background-color: var(--accent-color-normal)
 }
