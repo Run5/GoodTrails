@@ -17,12 +17,12 @@ router.post('/:trail_id', restoreUser, csrfProtection, asyncHandler(async (req, 
 
 // GET /reviews/:trail_id
 router.get('/:trail_id', restoreUser, csrfProtection, asyncHandler(async (req, res) => {
-
     const review = await Review.findAll({
         where: { trail_id: req.params.trail_id},
         include: User,
         order: [["updatedAt", "DESC"]]
     })
+    console.log("this is review,", review);
     res.json({ review, csrfToken: req.csrfToken() })
 })) //endGet
 

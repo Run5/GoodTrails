@@ -179,6 +179,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   const submitReviewButton = document.querySelector('.submit-review')
   const cancelReviewButton = document.querySelector('.cancel-review')
 
+  /**************************************************/
+  /*            Reviews with GET route              */
+  /**************************************************/
+  let newToken = ""
+
+  const { review, csrfToken } = await fetchReviews(trailId)
+  newToken = csrfToken
+  console.log("line 250", review);
+  renderReviews(review, reviewDisplayContainer)
+
   //open the text box
   if (reviewOpenButton) {
     reviewOpenButton.addEventListener("click", (e) => {
@@ -193,7 +203,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   //   submitReviewButton.addEventListener('click', (e) => {
   //     e.preventDefault();
   //     const textToSend = document.querySelector(".review-text-area").value;
-  //     const reviewId = postThing(`/reviews/${trailId}`, textToSend, userId, trailId)
+  //     const reviewId = postReview(`/reviews/${trailId}`, textToSend, userId, trailId)
 
   //     // dynamically display the new review
   //     const newReviewDiv = document.createElement("div");
@@ -209,6 +219,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   //   })
   // }
 
+  // POST the review
+  if (submitReviewButton) {
+    submitReviewButton.addEventListener('click', e => {
+      e.preventDefault()
+
+      const textBox = document.querySelector(".review-text-area");
+      const textToSend = textBox.value;
+
+      // const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+      console.log("line 231: is there a token here?", newToken);
+      const reviewId = postReview(`/reviews/${trailId}`, textToSend, userId, trailId, newToken)
+
+      // refresh reviewFormContainer with latest reviews
+      const { reviewData, csrfToken } = fetchReviews(trailId)
+
+      renderReviews(reviewData, reviewDisplayContainer)
+      // clear and hide the form
+      textBox.value = ""
+      reviewFormContainer.style.display = "none"
+    })
+  }
+
   // Cancel the review, remove text box
   if (cancelReviewButton) {
     cancelReviewButton.addEventListener("click", (e) => {
@@ -218,16 +250,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  /**************************************************/
-  /*            Reviews with GET route              */
-  /**************************************************/
 
-  // fetch /reviews/trail_id, save to res
-  // each obj in res, createElement div,
-  // append to reviewDisplayContainer
-  const reviewRes = await fetch(`/reviews/${trailId}`)
-  const reviewData = await reviewRes.json()
-  listReviews(reviewData.review, reviewDisplayContainer)
 
 });//endEventListener
 
@@ -236,30 +259,48 @@ document.addEventListener("DOMContentLoaded", async () => {
 /**************************************************/
 
 
-async function postThing(postRoute, textToSend, userId, trailId) {
-
+async function postReview(postRoute, textToSend, userId, trailId, newToken) {
+console.log("this is the returned token", newToken);
   try {
     const res = await fetch(postRoute, {
+      credentials: 'same-origin',
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json", 'CSRF-Token':newToken
+      },
       body: JSON.stringify({ textToSend, userId, trailId }),
     });
     const data = await res.json();
     const reviewId = data.id;
     return reviewId;
   } catch (err) {
-    console.log(err);
+    console.log("Error in trails.js public",err);
   }
 }
 
-//dynamically fetch and create review divs
-function listReviews(reviewArray, reviewDisplayContainer) {
+async function fetchReviews(trailId) {
+  const reviewRes = await fetch(`/reviews/${trailId}`)
+  const { review, csrfToken } = await reviewRes.json()
+
+  console.log("reviewData line 282", review);
+  console.log("csrf line 283", csrfToken);
+  return { review , csrfToken};
+
+  // console.log("this is review data>?>>>>/", reviewData);
+  // return reviewRes;
+}
+
+//dynamically create review divs
+function renderReviews(reviewArray, reviewDisplayContainer) {
   try {
     if (reviewArray.length === 0) {
       const noReviewText = document.createElement("p")
       noReviewText.innerHTML = "There are no reviews for this trail yet"
       reviewDisplayContainer.appendChild(noReviewText);
     } else {
+      // empty the reviewDisplayContainer
+      reviewDisplayContainer.innerHTML = "";
+
       reviewArray.forEach(review => {
         const newReviewDiv = document.createElement("div");
         newReviewDiv.setAttribute("id", `review-${review.id}-div`);
