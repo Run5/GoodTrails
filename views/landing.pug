@@ -3,8 +3,10 @@ include navbar.pug
 link(rel="stylesheet" href="/stylesheets/index.css")
 
 .grid-container
+    <video autoplay loop muted playsinline>
+        <source src="/images/HomepageVideo_compressed.mp4">
+    </video>
     .links-container
         h2 View trails in your state:
         each state in states
             a(href=`/states/${state.dataValues.state_code}`)  #{state.dataValues.state_code} |
-
