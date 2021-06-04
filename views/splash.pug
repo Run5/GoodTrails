@@ -7,23 +7,25 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title GoodTrails
     body
-        .main-container
-            .form-container
-                //- <p id="logo">Good<span>Trails</span></p>
-                form(action='/users/register' method='post')
-                    p.signupHere Sign Up Here
-
-                    input.input(type='hidden' name='_csrf' value=csrfToken)
-
-                    input.input(name='username' type='text' value=user.username placeholder="Username")
-
-                    input.input(name='email' type='email' value=user.email placeholder="Email" required)
-
-                    input.input(name='password' type='password' value=user.password, placeholder="Password" required)
-
-                    input.input(name='confirmPassword' type='password' placeholder="Confirm Password" required)
-                    button(type='submit').submitButton Sign Up
-                    //- <input id="checkbox" type="checkbox" required>
-                    //- <p id="acceptTerms">I accept the <a id="termsOfUse">Terms of Use</a> and <a id="privacy">Privacy Policy</a></p>
-                    a(href="/users/login") Already signed up?
-                    a(href='/' ) Cancel
+        .grid-container
+            .Logo
+                p Good Trails
+            .Form
+                .form-container
+                    form(action='/users/register' method='post')
+                        p.signupHere Sign Up Here
+                        input.input(type='hidden' name='_csrf' value=csrfToken)
+                        input.input(name='username' type='text' value=user.username placeholder="Username")
+                        input.input(name='email' type='email' value=user.email placeholder="Email" required)
+                        input.input(name='password' type='password' value=user.password, placeholder="Password" required)
+                        input.input(name='confirmPassword' type='password' placeholder="Confirm Password" required)
+                        button(type='submit').submitButton Sign Up
+                        //- <input id="checkbox" type="checkbox" required>
+                        //- <p id="acceptTerms">I accept the <a id="termsOfUse">Terms of Use</a> and <a id="privacy">Privacy Policy</a></p>
+                        a(href="/users/login") Already signed up?
+                        a(href='/' ) Return ⮌
+            .Footer
+                a(href="#") Github
+                a(href="#") LinkedIn
+                a(href="#") Terms
+                a(href="#") Privacy Policy
