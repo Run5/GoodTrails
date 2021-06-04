@@ -12,8 +12,8 @@ body {
 
 .form-container {
     display: flex;
-    background-color: lightgray;
-    height: 480px;
+    background-color: white;
+    height: 500px;
     width: 400px;
     border-radius: 20px;
     margin-top: 170px;
@@ -29,18 +29,41 @@ form {
 
 }
 
-form > input {
+form > .input {
     width: 300px;
     height: 45px;
-    border: none;
+    border: 1px solid rgb(172, 172, 172);
     border-radius: 5px;
     margin-bottom: 20px;
 }
 input::placeholder {
-    text-indent: 10px; 
+    text-indent: 10px;
 }
 
 p.signupHere {
     font-size: 30px;
     font-weight: 600;
 }
+
+form > a {
+    padding: 2px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.submitButton {
+    height: 45px;
+    width: 150px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(51, 149, 214);
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.submitButton:hover {
+    background-color: rgb(45, 131, 189);
+    cursor: pointer;
+}
+

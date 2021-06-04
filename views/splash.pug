@@ -12,16 +12,18 @@ html(lang="en")
                 //- <p id="logo">Good<span>Trails</span></p>
                 form(action='/users/register' method='post')
                     p.signupHere Sign Up Here
-                    
-                    input(type='hidden' name='_csrf' value=csrfToken)
 
-                    input(name='username' type='text' value=user.username placeholder="Username")
+                    input.input(type='hidden' name='_csrf' value=csrfToken)
 
-                    input(name='email' type='email' value=user.email placeholder="Email" required)
+                    input.input(name='username' type='text' value=user.username placeholder="Username")
 
-                    input(name='password' type='password' value=user.password, placeholder="Password" required)
+                    input.input(name='email' type='email' value=user.email placeholder="Email" required)
 
-                    input(name='confirmPassword' type='password' placeholder="Confirm Password" required)
-                    button(type='submit') Sign Up
+                    input.input(name='password' type='password' value=user.password, placeholder="Password" required)
+
+                    input.input(name='confirmPassword' type='password' placeholder="Confirm Password" required)
+                    button(type='submit').submitButton Sign Up
+                    //- <input id="checkbox" type="checkbox" required>
+                    //- <p id="acceptTerms">I accept the <a id="termsOfUse">Terms of Use</a> and <a id="privacy">Privacy Policy</a></p>
                     a(href="/users/login") Already signed up?
                     a(href='/' ) Cancel
