@@ -28,17 +28,6 @@ body
         button(type="submit").logout Log out
         .modalDiv
             .modal-info
-              form(action='/users/login' method='post')
-                h1 Log in
-                input(type='hidden' name ='_csrf' value=csrfToken)
-                input(name='email' type='email' placeholder="Email" required)
-                input(name='password' placeholder="Password" type='password' required)
-                button(type='submit').subamit Login
-                button.return Return
-        form(action="/users/login")
-            button(type="submit").login Log in
-            .modalDiv
-              .modal-info
                 form(action='/users/login' method='post')
                   h1 Log in
                   input(type='hidden' name ='_csrf' value=csrfToken)
@@ -46,7 +35,19 @@ body
                   input(name='password' placeholder="Password" type='password' required)
                   button(type='submit').subamit Login
                   button.return Return
+        .secondModal
+          .modal-content
+            form(action='/users/register' method='post')
+            input(type='hidden' name ='_csrf' value=csrfToken)
+            input(name='username' type='text' value=user.username )
+            input(name='email' type='email' value=user.email required)
+            input(name='password' type='password' value=user.password, required )
+            input(name='confirmPassword' type='password' required )
+            button(type='submit') Register
+            a(href='#' ).return2 Return
+        button(type="submit").login Log in
         form(action="/users/register")
             button(type="submit").signup Sign up
+
 
     block content
