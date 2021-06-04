@@ -12,17 +12,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // modalDiv.createAttribute('style', 'display: block;')
     });
     loginButton.addEventListener('click', event => {
+        loginButton.classList.add('on')
         modalDiv.setAttribute('style', 'display: block;')
-        const on = true;
+      
     })
     returnButton.addEventListener('click', event => {
         modalDiv.setAttribute('style', 'display: none;')
+        loginButton.classList.add('off')
+
     })
     signupButton.addEventListener('click', event => {
+        signupButton.classList.add('on')
         secondModal.setAttribute('style', 'display: block;')
-        const off = false;
+
     })
     secondReturnButton.addEventListener('click', event => {
         secondModal.setAttribute('style', 'display: none;')
+        signupButton.classList.add('off')
+
     })
+    if(loginButton.classList === 'on') {
+        signupButton.disabled = true;
+    } else if (signupButton.classList === 'on') {
+        loginButton.disabled = true;
+    }
 });
