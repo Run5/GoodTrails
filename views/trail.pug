@@ -1,5 +1,5 @@
 extends layout.pug
-
+//- we have trail, user, review objects
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/trail.css")
@@ -15,7 +15,7 @@ block content
         button.visited Visited
         button.interested Interested
     div.trail-content
-      h1(id=`${trail.id}`)= trail.name
+      h1(id=`${trail.id}`, class=loggedInUser.id)= trail.name
       h2= state.state_name
       h3 Distance:
       h3= trail.length

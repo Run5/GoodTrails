@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const trailHeader = document.querySelector('h1');
   // Grab the trail id passed in through the pug template
   const trailId = trailHeader.id;
+  const userId = trailHeader.classList[0]
   const visited = document.querySelector('.visited');
   const interested = document.querySelector('.interested');
 
@@ -167,12 +168,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     }//endElse
   });//endEventListener
 
-  //*************Reviews***************** */
+  /**************************************************/
+  /*                  Reviews                       */
+  /**************************************************/
 
   const reviewOpenButton = document.querySelector('.review-open-button')
   const reviewFormContainer = document.querySelector('.review-form-container')
-  const cancelButton=document.querySelector('.cancel-review')
-  const submitButton=document.querySelector('.submit-review')
+  const submitReviewButton=document.querySelector('.submit-review')
+  const cancelReviewButton = document.querySelector('.cancel-review')
 
 
   //open the review form div
@@ -184,7 +187,41 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
   }
 
+  // POST the review on submit
+  if (submitReviewButton) {
+    submitReviewButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const textToSend = document.querySelector(".review-text-area").value;
+      const reviewId = postThing(`/reviews/${trailId}`, textToSend, userId, trailId)
 
+
+
+    })
+  }
+
+  // Cancel the review
 
 
 });//endEventListener
+
+/**************************************************/
+/*                  Helper Functions              */
+/**************************************************/
+
+
+async function postThing(postRoute, textToSend, userId, trailId) {
+
+  try {
+    const res = await fetch(postRoute, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+
+      body: JSON.stringify({ textToSend, userId, trailId }),
+    });
+    const data = await res.json();
+    const reviewId = data.id;
+    return reviewId;
+  } catch (err) {
+    console.log(err);
+  }
+}
