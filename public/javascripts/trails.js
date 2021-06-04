@@ -196,6 +196,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // POST the review
   if (submitReviewButton) {
+
     submitReviewButton.addEventListener('click', async (e) => {
       e.preventDefault()
 

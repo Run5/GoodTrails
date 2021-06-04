@@ -13,9 +13,6 @@ h1 {
 
 body{
   background-color: #2B2B2B;
-  color: white;
-  overflow: hidden;
-  font-size: 10px;
 }
 
 button {
@@ -71,13 +68,16 @@ button:not(:disabled):not(.disabled) {
 
 /* right panel */
 .trail-content {
+  margin-top: 40px;
   grid-area: "content";
   max-width: 800px;
   padding-left: 30px;
   overflow-y: scroll;
+  color: white;
+  font-size: 1em;
 }
 
-img{
+img.trail-image{
   object-fit: cover;
   width: 400px;
 }
@@ -98,6 +98,47 @@ img{
   width:140px;
   height:50px;
   color: #FFFFFF;
+}
+
+.trail-state{
+  margin-left: 15px;
+  font-weight: 80;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.trail-info{
+  background-color: #2B2B2B;
+  border-radius: 10px;
+  padding: 25px;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+}
+
+.trail-dif-dis-container{
+  background-color: #7c7c7c;
+  padding: 10px;
+  border: 1px solid #FAED26;
+  border-radius: 5px;
+  width: fit-content;
+  margin: 5px;
+}
+
+.trail-distance{
+  color: #2B2B2B;
+  font-weight: bold;
+  display: flex;
+}
+
+.trail-difficulty{
+  color: #2B2B2B;
+  font-weight: bold;
+  display: flex;
+}
+
+.trail-description{
+  margin-top: 20px;
 }
 
 /* hidden form until .write-review button clicked */
@@ -148,7 +189,7 @@ img{
 .review-display-container div{
   margin:10px;
   border:3px solid var(--main-background);
-  border-radius:3px;
+  border-radius: 5px;
   padding:15px;
   height: 100px;
   width: 600px;
