@@ -22,8 +22,13 @@ block content
       h2 This trail has a difficulty of:
       h2= trail.difficulty
       p= trail.description
-      //- reviews go here
-      //- if locals.authenticated
+      //- already authenticated, remove if.
+      if locals.authenticated
+        div.review-form
+          form(action='', method='post')
+        button.review-write-button Write A Review
+      else
+        a.review-login(href="/users/login") Log in to write a review
       //-     div.review-form
       //-         p Your Review:
       //-         form(action=`/reviews/${trail.id}`, method='post)
@@ -33,4 +38,4 @@ block content
         each review in trail.Reviews
           div.each-review
             p=review.review
-            p=`Reviewed by user ${review.user_id}`
+            p=`-Reviewed by ${review.User.username}`

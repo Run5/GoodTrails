@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const trailId = trailHeader.id;
   const visited = document.querySelector('.visited');
   const interested = document.querySelector('.interested');
+  const reviewWriteButton = document.querySelector('.review-write-button')
+  const reviewForm = document.querySelector('.review-form')
 
   try {
 
@@ -183,7 +185,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   });//endEventListener
 
   async function postReview(route, reviewTextBox) {
-    
+
+  }
+
+  if (reviewWriteButton) {
+    reviewWriteButton.addEventListener("click", (e) => {
+      // display hidden div
+      // document.querySelector(".review-form").style.visibility= "visible";
+      document.querySelector(".review-form").style.display= "block";
+    })
   }
 
 });//endEventListener

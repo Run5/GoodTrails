@@ -1,3 +1,12 @@
+/* Set up color variables */
+:root{
+  --main-background: #46344e;
+  --secondary-background: #5a5560;
+  --accent-color-neon: #faed26;
+  --accent-color-normal: #9d8d8f;
+  --text-color: white;
+}
+
 h1 {
   color: #FAED26;
 }
@@ -68,4 +77,23 @@ button:not(:disabled):not(.disabled) {
 .toggled:hover {
     color: #FAED26;
     background-color: #46344E;
+}
+
+.review-login{
+  background-color:#9D8D8f;
+  width:140px;
+  height:50px;
+  color: #FFFFFF;
+}
+
+/* hidden form until .write-review button clicked */
+.review-form{
+  display:none;
+  /* visibility:hidden; */
+  background-color: var(--secondary-background);
+  border-radius:2rem;
+  padding:30px;
+  width:600px;
+  height: 425px;
+  /* z-index: 10; */
 }
