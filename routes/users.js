@@ -13,7 +13,7 @@ const { loginUser, logoutUser } = require("../auth");
 router.get("/register", csrfProtection, (req, res, next) => {
   const user = User.build();
 
-  res.render("register", {
+  res.render("splash", {
     user,
     title: "Registration",
     csrfToken: req.csrfToken(),
@@ -87,7 +87,7 @@ router.post(
       const errors = validatorErrors.array().map((error) => error.msg);
       console.log("errors2 *****", errors);
 
-      res.render("register", {
+      res.render("splash", {
         title: "Registration",
         user,
         errors,

@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        link(rel="stylesheet", href="/stylesheets/register.css")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title GoodTrails
+    body
+        .main-container
+            .form-container
+                //- <p id="logo">Good<span>Trails</span></p>
+                form(action='/users/register' method='post')
+                    p.signupHere Sign Up Here
+                    
+                    input(type='hidden' name='_csrf' value=csrfToken)
+
+                    input(name='username' type='text' value=user.username placeholder="Username")
+
+                    input(name='email' type='email' value=user.email placeholder="Email" required)
+
+                    input(name='password' type='password' value=user.password, placeholder="Password" required)
+
+                    input(name='confirmPassword' type='password' placeholder="Confirm Password" required)
+                    button(type='submit') Sign Up
+                    a(href="/users/login") Already signed up?
+                    a(href='/' ) Cancel
