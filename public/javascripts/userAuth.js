@@ -1,28 +1,13 @@
-
-document.addEventListener('DOMContentLoaded', async() => {
+document.addEventListener('DOMContentLoaded', () => {
     const loginButton = document.querySelector('.login');
-    // const logoutButton = document.querySelector('.logout');
+    const logoutButton = document.querySelector('.logout');
     const signupButton = document.querySelector('.signup');
+    const modalDiv = document.querySelector('.modalDiv');
 
     /* LOGIN BUTTON */
-    loginButton.addEventListener('click', async() => {
-
-        // const logoutButton = document.querySelector('.logout').style.display='block'
-        console.log('<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>')
+    logoutButton.addEventListener('click', event => {
+        console.log('WOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOWOW')
+        modalDiv.setAttribute('style', 'display: block;')
+        // modalDiv.createAttribute('style', 'display: block;')
     });
-
-    // /* LOGOUT BUTTON */
-    // logoutButton.addEventListener('click', () => {
-    //     if(loggedInUser) {
-    //         loginButton.style.display='block';
-    //         logoutUser();
-    //     }
-    // });
-
-    // /* SIGNUP BUTTON */
-    // signupButton.addEventListener('click', () => {
-    //     if(loggedInUser) {
-    //         signupButton.style.display='none'
-    //     }
-    // });
 });

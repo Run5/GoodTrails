@@ -30,20 +30,24 @@ span#logo-span {
     color:slategray;
 }
 .modalDiv {
-    background-color: white;
-    height: 100%;
+    background-color: rgba(0, 0, 0, 0.267);
+    backdrop-filter: blur(3px);
+    height: 600px;
     z-index: 1;
-    width: 100%;
+    margin-top: 180px;
+    width: 500px;
     display: none;
+    border-radius: 25px;
     overflow: hidden;
     position: fixed;
-
 }
-.modalInfo {
-    margin: 150px auto;
-    border: 1px solid lightgray;
+.modal-Info {
+    /* margin: 150px auto; */
     width: 80%;
     padding: 20px;
+}
+div.modal-Info h1 {
+    color: white;
 }
 /* Styles for the four left buttons */
 .home:hover,
@@ -86,7 +90,7 @@ span#logo-span {
 }
 .logout {
     margin-left: 70px;
-    display: none;
+    /* display: none; */
 }
 
 .home {

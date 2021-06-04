@@ -1,7 +1,7 @@
 html
     head
         link(rel="stylesheet", href="/stylesheets/navbar.css")
-        script(src="/javascripts/modal.js" type="module")
+        
         title Navbar
 body
     div.navbar__container
@@ -23,11 +23,11 @@ body
         img(src="/nav-images/NavbarMsg.png", alt="Messages").msg
         img(src="/nav-images/NavBarMail.png", alt="Mail").mail
         img(src="/nav-images/NavbarFriends.png", alt="Friends").friends
-        form(action="/users/logout")
-            button(type="submit").logout Log out
-            .modalDiv
-                .modal-info
-                    p hello there
+        //- form(action="")
+        button(type="submit").logout Log out
+        .modalDiv
+            .modal-info
+                p hello there
         form(action="/users/login")
             button(type="submit").login Log in
         form(action="/users/register")
