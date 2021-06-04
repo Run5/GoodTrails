@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const signupButton = document.querySelector('.signup');
     const modalDiv = document.querySelector('.modalDiv');
     const returnButton = document.querySelector('.return')
+    const secondModal = document.querySelector('.secondModal')
+
     /* LOGIN BUTTON */
     logoutButton.addEventListener('click', event => {
 
@@ -17,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalDiv.setAttribute('style', 'display: none;')
     })
     signupButton.addEventListener('click', event => {
-        modalDiv.setAttribute('style', 'display: block;')
+        secondModal.setAttribute('style', 'display: block;')
         const off = false;
     })
 });
