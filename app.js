@@ -12,7 +12,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const trailsRouter = require('./routes/trails');
-
+const reviewsRouter = require('./routes/reviews');
 const collectionsRouter = require('./routes/collections');
 const { asyncHandler, csrfProtection } = require('./utils');
 
@@ -58,7 +58,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/trails', trailsRouter);
 app.use('/my-trails', collectionsRouter);
-
+app.use('/reviews', reviewsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

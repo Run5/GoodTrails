@@ -7,7 +7,7 @@ var router = express.Router();
 
 /***********************Internal Packages***********************/
 const { csrfProtection, asyncHandler } = require("../utils");
-const { Trail, State, Collection } = require("../db/models");
+const { Trail, State,User, Collection, Review } = require("../db/models");
 const { requireAuth } = require("../auth");
 
 
@@ -15,55 +15,27 @@ const { requireAuth } = require("../auth");
 // GET /trails/:id
 router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
   const trailId = parseInt(req.params.id, 10);
-  const trail = await Trail.findByPk(trailId);
+  const trail = await Trail.findByPk(trailId, {
+    include:
+      [
+        { model: Review, include: { model: User } }
+      ]
+  });
+  const loggedInUser=await User.findByPk(req.session.auth.userId)
   const state = await State.findByPk(trail.state_id);
+  
   req.session.save(() => {
     res.render("trail", {
       trail,
       state,
       title: "Trail",
+      loggedInUser: loggedInUser.toJSON()
     })
   });//end render
 }));//end GET route for a single trail
 
-
-// POST /trails/:id/visited/:visitedBool (api)
-router.post('/:id/visited/:visitedBool'), requireAuth, asyncHandler(async (req, res) => {
-  const trail_id = parseInt(req.params.id, 10);
-  const visited = req.params.visitedBool == 'true'; // purposely not using strict equality
-  const user_id = res.locals.user.id;
-
-  if (visited === true) {
-    const collection = await Collection.create({ user_id, trail_id, visited })
-    return res.send()
-  } else {
-    await Collection.destroy({
-      where: { user_id, trail_id, visited }
-    })
-    return res.send()
-  }
-})
-
-// POST /trails/:id/want_to_visit/:want_to_visitBool (api)
-router.post('/:id/want_to_visit/:want_to_visitBool'), requireAuth, asyncHandler(async (req, res) => {
-  const trail_id = parseInt(req.params.id, 10);
-  const want_to_visit = req.params.want_to_visitBool == 'true'; // purposely not using strict equality
-  const user_id = res.locals.user.id;
-
-  if (want_to_visit === true) {
-    const collection = await Collection.create({ user_id, trail_id, want_to_visit })
-    return res.send()
-  } else {
-    await Collection.destroy({ where: { user_id, trail_id, want_to_visit } })
-    return res.send()
-  }
-})
-
-
-router.get(
-  "/toggles/:id(\\d+)",
-  requireAuth,
-  asyncHandler(async (req, res) => {
+// api GET /trails/toggles/:id
+router.get("/toggles/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
     const trailId = parseInt(req.params.id, 10);
     const userId = res.locals.user.id;
     const trailToggles = await Collection.findAll({
@@ -72,32 +44,38 @@ router.get(
         trail_id: trailId,
       },
     });
-    console.log(trailToggles);
     res.json({
       trailToggles
     })
   })
-);
+);//endGetRoute
 
-// api POST /trails/toggles/:id
+// api PUT /trails/toggles/:id
 router.put('/toggles/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+  const userId = res.locals.user.id;
   const trailId = parseInt(req.params.id, 10);
-
-  const {
-    visited,
-    want_to_visit,
-  } = req.body;
-
-  const collection = Collection.build({
-    trail_id: trailId,
-    user_id: res.local.user.id,
-    visited,
-    want_to_visit
+  const trailToggles = await Collection.findAll({
+    where: {
+      user_id: userId,
+      trail_id: trailId,
+    },
   });
-
-  await collection.save();
-
-}));//endPostRoute
-
+  if(trailToggles[0]) {
+    const {
+      visited,
+      want_to_visit,
+    } = req.body;
+    await trailToggles[0].update({ visited, want_to_visit });
+  }//endIf
+  else {
+    const trailToggles = await Collection.build();
+    const {
+      visited,
+      want_to_visit,
+    } = req.body;
+    await trailToggles.update({ user_id: userId, trail_id: trailId, visited, want_to_visit });
+  }//endElse
+  return res.send();
+}));//endPutRoute
 
 module.exports = router;
