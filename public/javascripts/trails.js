@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Grab the trail id passed in through the pug template
   const trailId = trailHeader.id;
   const userId = trailHeader.classList[0]
+  const userName = trailHeader.classList[1]
   const visited = document.querySelector('.visited');
   const interested = document.querySelector('.interested');
 
@@ -174,11 +175,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const reviewOpenButton = document.querySelector('.review-open-button')
   const reviewFormContainer = document.querySelector('.review-form-container')
-  const submitReviewButton=document.querySelector('.submit-review')
+  const reviewDisplayContainer = document.querySelector('.review-display-container')
+  const submitReviewButton = document.querySelector('.submit-review')
   const cancelReviewButton = document.querySelector('.cancel-review')
 
-
-  //open the review form div
+  //open the text box
   if (reviewOpenButton) {
     reviewOpenButton.addEventListener("click", (e) => {
       // display div with form, remove button.
@@ -187,25 +188,42 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
   }
 
-  // POST the review on submit
+  // POST the review, dynamically display new review
   if (submitReviewButton) {
     submitReviewButton.addEventListener('click', (e) => {
       e.preventDefault();
       const textToSend = document.querySelector(".review-text-area").value;
       const reviewId = postThing(`/reviews/${trailId}`, textToSend, userId, trailId)
 
-
-
+      // dynamically display the new review
+      const newReviewDiv = document.createElement("div");
+      newReviewDiv.setAttribute("id", `review-${trailId}-div`);
+      newReviewDiv.setAttribute("class", "each-review");
+      // fill in review text and author
+      const newReviewText = document.createElement("p")
+      const newReviewUser = document.createElement("p")
+      newReviewText.innerHTML = textToSend
+      newReviewUser.innerHTML = `-Reviewed by ${userName}`
+      // newReviewDiv.appendChild(newReviewText)
+      // reviewDisplayContainer.appendChild(newReviewDiv)
+      newReviewDiv.append(newReviewText, newReviewUser)
+      reviewDisplayContainer.append(newReviewDiv)
     })
   }
 
-  // Cancel the review
-
+  // Cancel the review, remove text box
+  if (cancelReviewButton) {
+    cancelReviewButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      reviewFormContainer.style.display = "none";
+      reviewOpenButton.style.display="block"
+    });
+  }
 
 });//endEventListener
 
 /**************************************************/
-/*                  Helper Functions              */
+/*  Helper Functions (outside of eventListener)   */
 /**************************************************/
 
 
@@ -215,7 +233,6 @@ async function postThing(postRoute, textToSend, userId, trailId) {
     const res = await fetch(postRoute, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-
       body: JSON.stringify({ textToSend, userId, trailId }),
     });
     const data = await res.json();

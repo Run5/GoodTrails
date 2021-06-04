@@ -15,7 +15,7 @@ block content
         button.visited Visited
         button.interested Interested
     div.trail-content
-      h1(id=`${trail.id}`, class=loggedInUser.id)= trail.name
+      h1(id=`${trail.id}`, class=`${loggedInUser.id} ${loggedInUser.username}`)= trail.name
       h2= state.state_name
       h3 Distance:
       h3= trail.length
@@ -36,9 +36,9 @@ block content
       //-         p Your Review:
       //-         form(action=`/reviews/${trail.id}`, method='post )
       span=`WHO IS LOGGED IN? ${loggedInUser.username} id:${loggedInUser.id}`
-      div.review-container
+      div.review-display-container
         br
         each review in trail.Reviews
-          div.each-review
+          div.each-review(id=`review-${review.id}-div`)
             p=review.review
             p=`-Reviewed by ${review.User.username}`

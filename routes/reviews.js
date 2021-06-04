@@ -12,8 +12,6 @@ router.post('/:trail_id', asyncHandler( async (req, res) => {
         user_id: userId,
         trail_id: trailId
     })
-
-
     res.json(await review.save())
 }))
 
