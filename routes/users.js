@@ -125,6 +125,7 @@ router.post(
   asyncHandler(async (req, res, next) => {
     const { email, password } = req.body;
     let errors = [];
+    req.sessioon.loggedin = true; 
     const validatorErrors = validationResult(req);
     if (validatorErrors.isEmpty()) {
       const user = await User.findOne({

@@ -28,9 +28,13 @@
 span#logo-span {
     font-weight: 500;
     color:slategray;
+}
+.modalDiv {
 
 }
-
+.modalInfo {
+    
+}
 /* Styles for the four left buttons */
 .home:hover,
 .trails:hover,
@@ -72,7 +76,7 @@ span#logo-span {
 }
 .logout {
     margin-left: 70px;
-    display: none; 
+    display: none;
 }
 
 .home {
