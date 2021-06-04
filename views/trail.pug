@@ -28,12 +28,13 @@ block content
             button.submit-review.review-button(type="submit") Submit
             button.cancel-review.review-button Cancel
       div.review-display-container
-        br
-        each review in trail.Reviews
-          div.each-review(id=`review-${review.id}-div`)
-            p=review.review
-            p=`-Reviewed by ${review.User.username}`
-            
+        //- br
+        //- each review in trail.Reviews
+        //-   div.each-review(id=`review-${review.id}-div`)
+        //-     p=review.review
+        //-     p=`-Reviewed by ${review.User.username}`
+        
+
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/trail.css")

@@ -5,7 +5,7 @@ const { User, Review } = require('../db/models')
 const { asyncHandler, csrfProtection } = require('../utils');
 
 // POST /reviews/:trail_id
-router.post('/:trail_id', asyncHandler(async (req, res) => {
+router.post('/:trail_id', restoreUser, csrfProtection, asyncHandler(async (req, res) => {
     const { textToSend, userId, trailId } = req.body;
     const review = Review.build({
         review: textToSend,
@@ -13,23 +13,18 @@ router.post('/:trail_id', asyncHandler(async (req, res) => {
         trail_id: trailId
     })
     res.json(await review.save())
-}))
+})) //endPost
 
 // GET /reviews/:trail_id
 router.get('/:trail_id', restoreUser, csrfProtection, asyncHandler(async (req, res) => {
 
     const review = await Review.findAll({
-        where: { trail_id:parseInt(req.params.trail_id ,10)},
-        include:  User ,
+        where: { trail_id: req.params.trail_id},
+        include: User,
         order: [["updatedAt", "DESC"]]
     })
-
-    res.json({
-        review,
-        csrfToken: req.csrfToken()
-    }
-    )
-}))
+    res.json({ review, csrfToken: req.csrfToken() })
+})) //endGet
 
 
 

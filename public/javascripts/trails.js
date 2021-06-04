@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch(`/trails/toggles/${trailId}`);
     const { trailToggles } = await res.json();
-    if(trailToggles[0]) {
+    if (trailToggles[0]) {
       // Setting the initial state of the buttons from the database
       if (trailToggles[0].visited) visited.classList.add('toggled');
       else visited.classList.remove('toggled');
@@ -189,36 +189,45 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // POST the review, dynamically display new review
-  if (submitReviewButton) {
-    submitReviewButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      const textToSend = document.querySelector(".review-text-area").value;
-      const reviewId = postThing(`/reviews/${trailId}`, textToSend, userId, trailId)
+  // if (submitReviewButton) {
+  //   submitReviewButton.addEventListener('click', (e) => {
+  //     e.preventDefault();
+  //     const textToSend = document.querySelector(".review-text-area").value;
+  //     const reviewId = postThing(`/reviews/${trailId}`, textToSend, userId, trailId)
 
-      // dynamically display the new review
-      const newReviewDiv = document.createElement("div");
-      newReviewDiv.setAttribute("id", `review-${trailId}-div`);
-      newReviewDiv.setAttribute("class", "each-review");
-      // fill in review text and author
-      const newReviewText = document.createElement("p")
-      const newReviewUser = document.createElement("p")
-      newReviewText.innerHTML = textToSend
-      newReviewUser.innerHTML = `-Reviewed by ${userName}`
-      // newReviewDiv.appendChild(newReviewText)
-      // reviewDisplayContainer.appendChild(newReviewDiv)
-      newReviewDiv.append(newReviewText, newReviewUser)
-      reviewDisplayContainer.append(newReviewDiv)
-    })
-  }
+  //     // dynamically display the new review
+  //     const newReviewDiv = document.createElement("div");
+  //     newReviewDiv.setAttribute("id", `review-${trailId}-div`);
+  //     newReviewDiv.setAttribute("class", "each-review");
+  //     // fill in review text and author
+  //     const newReviewText = document.createElement("p")
+  //     const newReviewUser = document.createElement("p")
+  //     newReviewText.innerHTML = textToSend
+  //     newReviewUser.innerHTML = `-Reviewed by ${userName}`
+  //     newReviewDiv.append(newReviewText, newReviewUser)
+  //     reviewDisplayContainer.append(newReviewDiv)
+  //   })
+  // }
 
   // Cancel the review, remove text box
   if (cancelReviewButton) {
     cancelReviewButton.addEventListener("click", (e) => {
       e.preventDefault();
       reviewFormContainer.style.display = "none";
-      reviewOpenButton.style.display="block"
+      reviewOpenButton.style.display = "block"
     });
   }
+
+  /**************************************************/
+  /*            Reviews with GET route              */
+  /**************************************************/
+
+  // fetch /reviews/trail_id, save to res
+  // each obj in res, createElement div,
+  // append to reviewDisplayContainer
+  const reviewRes = await fetch(`/reviews/${trailId}`)
+  const reviewData = await reviewRes.json()
+  listReviews(reviewData.review, reviewDisplayContainer)
 
 });//endEventListener
 
@@ -240,5 +249,31 @@ async function postThing(postRoute, textToSend, userId, trailId) {
     return reviewId;
   } catch (err) {
     console.log(err);
+  }
+}
+
+//dynamically fetch and create review divs
+function listReviews(reviewArray, reviewDisplayContainer) {
+  try {
+    if (reviewArray.length === 0) {
+      const noReviewText = document.createElement("p")
+      noReviewText.innerHTML = "There are no reviews for this trail yet"
+      reviewDisplayContainer.appendChild(noReviewText);
+    } else {
+      reviewArray.forEach(review => {
+        const newReviewDiv = document.createElement("div");
+        newReviewDiv.setAttribute("id", `review-${review.id}-div`);
+        newReviewDiv.setAttribute("class", "each-review");
+        // fill in review text and author
+        const newReviewText = document.createElement("p")
+        const newReviewUser = document.createElement("p")
+        newReviewText.innerHTML = review.review
+        newReviewUser.innerHTML = `-Reviewed by ${review.User.username}`
+        newReviewDiv.append(newReviewText, newReviewUser)
+        reviewDisplayContainer.append(newReviewDiv)
+      })
+    }
+  } catch (error) {
+    console.error(error);
   }
 }
