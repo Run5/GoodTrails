@@ -16,12 +16,9 @@ block content
           h2.trail-state= state.state_name
         div.trail-dif-dis-container
           div.trail-distance
-            h3 Distance:
-            h3= trail.length
-            h3 miles
+            h3 Distance: #{trail.length}miles
           div.trail-difficulty
-            h2 This trail has a difficulty of:
-            h2= trail.difficulty
+            h2 This trail has a difficulty of: #{trail.difficulty}
         p.trail-description= trail.description
       div.review-open-div
           button.review-open-button.review-button Write Review

@@ -7,7 +7,7 @@ var router = express.Router();
 
 /***********************Internal Packages***********************/
 const { csrfProtection, asyncHandler } = require("../utils");
-const { Trail, State,User, Collection, Review } = require("../db/models");
+const { Trail, State, User, Collection, Review } = require("../db/models");
 const { requireAuth } = require("../auth");
 
 
@@ -21,9 +21,9 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
         { model: Review, include: { model: User } }
       ]
   });
-  const loggedInUser=await User.findByPk(req.session.auth.userId)
+  const loggedInUser = await User.findByPk(req.session.auth.userId);
   const state = await State.findByPk(trail.state_id);
-  
+
   req.session.save(() => {
     res.render("trail", {
       trail,

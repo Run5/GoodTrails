@@ -1,20 +1,16 @@
 extends layout.pug
 
 append head
-    script(src="/javascripts/collections.js" type="module" defer)
-    link(rel="stylesheet", href="/stylesheets/collections.css")
+  script(src="/javascripts/collections.js" type="module" defer)
+  link(rel="stylesheet", href="/stylesheets/collections.css")
 block content
-    div.collection-header
-        h1.header1 My Trails
-        h2.subheader1 Here you'll find a list of your trails filtered by:
-            ul.ul1
-                li.li All
-                li.li Visited
-                li.li Interested
-        div.buttonContainer
-            button.allButton All Trails
-            button.visitedButton Visited Trails
-            button.wantToVisit Interested Trails
-    div.allContainer
+  div.collections
+    h1.header1 My Trails
+    h2.subheader1 Hey #{user.username} you can find all your collections of trails here!
+    div.buttonContainer
+      button.allButton All Trails
+      button.visitedButton Visited Trails
+      button.wantToVisit Interested Trails
     div.errorContainer
-        p.actualError
+      p.actualError
+    div.allContainer
