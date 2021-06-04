@@ -12,7 +12,15 @@ router.post('/:trail_id', restoreUser, csrfProtection, asyncHandler(async (req, 
         user_id: userId,
         trail_id: trailId
     })
-    res.json(await review.save())
+    await review.save()
+
+    const updatedReviews = await Review.findAll({
+        where: { trail_id: req.params.trail_id },
+        include: User,
+        order: [["updatedAt", "DESC"]]
+    })
+    console.log("line 22 refetched array", updatedReviews[0]);
+    res.json({updatedReviews})
 })) //endPost
 
 // GET /reviews/:trail_id
