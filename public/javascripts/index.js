@@ -1,3 +1,38 @@
-window.addEventListener("load", (event)=>{
-    console.log("hello from javascript!")
-})
+document.addEventListener("DOMContentLoaded", async () => {
+    // const allContainer = document.querySelector('.allContainer');
+    // const trailContainer = document.createElement('div');
+    // trailContainer.classList.add('trail-container');
+    // const trailWrapperImg = document.createElement('a');
+    // trailWrapperImg.href = `/trails/${trail.Trail.id}`;
+    // const trailImage = document.createElement('img');
+    // trailImage.src = `/images/trail${trail.Trail.id}.jpg`;
+    // trailImage.classList.add('trail-image');
+    // trailWrapperImg.appendChild(trailImage);
+    // trailContainer.appendChild(trailWrapperImg);
+    // const trailInfo = document.createElement('div');
+    // trailInfo.classList.add('trail-info');
+    // const trailWrapperName = document.createElement('a');
+    // trailWrapperName.href = `/trails/${trail.Trail.id}`;
+    // const trailName = document.createElement('h1');
+    // trailName.classList.add('trail-name');
+    // trailName.innerHTML = trail.Trail.name;
+    // trailWrapperName.appendChild(trailName);
+    // trailInfo.appendChild(trailWrapperName);
+    // const stateWrapper = document.createElement('a');
+    // stateWrapper.href = `/states/${trail.Trail.State.state_code}`;
+    // const trailState = document.createElement('h2');
+    // trailState.classList.add('trail-state');
+    // trailState.innerHTML = trail.Trail.State.state_code;
+    // stateWrapper.appendChild(trailState);
+    // trailInfo.appendChild(stateWrapper);
+    // const trailLength = document.createElement('h3');
+    // trailLength.classList.add('trail-length');
+    // trailLength.innerHTML = trail.Trail.length + ' miles';
+    // trailInfo.appendChild(trailLength);
+    // const trailDifficulty = document.createElement('h3');
+    // trailDifficulty.classList.add('trail-difficulty');
+    // trailDifficulty.innerHTML = 'Difficulty: ' + trail.Trail.difficulty;
+    // trailInfo.appendChild(trailDifficulty);
+    // trailContainer.appendChild(trailInfo);
+    // allContainer.appendChild(trailContainer);
+});//endDOMContentLoadedEventListener

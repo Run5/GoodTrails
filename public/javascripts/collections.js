@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const stateWrapper = document.createElement('a');
         stateWrapper.href = `/states/${trail.Trail.State.state_code}`;
         const trailState = document.createElement('h2');
+        trailState.classList.add('trail-state');
         trailState.innerHTML = trail.Trail.State.state_code;
         stateWrapper.appendChild(trailState);
         trailInfo.appendChild(stateWrapper);
@@ -54,7 +55,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     catch (err) {
       console.log('Sorry, we couldn\'t find any trails!', err);
       if(errorContainer.firstChild) actualError.innerHTML = 'Sorry, we couldn\'t find any trails in this collection.';
-      else constcreateElement
+      else {
+        const actualError = document.createElement('div');
+        actualError.innerHTML = 'Sorry, we couldn\'t find any trails in this collection.';
+      }//endElse
       button.classList.add('toggled');
     }//endCatch
   };//endFunction

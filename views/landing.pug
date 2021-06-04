@@ -1,12 +1,20 @@
-include navbar.pug
+extends layout.pug
+//- we have trail, user, review objects
 
-link(rel="stylesheet" href="/stylesheets/index.css")
-
-.grid-container
+block content
+  div.grid-container
     <video autoplay loop muted playsinline>
-        <source src="/images/HomepageVideo_compressed.mp4">
+      <source src="/images/HomepageVideo_compressed.mp4">
     </video>
-    .links-container
-        h2 View trails in your state:
-        each state in states
-            a(href=`/states/${state.dataValues.state_code}`)  #{state.dataValues.state_code} |
+    div.allContainer
+    div.links-container
+      h2 View trails in your state:
+        div.state-links
+          each state in states
+            a(href=`/states/${state.dataValues.state_code}`)  #{state.dataValues.state_code}
+
+append head
+  //- add page specific styles by appending to the head
+  link(rel="stylesheet" href="/stylesheets/index.css")
+  //- add page specific js
+  script(src='/javascripts/indexs.js' type='text/javascript')

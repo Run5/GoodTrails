@@ -93,10 +93,12 @@ img.trail-image{
     object-fit: cover;
     width: 200px;
     justify-self: center;
+    border-radius: 3px;
+    border: 3px solid #2B2B2B;
 }
 
 .trail-info{
-    padding: 10px;
+    margin-left: 5px;
     height: 200px;
     display: flex;
     flex-direction: column;
@@ -106,9 +108,10 @@ img.trail-image{
 
 .trail-container{
     box-sizing: border-box;
+    text-align: center;
     padding: 10px;
     display: flex;
-    justify-content: center;
+    align-items: center;
     background-color: #7C7C7C;
     border: 3px solid #2B2B2B;
     border-radius: 5px;
@@ -119,7 +122,21 @@ img.trail-image{
 }
 
 .trail-name{
-    font-size: 1.5em;
+    width: 150px;
+    margin-bottom: 5px;
+    background-color: #2B2B2B;
+    font-size: 1.2em;
+    color: #FAED26;
+    border: 1px solid #FAED26;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.trail-state{
+    margin-bottom: 10px;
+    background-color: black;
+    border-radius: 3px;
+    padding: 3px;
 }
 
 
