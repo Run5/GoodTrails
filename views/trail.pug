@@ -17,25 +17,30 @@ block content
       h2 This trail has a difficulty of:
       h2= trail.difficulty
       p= trail.description
+      p=`${csrfToken}`
       div.review-open-div
         button.review-open-button.review-button Write Review
+
+
       //- Review Container
       div.review-form-container
         //- form
         form.review-form(action=`/reviews/${trail.id}`, method='post')
           textarea.review-text-area(name="reviewText" rows='10' cols='42')
+          input(type="hidden", name="_csrf", value=csrfToken)
+
           div.submit-button-container
             button.submit-review.review-button(type="submit") Submit
             button.cancel-review.review-button Cancel
+
+
       div.review-display-container
-        br
-        each review in trail.Reviews
-          div.each-review(id=`review-${review.id}-div`)
-            p=review.review
-            p=`-Reviewed by ${review.User.username}`
-            
+        //- reviews append to this div in js
+
+
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/trail.css")
   //- add page specific js
   script(src='/javascripts/trails.js' type='text/javascript')
+  meta(name="csrf-token", content=`${csrfToken}` )

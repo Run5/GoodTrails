@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch(`/trails/toggles/${trailId}`);
     const { trailToggles } = await res.json();
-    if(trailToggles[0]) {
+    if (trailToggles[0]) {
       // Setting the initial state of the buttons from the database
       if (trailToggles[0].visited) visited.classList.add('toggled');
       else visited.classList.remove('toggled');
@@ -179,6 +179,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const submitReviewButton = document.querySelector('.submit-review')
   const cancelReviewButton = document.querySelector('.cancel-review')
 
+  let newToken = ""
+
+  const { review, csrfToken } = await fetchReviews(trailId)
+  newToken = csrfToken
+  renderReviews(review, reviewDisplayContainer)
+
   //open the text box
   if (reviewOpenButton) {
     reviewOpenButton.addEventListener("click", (e) => {
@@ -188,26 +194,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
   }
 
-  // POST the review, dynamically display new review
+  // POST the review
   if (submitReviewButton) {
-    submitReviewButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      const textToSend = document.querySelector(".review-text-area").value;
-      const reviewId = postThing(`/reviews/${trailId}`, textToSend, userId, trailId)
+    submitReviewButton.addEventListener('click', async (e) => {
+      e.preventDefault()
 
-      // dynamically display the new review
-      const newReviewDiv = document.createElement("div");
-      newReviewDiv.setAttribute("id", `review-${trailId}-div`);
-      newReviewDiv.setAttribute("class", "each-review");
-      // fill in review text and author
-      const newReviewText = document.createElement("p")
-      const newReviewUser = document.createElement("p")
-      newReviewText.innerHTML = textToSend
-      newReviewUser.innerHTML = `-Reviewed by ${userName}`
-      // newReviewDiv.appendChild(newReviewText)
-      // reviewDisplayContainer.appendChild(newReviewDiv)
-      newReviewDiv.append(newReviewText, newReviewUser)
-      reviewDisplayContainer.append(newReviewDiv)
+      const textBox = document.querySelector(".review-text-area");
+      const textToSend = textBox.value;
+      const {updatedReviews} = await postReview(`/reviews/${trailId}`, textToSend, userId, trailId, newToken)
+
+      console.log("line 209 updatedReviews array", updatedReviews);
+      renderReviews(updatedReviews, reviewDisplayContainer)
+
+      // clear and hide the form
+      textBox.value = ""
+      reviewFormContainer.style.display = "none"
     })
   }
 
@@ -216,7 +217,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     cancelReviewButton.addEventListener("click", (e) => {
       e.preventDefault();
       reviewFormContainer.style.display = "none";
-      reviewOpenButton.style.display="block"
+      reviewOpenButton.style.display = "block"
     });
   }
 
@@ -226,19 +227,58 @@ document.addEventListener("DOMContentLoaded", async () => {
 /*  Helper Functions (outside of eventListener)   */
 /**************************************************/
 
+async function fetchReviews(trailId) {
+  const reviewRes = await fetch(`/reviews/${trailId}`)
 
-async function postThing(postRoute, textToSend, userId, trailId) {
+  const { review, csrfToken } = await reviewRes.json()
+  return { review, csrfToken };
+}
 
+async function postReview(postRoute, textToSend, userId, trailId, newToken) {
   try {
     const res = await fetch(postRoute, {
+      credentials: 'same-origin',
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json", 'CSRF-Token':newToken
+      },
       body: JSON.stringify({ textToSend, userId, trailId }),
     });
+
     const data = await res.json();
-    const reviewId = data.id;
-    return reviewId;
+    console.log("line 252 data is a promise still?", data);
+    return data;
+
   } catch (err) {
-    console.log(err);
+    console.log("Error in trails.js public",err);
+  }
+}
+
+//dynamically create review divs
+function renderReviews(reviews, reviewDisplayContainer) {
+  // console.log("line 259, reviews array has length?", reviews.length);
+  try {
+    if (reviews.length === 0) {
+      const noReviewText = document.createElement("p")
+      noReviewText.innerHTML = "There are no reviews for this trail yet"
+      reviewDisplayContainer.appendChild(noReviewText);
+    } else {
+      // empty the reviewDisplayContainer
+      reviewDisplayContainer.innerHTML = "";
+      reviews.forEach(review => {
+        const newReviewDiv = document.createElement("div");
+        newReviewDiv.setAttribute("id", `review-${review.id}-div`);
+        newReviewDiv.setAttribute("class", "each-review");
+        // fill in review text and author
+        const newReviewText = document.createElement("p")
+        const newReviewUser = document.createElement("p")
+        newReviewText.innerHTML = review.review
+        newReviewUser.innerHTML = `-Reviewed by ${review.User.username}`
+        newReviewDiv.append(newReviewText, newReviewUser)
+        reviewDisplayContainer.append(newReviewDiv)
+      })
+    }
+  } catch (error) {
+    console.error(error);
   }
 }
