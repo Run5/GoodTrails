@@ -30,10 +30,20 @@ span#logo-span {
     color:slategray;
 }
 .modalDiv {
+    background-color: white;
+    height: 100%;
+    z-index: 1;
+    width: 100%;
+    display: none;
+    overflow: hidden;
+    position: fixed;
 
 }
 .modalInfo {
-    
+    margin: 150px auto;
+    border: 1px solid lightgray;
+    width: 80%;
+    padding: 20px;
 }
 /* Styles for the four left buttons */
 .home:hover,
