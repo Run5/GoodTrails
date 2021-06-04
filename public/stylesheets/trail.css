@@ -85,13 +85,16 @@ button:not(:disabled):not(.disabled) {
 }
 
 /* hidden form until .write-review button clicked */
-.review-form{
+.review-form-container{
   display:none;
-  /* visibility:hidden; */
   background-color: var(--secondary-background);
   border-radius:2rem;
   padding:30px;
-  width:600px;
-  height: 425px;
+  width:300;
+  height: 300px;
   /* z-index: 10; */
+}
+
+.review-button{
+  width : 10rem;
 }

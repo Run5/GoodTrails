@@ -10,7 +10,6 @@ router.post('/:trail_id', asyncHandler( async (req, res) => {
     res.json()
 }))
 
-// POST /reviews/:trail
 
 
 module.exports = router;

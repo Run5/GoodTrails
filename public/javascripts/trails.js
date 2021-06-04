@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const trailId = trailHeader.id;
   const visited = document.querySelector('.visited');
   const interested = document.querySelector('.interested');
-  const reviewWriteButton = document.querySelector('.review-write-button')
-  const reviewForm = document.querySelector('.review-form')
+
 
   try {
     const res = await fetch(`/trails/toggles/${trailId}`);
@@ -167,16 +166,25 @@ document.addEventListener("DOMContentLoaded", async () => {
       }//endCatch
     }//endElse
   });//endEventListener
-  async function postReview(route, reviewTextBox) {
 
-  }
+  //*************Reviews***************** */
 
-  if (reviewWriteButton) {
-    reviewWriteButton.addEventListener("click", (e) => {
-      // display hidden div
-      // document.querySelector(".review-form").style.visibility= "visible";
-      document.querySelector(".review-form").style.display= "block";
+  const reviewOpenButton = document.querySelector('.review-open-button')
+  const reviewFormContainer = document.querySelector('.review-form-container')
+  const cancelButton=document.querySelector('.cancel-review')
+  const submitButton=document.querySelector('.submit-review')
+
+
+  //open the review form div
+  if (reviewOpenButton) {
+    reviewOpenButton.addEventListener("click", (e) => {
+      // display div with form, remove button.
+      reviewFormContainer.style.display = "block";
+      reviewOpenButton.style.display = "none";
     })
   }
+
+
+
 
 });//endEventListener
