@@ -44,13 +44,21 @@ span#logo-span {
 }
 .modal-content {
     display: flex;
-    padding: 50px; 
+    padding: 50px;
 }
 .modal-content form {
-
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
 }
 .modal-content input {
-
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 400px;
+    margin-top: 20px;
+    border: 1px solid lightgray;
 }
 .modal-content button {
 
