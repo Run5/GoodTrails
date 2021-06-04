@@ -45,27 +45,20 @@ span#logo-span {
 .modal-content {
     display: flex;
     padding: 50px;
+    flex-direction: column;
+    justify-content: center;
 }
 .modal-content form {
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
+
 }
 .modal-content input {
-    height: 40px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    margin-bottom: 20px;
     width: 400px;
-    margin-top: 20px;
-    border: 1px solid lightgray;
+    height: 40px;
 }
 .modal-content button {
     width: 200px;
-    height: 50px;
-    border-radius: 5px;
-    border: none;
-    margin-top: 20px;
+    height: 50px; 
 }
 .modal-content .return2 {
 
