@@ -55,21 +55,38 @@ span#logo-span {
     margin-bottom: 20px;
     width: 400px;
     height: 40px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
 }
 .modal-content button {
     width: 200px;
     height: 50px;
     margin-left: 100px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    background-color: #2b2b2b;
+    color: white;
+    font-size: 15px;
+}
+.modal-content button:hover {
+    background-color: #444444;
+    cursor: pointer;
 }
 .modal-content .return2 {
+    width: 0px;
     display: flex;
     align-content:flex-end;
     margin-left: 177px;
     font-size: 15px;
-    margin-top: 10px; 
+    margin-top: 10px;
+    font-weight: bold;
     color: white;
     text-decoration: none;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.modal-content .return2:hover {
+    text-decoration: underline;
 }
 .modal-content h1 {
     /* margin-left: 170px; */
@@ -79,6 +96,10 @@ span#logo-span {
     margin-left: 130px;
     margin-bottom: 50px;
 
+}
+.modal-content input::placeholder {
+    text-indent: 5px;
+    font-size: 15px;
 }
 .modalDiv {
     background-color: rgba(0, 0, 0, 0.267);

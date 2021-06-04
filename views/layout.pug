@@ -40,12 +40,12 @@ body
             form(action='/users/register' method='post')
               h1 Register
               input(type='hidden' name ='_csrf' value=csrfToken)
-              input(name='username' type='text' value=user.username )
-              input(name='email' type='email' value=user.email required)
-              input(name='password' type='password' value=user.password, required )
-              input(name='confirmPassword' type='password' required )
+              input(name='username' placeholder="Username" type='text')
+              input(name='email' placeholder="Email" type='email' required)
+              input(name='password' placeholder="Password" type='password', required )
+              input(name='confirmPassword' placeholder="Confirm Password" type='password' required )
               button(type='submit') Register
-              a(href='#' ).return2 Return
+              button(href='#' ).return2 Return
         button(type="submit").login Log in
         button(type="submit").signup Sign up
 
