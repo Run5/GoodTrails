@@ -30,10 +30,21 @@ span#logo-span {
     color:slategray;
 }
 .secondModal {
-
+    display: none;
+    background-color: rgba(0, 0, 0, 0.267);
+    backdrop-filter: blur(3px);
+    height: 500px;
+    z-index: 1;
+    margin-top: 180px;
+    width: 500px;
+    display: none;
+    border-radius: 25px;
+    overflow: hidden;
+    position: fixed;
 }
 .modal-content {
-
+    display: flex;
+    padding: 50px; 
 }
 .modal-content form {
 
@@ -45,7 +56,7 @@ span#logo-span {
 
 }
 .modal-content .return2 {
-    
+
 }
 .modalDiv {
     background-color: rgba(0, 0, 0, 0.267);
