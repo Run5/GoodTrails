@@ -33,7 +33,7 @@ span#logo-span {
     display: none;
     background-color: rgba(0, 0, 0, 0.267);
     backdrop-filter: blur(3px);
-    height: 500px;
+    height: 600px;
     z-index: 1;
     margin-top: 180px;
     width: 500px;
@@ -58,9 +58,26 @@ span#logo-span {
 }
 .modal-content button {
     width: 200px;
-    height: 50px; 
+    height: 50px;
+    margin-left: 100px;
 }
 .modal-content .return2 {
+    display: flex;
+    align-content:flex-end;
+    margin-left: 177px;
+    font-size: 15px;
+    margin-top: 10px; 
+    color: white;
+    text-decoration: none;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.modal-content h1 {
+    /* margin-left: 170px; */
+    font-size: 35px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    margin-left: 130px;
+    margin-bottom: 50px;
 
 }
 .modalDiv {
