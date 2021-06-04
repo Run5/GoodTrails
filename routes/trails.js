@@ -23,7 +23,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
   });
   const loggedInUser=await User.findByPk(req.session.auth.userId)
   const state = await State.findByPk(trail.state_id);
-  console.log("who's here??????",loggedInUser.toJSON());
+  
   req.session.save(() => {
     res.render("trail", {
       trail,

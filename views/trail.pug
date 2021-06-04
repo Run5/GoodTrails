@@ -1,5 +1,5 @@
 extends layout.pug
-
+//- we have trail, user, review objects
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/trail.css")
@@ -15,22 +15,30 @@ block content
         button.visited Visited
         button.interested Interested
     div.trail-content
-      h1(id=`${trail.id}`)= trail.name
+      h1(id=`${trail.id}`, class=`${loggedInUser.id} ${loggedInUser.username}`)= trail.name
       h2= state.state_name
       h3 Distance:
       h3= trail.length
       h2 This trail has a difficulty of:
       h2= trail.difficulty
       p= trail.description
-      //- reviews go here
       //- if locals.authenticated
+      button.review-open-button.review-button Write Review
+      div.review-form-container
+        //- form
+        form.review-form(action=`/reviews/${trail.id}`, method='post')
+          textarea.review-text-area(name="reviewText" rows='5' cols='50')
+          button.submit-review.review-button(type="submit") Submit
+          button.cancel-review.review-button Cancel
+        //- submit and cancel buttons
+
       //-     div.review-form
       //-         p Your Review:
-      //-         form(action=`/reviews/${trail.id}`, method='post)
+      //-         form(action=`/reviews/${trail.id}`, method='post )
       span=`WHO IS LOGGED IN? ${loggedInUser.username} id:${loggedInUser.id}`
-      div.review-container
+      div.review-display-container
         br
         each review in trail.Reviews
-          div.each-review
+          div.each-review(id=`review-${review.id}-div`)
             p=review.review
-            p=`Reviewed by user ${review.user_id}`
+            p=`-Reviewed by ${review.User.username}`
