@@ -32,7 +32,7 @@ span#logo-span {
 .modalDiv {
     background-color: rgba(0, 0, 0, 0.267);
     backdrop-filter: blur(3px);
-    height: 600px;
+    height: 500px;
     z-index: 1;
     margin-top: 180px;
     width: 500px;
@@ -41,14 +41,78 @@ span#logo-span {
     overflow: hidden;
     position: fixed;
 }
-.modal-Info {
+.modal-info {
+    display: flex;
     /* margin: 150px auto; */
-    width: 80%;
-    padding: 20px;
+    /* width: 80%; */
+    padding: 50px;
 }
-div.modal-Info h1 {
+.modal-info form {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+.modal-info input {
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 400px;
+    margin-top: 20px;
+    border: 1px solid lightgray;
+}
+.modal-info input::placeholder {
+    text-indent: 5px;
+    font-size: 15px;
+}
+.modal-info button {
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 20px;
+    /* margin-left: 100px; */
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #2b2b2b;
     color: white;
+    font-size: 15px;
+    font-weight: 600;
 }
+.modal-info .subamit:hover {
+    background-color: #444444;
+    cursor: pointer;
+}
+.modal-info a {
+    /* margin-left: 185px; */
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15px;
+    text-decoration: none;
+    margin-top: 5px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.modal-info h1 {
+    font-size: 35px;
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* margin-left: 150px; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+.modal-info .return {
+    background-color: inherit;
+    color: white;
+    font-size: 15px;
+}
+
+.return:hover {
+    text-decoration: underline;
+    cursor:pointer;
+}
+
 /* Styles for the four left buttons */
 .home:hover,
 .trails:hover,

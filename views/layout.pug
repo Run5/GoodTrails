@@ -28,10 +28,24 @@ body
         button(type="submit").logout Log out
         .modalDiv
             .modal-info
-              form(action="")
-                input(type="text" name="")
+              form(action='/users/login' method='post')
+                h1 Log in
+                input(type='hidden' name ='_csrf' value=csrfToken)
+                input(name='email' type='email' placeholder="Email" required)
+                input(name='password' placeholder="Password" type='password' required)
+                button(type='submit').subamit Login
+                button.return Return
         form(action="/users/login")
             button(type="submit").login Log in
+            .modalDiv
+              .modal-info
+                form(action='/users/login' method='post')
+                  h1 Log in
+                  input(type='hidden' name ='_csrf' value=csrfToken)
+                  input(name='email' type='email' placeholder="Email" required)
+                  input(name='password' placeholder="Password" type='password' required)
+                  button(type='submit').subamit Login
+                  button.return Return
         form(action="/users/register")
             button(type="submit").signup Sign up
 
