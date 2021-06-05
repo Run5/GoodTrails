@@ -60,6 +60,7 @@ form input:focus {
 }
 
 .register:hover {
+    transition: all 0.4s ease 0s;
     background-color: #61892f;
     cursor: pointer;
 }
@@ -74,5 +75,6 @@ a.return {
 }
 
 a.return:hover {
+    transition: all 0.4s ease 0s;
     color: #5e5e5e;
 }
