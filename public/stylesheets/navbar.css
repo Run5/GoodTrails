@@ -2,6 +2,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Container Div for Navbar */
@@ -10,24 +11,32 @@
     flex-direction: row;
     justify-content: center;
     height: 50px;
-    box-shadow: 0 4px 4px -2px rgb(182, 182, 182);
-    background-color: white;
+    box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.247);
+    background-color: #414346;
+    backdrop-filter: blur(5px)
 }
 
 /* Navbar Logo Text */
 .nav__logo {
     margin-left: -20px;
     margin-right: 20px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 30px;
+    font-size: 40px;
     align-self: center;
+    font-weight:bold;
+    color: white;
+}
+
+.nav__logo:hover {
+    cursor: pointer;
 }
 
 /* Span Tag inside Navbar Logo */
 span#logo-span {
-    font-weight: 500;
-    color:slategray;
+    color:#86C232;
+    font-size: 40px;
+    font-weight: 400;
 }
+
 
 /* Styles for the four left buttons */
 .home:hover,
@@ -43,7 +52,6 @@ span#logo-span {
 .browse,
 .community {
     background-color: white;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 400;
     font-size: 18px;
 }
