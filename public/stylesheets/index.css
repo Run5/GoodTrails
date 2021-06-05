@@ -16,6 +16,14 @@ body{
         display: none;
     }
 }
+@media only screen and (max-width: 942px) {
+    video {
+       display: none;
+    }
+    body {
+        background-color: #222629;
+    }
+}
 .links-container {
     position: absolute;
     left: 30px;
