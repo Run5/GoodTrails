@@ -4,7 +4,26 @@
     padding: 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+@media only screen and (min-width: 943px) {
+    .dropDown {
+        display: none;
+    }
+}
+@media only screen and (max-width: 942px) {
+    .home,.trails,.browse,.community {
+        display: none;
+    }
+    .search__bar {
+        display: none;
+    }
+    .dropDown {
+        display: block;
+    }
+    .nav__logo {
+       font-size: 30px;
+    }
 
+}
 /* Container Div for Navbar */
 .navbar__container {
     display: flex;
@@ -14,6 +33,23 @@
     box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.383);
     background-color: #414346;
     backdrop-filter: blur(5px)
+}
+.dropDown {
+    height: 50px;
+    background-color: #414346;
+    font-weight: 400;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border: none;
+}
+.dropDown:hover {
+    transition: all 0.5s ease 0s;
+    cursor: pointer;
+    background-color: #86C232;
+    color: white;
 }
 
 /* Navbar Logo Text */
@@ -95,7 +131,8 @@ span#logo-span {
 .search__bar {
     margin: 10px;
     width: 388px;
-    border-radius: 5px;
+    height: 30px;
+    border-radius: 20px;
     border: 1px solid rgb(100, 100, 100);
 
 }
@@ -121,4 +158,5 @@ div img:hover {
 .mail,
 .friends {
     margin: 10px;
+    display: none;
 }
