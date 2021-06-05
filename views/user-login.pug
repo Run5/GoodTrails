@@ -1,12 +1,15 @@
 extends layout.pug
 
+append head
+    link(rel="stylesheet", href="/stylesheets/login.css")
+
 block content
     //- include error.pug
-    form(action='/users/login' method='post')
-        input(type='hidden' name ='_csrf' value=csrfToken)
-        label Email
-        input(name='email' type='email' value=user.email required)
-        label Password
-        input(name='password' type='password' required)
-        button(type='submit') Login
-        a(href='/' ) Cancel
+    .form-container
+        form(action='/users/login' method='post').form
+            h1 Log in
+            input(type='hidden' name ='_csrf' value=csrfToken)
+            input(name='email' type='email' placeholder="Email" value=user.email required).email
+            input(name='password' placeholder="Password" type='password' required).password
+            button(type='submit').login Login
+            a(href='/' ).return Return

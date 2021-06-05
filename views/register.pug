@@ -1,16 +1,17 @@
 extends layout.pug
 
+append head
+    link(rel="stylesheet", href="/stylesheets/signup.css")
 block content
     include error.pug
-    form(action='/users/register' method='post')
-        input(type='hidden' name ='_csrf' value=csrfToken)
-        label User
-        input(name='username' type='text' value=user.username )
-        label Email
-        input(name='email' type='email' value=user.email required)
-        label Password
-        input(name='password' type='password' value=user.password, required )
-        label Confirm Password
-        input(name='confirmPassword' type='password' required )
-        button(type='submit') Register
-        a(href='/' ) Cancel
+            
+            .form-container
+                form(action='/users/register' method='post')
+                    h1 Sign Up
+                    input(type='hidden' name ='_csrf' value=csrfToken)
+                    input(name='username' type='text' placeholder="Username").username
+                    input(name='email' type='email' placeholder="Email" required).email
+                    input(name='password' type='password' placeholder="Password" required).password
+                    input(name='confirmPassword' placeholder="Confirm Password" type='password' required).confirm
+                    button(type='submit').register Register
+                    a(href='/' ).return Return
