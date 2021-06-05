@@ -36,7 +36,11 @@
 span#logo-span {
     color:#86C232;
     font-size: 40px;
-    font-weight: 400;
+    font-weight: 500;
+    background: linear-gradient(to right, #86C232, #7bb830, #446818 );
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
 
