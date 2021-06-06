@@ -179,7 +179,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const reviewDisplayContainer = document.querySelector('.review-display-container')
   const submitReviewButton = document.querySelector('.submit-review')
   const cancelReviewButton = document.querySelector('.cancel-review')
-  const deleteReviewButton = document.querySelector('.delete-review')
 
 
 
@@ -187,7 +186,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const { review, csrfToken } = await getReviews(trailId)
   newToken = csrfToken
-  renderReviews(review, reviewDisplayContainer)
+  renderReviews(review, reviewDisplayContainer, userId)
 
   //open the text box
   if (reviewOpenButton) {
@@ -205,7 +204,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       const textBox = document.querySelector(".review-text-area");
       const textToSend = textBox.value;
       const { updatedReviews } = await postReview(trailId, textToSend, newToken)
-      renderReviews(updatedReviews, reviewDisplayContainer)
+
+      renderReviews(updatedReviews, reviewDisplayContainer, userId)
+
       // clear and hide the form
       textBox.value = ""
       reviewFormContainer.style.display = "none"
@@ -223,8 +224,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // Delete the review
-  if (deleteReviewButton) {
 
+  const deleteReviewButtons = document.querySelectorAll('.delete-review')
+  if (deleteReviewButtons) {
+    deleteReviewButtons.forEach(review => {
+      review.addEventListener("click", async (e) => {
+        const updatedReviews2 = await fetch(`/reviews/${review.id}`, {
+          method: "DELETE"
+        })
+        renderReviews(updatedReviews2, reviewDisplayContainer, userId)
+      })
+    })
   }
 
 });//endEventListener
@@ -259,7 +269,7 @@ async function postReview(trailId, textToSend, newToken) {
 }
 
 //dynamically create review divs
-function renderReviews(reviews, reviewDisplayContainer) {
+function renderReviews(reviews, reviewDisplayContainer, userId) {
   try {
     if (reviews.length === 0) {
       const noReviewText = document.createElement("p")
@@ -268,16 +278,26 @@ function renderReviews(reviews, reviewDisplayContainer) {
     } else {
       reviewDisplayContainer.innerHTML = ""; //clear container
       reviews.forEach(review => {
+        // create the review div: text, user, delete button
         const newReviewDiv = document.createElement("div");
         newReviewDiv.setAttribute("id", `review-${review.id}-div`);
         newReviewDiv.setAttribute("class", "each-review");
-        // fill the review div: text, user, delete button
+
         const newReviewText = document.createElement("p")
         const newReviewUser = document.createElement("p")
-        const deleteReviewButton = document.createElement("i")
+
         newReviewText.innerHTML = review.review
         newReviewUser.innerHTML = `-Reviewed by ${review.User.username}`
-        newReviewDiv.append(newReviewText, newReviewUser)
+
+        // delete button for logged in users
+        if (userId === review.user_id) {
+          const deleteReviewButton = document.createElement("span")
+          deleteReviewButton.classList.add('delete-review')
+          deleteReviewButton.setAttribute("id", `${review.id}`)
+          deleteReviewButton.innerHTML = 'Delete'
+          newReviewDiv.append(newReviewText, newReviewUser, deleteReviewButton)
+        } else { newReviewDiv.append(newReviewText, newReviewUser) }
+
         reviewDisplayContainer.append(newReviewDiv)
       })
     }
