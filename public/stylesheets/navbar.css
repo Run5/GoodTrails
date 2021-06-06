@@ -4,12 +4,12 @@
     padding: 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-@media only screen and (min-width: 943px) {
+@media only screen and (min-width: 973px) {
     .dropDown {
         display: none;
     }
 }
-@media only screen and (max-width: 942px) {
+@media only screen and (max-width: 972px) {
     .home,.trails,.browse,.community {
         display: none;
     }
@@ -122,7 +122,7 @@ span#logo-span {
 }
 
 .community {
-    width: 130px;
+    width: 170px;
     border: none;
     margin-right: 10px;
 }
