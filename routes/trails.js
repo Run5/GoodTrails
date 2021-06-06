@@ -80,6 +80,7 @@ router.put('/toggles/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
 /***********************************************/
 /*                                             */
 /*                   Reviews                   */
+/*                                             */
 /***********************************************/
 
 // GET /trails/:trail_id/reviews
@@ -113,18 +114,5 @@ router.post('/:trail_id/reviews', restoreUser, requireAuth, csrfProtection, asyn
   res.json({ updatedReviews })
 })) //endPost
 
-// DELETE /reviews/delete/:reviewId
-router.delete('/:trail_id/reviews/:id', restoreUser, requireAuth, asyncHandler(async (req, res) => {
-  const id = req.params.id; //review id primary key
-  const trail_id = req.params.trail_id;
-  const user_id = req.session.auth.userId;
-  const reviewToDelete = await Review.findOne({
-    where: { user_id, id }
-  });
-  if (reviewToDelete) await reviewToDelete.destroy();
 
-  // get updated review list after delete
-  const reviews = await Review.findAll({ where: { trail_id } })
-  res.json(reviews)
-}))
 module.exports = router;
