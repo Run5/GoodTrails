@@ -9,9 +9,9 @@ html
     div.navbar__container
       p.nav__logo Good<span id="logo-span">Trails</span>
       a.dropDown Menu
-      a.home(href="/") Home
+      a.home(href="/users/home") Home
       a.trails(href="/my-trails") My Trails
-      a.browse(href="trails/4") Demo Trail
+      a.browse(href="/trails/4") Demo Trail
       select.community Search by state
         option Alabama
         option Alaska
@@ -78,7 +78,5 @@ html
       img(src="/nav-images/NavbarMsg.png", alt="Messages").msg
       img(src="/nav-images/NavBarMail.png", alt="Mail").mail
       img(src="/nav-images/NavbarFriends.png", alt="Friends").friends
-      form(action="/users/logout")
-        button.logout Logout
 
     block content

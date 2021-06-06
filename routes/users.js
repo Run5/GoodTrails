@@ -9,6 +9,11 @@ const { csrfProtection, asyncHandler } = require("../utils");
 const {User} = require("../db/models");
 const { loginUser, logoutUser } = require("../auth");
 
+router.get('/home', asyncHandler(async(req, res) => {
+  const user = await User.findByPk(req.session.auth.UserId);
+  res.render('landing', {title: 'Good Trails', user})
+}))
+
 // GET /users/register
 router.get("/register", csrfProtection, (req, res, next) => {
   const user = User.build();
