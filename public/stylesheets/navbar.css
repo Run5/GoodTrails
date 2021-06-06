@@ -2,50 +2,107 @@
 * {
     margin: 0;
     padding: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+@media only screen and (min-width: 943px) {
+    .dropDown {
+        display: none;
+    }
+}
+@media only screen and (max-width: 942px) {
+    .home,.trails,.browse,.community {
+        display: none;
+    }
+    .search__bar {
+        display: none;
+    }
+    .dropDown {
+        display: block;
+    }
+    .nav__logo {
+       font-size: 30px;
+    }
 
+}
 /* Container Div for Navbar */
 .navbar__container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     height: 50px;
-    box-shadow: 0 4px 4px -2px rgb(182, 182, 182);
-    background-color: white;
+    box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.383);
+    background-color: #414346;
+    backdrop-filter: blur(5px)
+}
+.dropDown {
+    height: 50px;
+    background-color: #414346;
+    font-weight: 400;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border: none;
+}
+.dropDown:hover {
+    transition: all 0.5s ease 0s;
+    cursor: pointer;
+    background-color: #86C232;
+    color: white;
 }
 
 /* Navbar Logo Text */
 .nav__logo {
     margin-left: -20px;
     margin-right: 20px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 30px;
+    font-size: 40px;
     align-self: center;
+    font-weight:bold;
+    color: white;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.nav__logo:hover {
+    cursor: pointer;
 }
 
 /* Span Tag inside Navbar Logo */
 span#logo-span {
+    color:#86C232;
+    font-size: 40px;
     font-weight: 500;
-    color:slategray;
+    background: linear-gradient(to right, #86C232, #7bb830, #446818 );
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
+
 
 /* Styles for the four left buttons */
 .home:hover,
 .trails:hover,
 .browse:hover,
 .community:hover {
+    transition: all 0.5s ease 0s;
     cursor: pointer;
-    background-color: lightgray;
+    background-color: #86C232;
+    color: white;
 }
 
 .home,
 .trails,
 .browse,
 .community {
-    background-color: white;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 50px;
+    background-color: #414346;
     font-weight: 400;
     font-size: 18px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 10px;
 }
 
 .home {
@@ -74,36 +131,32 @@ span#logo-span {
 .search__bar {
     margin: 10px;
     width: 388px;
-    border-radius: 5px;
-    border: 1px solid lightgray;
+    height: 30px;
+    border-radius: 20px;
+    border: 1px solid rgb(100, 100, 100);
+
 }
 
 .search__bar::placeholder {
-    text-indent: 10px;
+    text-indent: 5px;
+    font-size: 20px;
+    text-align: start;
 }
 
 .search__bar:focus {
     outline: none;
-    box-shadow: 0px 0px 10px lightgray;
+    box-shadow: 0px 0px 10px #60892f50;
 }
 
 /* Right side Icon styles */
 div img:hover {
-    cursor: pointer;
+    cursor:not-allowed;
 }
 
-.bell {
-    margin: 10px;
-}
-
-.msg {
-    margin: 10px;
-}
-
-.mail {
-    margin: 10px;
-}
-
+.bell,
+.msg,
+.mail,
 .friends {
     margin: 10px;
+    display: none;
 }
