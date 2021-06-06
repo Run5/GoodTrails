@@ -10,6 +10,7 @@
 h1 {
   color: white;
 }
+
 h1:hover {
   transition: all 0.4s ease 0s;
   color: #86C232;
@@ -21,9 +22,10 @@ body{
 
 button {
     margin-top: 6px;
-    color: white;
-    background-color: #414346;
+    color: #86C232;
+    background-color: #2B2B2B;
     background-image: none;
+    border-color: #86C232;
     display: block;
     width: 100%;
     font-weight: 700;
@@ -93,8 +95,7 @@ img.trail-image{
 }
 
 .toggled:hover {
-    background-color: #86C232;
-    /* color: white;  */
+    color: #86C232;
     background-color: #2B2B2B;
 }
 
@@ -125,6 +126,7 @@ img.trail-image{
   background-color: #7c7c7c;
   padding: 10px;
   border: 1px solid #414346;
+  /* border: 1px solid #86C232; */
   border-radius: 5px;
   width: fit-content;
   margin-top: 15px;

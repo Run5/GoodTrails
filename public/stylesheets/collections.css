@@ -41,10 +41,10 @@ body {
 
 button {
     margin-top: 6px;
-    color: white;
-    background-color: #414346;
+    color: #86C232;
+    background-color: #2B2B2B;
     background-image: none;
-    border: none;
+    border-color: #86C232;
     display: block;
     width: 100%;
     font-weight: 700;
@@ -60,7 +60,7 @@ button {
 }
 
 button:hover {
-    color: white;
+    color: #2B2B2B;
     background-color: #86C232;
     background-image: none;
     border-color: #86C232;
@@ -127,7 +127,8 @@ img.trail-image{
     margin-bottom: 5px;
     background-color: #2B2B2B;
     font-size: 1.2em;
-    color: white;
+    color: #86C232;
+    border: 1px solid #86C232;
     border-radius: 5px;
     padding: 5px;
 }
