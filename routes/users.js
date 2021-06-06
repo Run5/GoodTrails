@@ -156,6 +156,7 @@ router.post(
 // POST user logout
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
+
   res.redirect('/users/login');
 });// End Logout POST route
 

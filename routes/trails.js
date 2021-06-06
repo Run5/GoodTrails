@@ -8,10 +8,9 @@ var router = express.Router();
 /***********************Internal Packages***********************/
 const { csrfProtection, asyncHandler } = require("../utils");
 const { Trail, State, User, Collection, Review } = require("../db/models");
-const { requireAuth } = require("../auth");
+const { requireAuth, restoreUser } = require("../auth");
 
 
-// GET route for displaying a single trail
 // GET /trails/:id
 router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
   const trailId = parseInt(req.params.id, 10);
@@ -29,7 +28,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
       trail,
       state,
       title: "Trail",
-      loggedInUser: loggedInUser.toJSON()
+      loggedInUser: loggedInUser.toJSON() //currently not using this
     })
   });//end render
 }));//end GET route for a single trail
@@ -78,4 +77,54 @@ router.put('/toggles/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
   return res.send();
 }));//endPutRoute
 
+/***********************************************/
+/*                                             */
+/*                   Reviews                   */
+/***********************************************/
+
+// GET /trails/:trail_id/reviews
+router.get('/:trail_id/reviews', restoreUser, requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+  const trail_id = req.params.trail_id
+  const review = await Review.findAll({
+    where: { trail_id },
+    include: User,
+    order: [["updatedAt", "DESC"]]
+  })
+  res.json({ review, csrfToken: req.csrfToken() })
+})) //endGet
+
+// POST /trails/:trail_id/reviews/
+router.post('/:trail_id/reviews', restoreUser, requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+  const { textToSend } = req.body;
+  const user_id = req.session.auth.userId;
+  const trail_id = req.params.trail_id;
+  const review = Review.build({
+    review: textToSend,
+    user_id:user_id,
+    trail_id: trail_id
+  })
+  await review.save()
+
+  const updatedReviews = await Review.findAll({
+    where: { trail_id },
+    include: User,
+    order: [["updatedAt", "DESC"]]
+  })
+  res.json({ updatedReviews })
+})) //endPost
+
+// DELETE /reviews/delete/:reviewId
+router.delete('/:trail_id/reviews/:id', restoreUser, requireAuth, asyncHandler(async (req, res) => {
+  const id = req.params.id; //review id primary key
+  const trail_id = req.params.trail_id;
+  const user_id = req.session.auth.userId;
+  const reviewToDelete = await Review.findOne({
+    where: { user_id, id }
+  });
+  if (reviewToDelete) await reviewToDelete.destroy();
+
+  // get updated review list after delete
+  const reviews = await Review.findAll({ where: { trail_id } })
+  res.json(reviews)
+}))
 module.exports = router;
