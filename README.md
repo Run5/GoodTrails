@@ -64,12 +64,12 @@ function renderReviews(reviews, reviewDisplayContainer) {
 # Developers
 
  **Chase Brashear**
-  * https://github.com/run5/
+  * https://github.com/run5
 
  **Geoff Yang**
   * https://github.com/geoffyang
 
- **Michale Tufo**
+ **Michael Tufo**
   * https://github.com/Machaelmus
 
  **Nicholas Brancifort**
