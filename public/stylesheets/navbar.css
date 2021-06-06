@@ -165,23 +165,13 @@ div img:hover {
     display: none;
 }
 .searchByState {
-    /* display: none; */
+    display: none;
     background-color: #7c7c7c;
     list-style: none;
     position: relative;
     top: 15px;
 }
 
-a.dropDown:hover .menuDropUl {
-    display: block;
-}
-
-
 .community:hover .searchByState{
     display: block;
-
-}
-.stateDropDown:hover {
-    display: block;
-    position: absolute;
 }
