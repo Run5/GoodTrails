@@ -12,7 +12,7 @@ block content
     div.trail-content
 
       div.trail-info
-        h1(id=`${trail.id}`, class=`${loggedInUser.id} ${loggedInUser.username}`)= trail.name
+        h1(id=`${trail.id}`)= trail.name
         a(href=`/states/${state.state_code}`)
           h2.trail-state= state.state_name
         div.trail-dif-dis-container

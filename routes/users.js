@@ -6,8 +6,8 @@ const bcrypt = require("bcryptjs");
 
 /***********************Internal Packages***********************/
 const { csrfProtection, asyncHandler } = require("../utils");
-const {User} = require("../db/models");
-const { loginUser, logoutUser } = require("../auth");
+const { User } = require("../db/models");
+const { loginUser, logoutUser ,restoreUser} = require("../auth");
 
 // GET /users/register
 router.get("/register", csrfProtection, (req, res, next) => {
@@ -24,41 +24,41 @@ const userValidators = [
   check("username")
     .exists({ checkFalsy: true })
     .withMessage("Please provide a value for Username")
-      .isLength({ max: 20 })
-      .withMessage("Username must not be more than 20 characters long"),
-    check("email")
-      .exists({ checkFalsy: true })
-      .withMessage("Please provide a value for Email Address")
-      .isLength({ max: 255 })
-      .withMessage("Email Address must not be more than 255 characters long")
-      .isEmail()
-      .withMessage("Email Address is not a valid email")
-      .custom((value) => {
-        return User.findOne({ where: { email: value } }).then((user) => {
-          if (user) {
-            return Promise.reject(
-              "The provided Email Address is already in use by another account"
-            );
-          }
-        });
-      }),
-    check("password")
-      .exists({ checkFalsy: true })
-      .withMessage("Please provide a value for Password")
-      .isLength({ max: 50 })
-      .withMessage("Password must not be more than 50 characters long"),
-    // .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
-    // .withMessage('Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*")'),
-    check("confirmPassword")
-      .exists({ checkFalsy: true })
-      .withMessage("Please provide a value for Confirm Password")
-      .isLength({ max: 50 })
-      .withMessage("Confirm Password must not be more than 50 characters long")
-      .custom((value, { req }) => {
-        if (value !== req.body.password)
-          throw new Error("Confirm Password does not match Password");
-        return true;
-      }),
+    .isLength({ max: 20 })
+    .withMessage("Username must not be more than 20 characters long"),
+  check("email")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for Email Address")
+    .isLength({ max: 255 })
+    .withMessage("Email Address must not be more than 255 characters long")
+    .isEmail()
+    .withMessage("Email Address is not a valid email")
+    .custom((value) => {
+      return User.findOne({ where: { email: value } }).then((user) => {
+        if (user) {
+          return Promise.reject(
+            "The provided Email Address is already in use by another account"
+          );
+        }
+      });
+    }),
+  check("password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for Password")
+    .isLength({ max: 50 })
+    .withMessage("Password must not be more than 50 characters long"),
+  // .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
+  // .withMessage('Password must contain at least 1 lowercase letter, uppercase letter, number, and special character (i.e. "!@#$%^&*")'),
+  check("confirmPassword")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for Confirm Password")
+    .isLength({ max: 50 })
+    .withMessage("Confirm Password must not be more than 50 characters long")
+    .custom((value, { req }) => {
+      if (value !== req.body.password)
+        throw new Error("Confirm Password does not match Password");
+      return true;
+    }),
 ];
 
 // POST /users/register
@@ -162,6 +162,12 @@ router.post('/logout', (req, res) => {
 // temp route to render nav bar
 router.get('/navbar', (req, res) => {
   res.render('navbar')
+})
+
+// utility to get current user
+router.get('/current',csrfProtection, restoreUser, async (req, res) => {
+  const user = await User.findByPk(req.session.auth.userId)
+  res.json(user)
 })
 
 module.exports = router;
