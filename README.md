@@ -4,7 +4,19 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
 
   * [Features](https://github.com/Run5/GoodTrails/wiki/Features) 
   * [Schema](https://github.com/Run5/GoodTrails/wiki/Database-Schema)
+  * [Frontend-Routes](https://github.com/Run5/GoodTrails/wiki/Frontend-Routes)
+  * [API-Routes](https://github.com/Run5/GoodTrails/wiki/API-Documentation)
+  
+### Database Schema
+![dbdiagram](https://user-images.githubusercontent.com/65651149/120942110-a2c3e880-c6f4-11eb-9f4b-51467dcd920b.png)
 
+### My Trails
+![myTrails page](https://user-images.githubusercontent.com/65651149/120942182-31386a00-c6f5-11eb-9dfa-1c517e86057c.jpg)
+
+### Review and Comment
+![GoodTrailsGif](https://user-images.githubusercontent.com/65651149/120942218-6f358e00-c6f5-11eb-8bd6-d3f920c2c1da.gif)
+
+###
 
   **Review a Trail**
   ![GoodTrailsGif](https://user-images.githubusercontent.com/65651149/120941308-dea87f00-c6ef-11eb-98b8-843813c63ab5.gif)
@@ -14,7 +26,6 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
   ** **
 
  INSERT IMAGE HERE COLLECTIONS-mytrails
- 
   
  ### Technologies Used
  * JavaScript
