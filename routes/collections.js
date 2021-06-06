@@ -12,7 +12,7 @@ router.get('/', restoreUser, asyncHandler(async (req, res) => {
 
 /* GET THE COLLECTION OF TRAILS */
 router.get('/all', restoreUser, asyncHandler(async (req, res) => {
-    const user_id = req.session.userId;
+    const user_id = req.session.auth.userId;
     const collectionOfTrails = await Collection.findAll({
         include: {
             model: Trail,
@@ -27,7 +27,7 @@ router.get('/all', restoreUser, asyncHandler(async (req, res) => {
 
 
 router.get('/visited', restoreUser, asyncHandler(async(req, res) => {
-    const user_id = req.session.userId;
+    const user_id = req.session.auth.userId;
     const collectionOfTrails = await Collection.findAll({
         include: {
             model: Trail,
@@ -43,7 +43,7 @@ router.get('/visited', restoreUser, asyncHandler(async(req, res) => {
 }));
 
 router.get('/want-to-visit', restoreUser, asyncHandler(async(req, res) => {
-    const user_id = req.session.userId;
+    const user_id = req.session.auth.userId;
     const collectionOfTrails = await Collection.findAll({
         include: {
             model: Trail,

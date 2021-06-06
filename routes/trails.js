@@ -21,7 +21,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
         { model: Review, include: { model: User } }
       ]
   });
-  const loggedInUser = await User.findByPk(req.session.userId).toJSON();
+  const loggedInUser = await User.findByPk(req.session.auth.userId).toJSON();
   const state = await State.findByPk(trail.state_id);
 
   req.session.save(() => {
