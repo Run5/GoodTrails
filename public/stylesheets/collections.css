@@ -40,10 +40,10 @@ body {
 
 button {
     margin-top: 6px;
-    color: #FAED26;
+    color: #86C232;
     background-color: #2B2B2B;
     background-image: none;
-    border-color: #FAED26;
+    border-color: #86C232;
     display: block;
     width: 100%;
     font-weight: 700;
@@ -60,9 +60,9 @@ button {
 
 button:hover {
     color: #2B2B2B;
-    background-color: #FAED26;
+    background-color: #86C232;
     background-image: none;
-    border-color: #FAED26;
+    border-color: #86C232;
 }
 
 button:not(:disabled):not(.disabled) {
@@ -71,11 +71,11 @@ button:not(:disabled):not(.disabled) {
 
 .toggled {
     color: #2B2B2B;
-    background-color: #FAED26;
+    background-color: #86C232;
 }
 
 .toggled:hover {
-    color: #FAED26;
+    color: #86C232;
     background-color: #2B2B2B;
 }
 
@@ -126,8 +126,8 @@ img.trail-image{
     margin-bottom: 5px;
     background-color: #2B2B2B;
     font-size: 1.2em;
-    color: #FAED26;
-    border: 1px solid #FAED26;
+    color: #86C232;
+    border: 1px solid #86C232;
     border-radius: 5px;
     padding: 5px;
 }
