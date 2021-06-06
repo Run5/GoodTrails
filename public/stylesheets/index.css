@@ -3,7 +3,7 @@ h1 {
 }
 
 body{
-    background-image: url("/images/trail0.jpeg");
+    /* background-image: url("/images/trail0.jpeg"); */
     background-size:    cover;
     background-repeat:   no-repeat;
     background-position: center center;
@@ -11,16 +11,28 @@ body{
     font-size: 10px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+@media only screen and (max-width: 1197px) {
+    .links-container {
+        display: none;
+    }
+}
+@media only screen and (max-width: 942px) {
+    video {
+       display: none;
+    }
+    body {
+        background-color: #222629;
+    }
+}
 .links-container {
     position: absolute;
-    left: 50px;
-    bottom: 50px;
+    left: 30px;
+    bottom: 30px;
     background-color: #2B2B2B;
     width: 1200px;
     padding: 10px;
-    border-radius: 5px;
-    border: 3px solid #5A5A5A;
+    border-radius: 10px;
+    border: 2px solid #5A5A5A;
     text-decoration: none;
     color:white;
 }
@@ -33,7 +45,8 @@ body{
 }
 
 .links-container a:hover{
-    background-color: #9D8D8F;
+    transition: all 0.4s ease 0s;
+    color: #86c232;
 }
 
 .state_links {
