@@ -10,10 +10,10 @@ block content
         h1.header These are the delightful trails in your state.
         each trail in trails.Trails
             div.state__trails( id=`trail${trail.id}`)
-                h1(class="bigName")=trail.name
-                img(src=`/images/trail${trail.id}.jpg`).trailImg
-                p=trail.id
-                p=trail.description
+                a(href=`/trails/${trail.id}`)
+                    h1(class="bigName")=trail.name
+                    img(src=`/images/trail${trail.id}.jpg`).trailImg
+                    p=trail.description
     else
         p.noTrails There aren't any trails in this state.
         p Please check back at a later time
