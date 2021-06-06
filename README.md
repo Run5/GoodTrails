@@ -1,25 +1,31 @@
 
-# Good Trails
-A Good Reads Clone which focuses on locating popular Trails in each state. Whether you're a novice or expert level Hiker, Good Trails is the place for you to keep track of your past adventures and/or upcoming desires (edit)
+# [GoodTrails](https://good-trails.herokuapp.com/)
+GoodTrails is a goodreads.com clone which focuses on locating popular Trails in each state. Whether you're a novice or expert level hiker, GoodTrails is the place for you to keep track of your past adventures and/or upcoming desires.
   * [GoodTrails](https://good-trails.herokuapp.com/)
-  * [Features](https://github.com/Run5/GoodTrails/wiki/Features)
+  * [Features](https://github.com/Run5/GoodTrails/wiki/Features) 
   * [Schema](https://github.com/Run5/GoodTrails/wiki/Database-Schema)
   * [Frontend-Routes](https://github.com/Run5/GoodTrails/wiki/Frontend-Routes)
   * [API-Routes](https://github.com/Run5/GoodTrails/wiki/API-Documentation)
-  ## Technologies used  (edit)
+  * 
+ INSERT HOME PAGE IMAGE-landing
+ INSERT IMAGE HERE REGISTER PAGE-signup
+ INSERT IMAGE HERE COLLECTIONS-mytrails
+ INSERT IMAGE HERE COMMENTING ON SPECIFIC TRAIL-reviewing specific trail
+ 
+ 
+ ### Technologies Used
  * JavaScript
- * Node.js (Sequelize ORM)
+ * Node.js
+ * Postgresql (Sequelize ORM)
  * Express.js
  * Heroku
  * JQuery
  * Pug
  * CSS
 
-
-
 ## Discussion of two features that show off the team's technical abilities(!!need image!!)
   * Dynamically create review divs
-  ```javascript  
+  ```javascript
 function renderReviews(reviews, reviewDisplayContainer) {
   // console.log("line 259, reviews array has length?", reviews.length);
   try {
@@ -54,5 +60,16 @@ function renderReviews(reviews, reviewDisplayContainer) {
    * [Review Routes](md_images/get-post route reviews Good_trails.jpg)
 
  ### Users will have the ability to sign-up (edit)
- * Authenticated Users will have the ability to login/logout
-   * the authenticated user can then create a collection of trails they are either interested in, or have previously visited
+
+ --INSERT IMAGE HERE(REGISTER PAGE)--
+
+   * the authenticated user can create a collection of trails they are either interested in, or have previously visited.  This is accomplished by selecting state codes which houses the trail data for a variety of trails with ranging difficulties.
+   *
+
+ --INSERT IMAGE HERE()
+
+   * ability to write reviews reflecting specific trails, and will have the ability to edit and delete these reviews.
+   
+ --INSERT IMAGE HERE()
+
+   * ability to write reviews reflecting specific trails, and will have the ability to edit and delete these reviews.
