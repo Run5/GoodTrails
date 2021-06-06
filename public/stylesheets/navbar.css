@@ -1,15 +1,17 @@
 /* UNIVERSAL */
-* {
+body {
     margin: 0;
     padding: 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
 }
-@media only screen and (min-width: 943px) {
+
+@media only screen and (min-width: 1086px) {
     .dropDown {
         display: none;
     }
 }
-@media only screen and (max-width: 942px) {
+@media only screen and (max-width: 1085px) {
     .home,.trails,.browse,.community {
         display: none;
     }
@@ -32,7 +34,7 @@
     height: 50px;
     box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.383);
     background-color: #414346;
-    backdrop-filter: blur(5px)
+    backdrop-filter: blur(5px);
 }
 .dropDown {
     height: 50px;
@@ -42,7 +44,7 @@
     text-decoration: none;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     border: none;
 }
 .dropDown:hover {
@@ -50,6 +52,9 @@
     cursor: pointer;
     background-color: #86C232;
     color: white;
+}
+.dropDown:hover .menuDropUl {
+    display: block;
 }
 
 /* Navbar Logo Text */
@@ -84,7 +89,8 @@ span#logo-span {
 .home:hover,
 .trails:hover,
 .browse:hover,
-.community:hover {
+.community:hover,
+.logout:hover {
     transition: all 0.5s ease 0s;
     cursor: pointer;
     background-color: #86C232;
@@ -94,7 +100,8 @@ span#logo-span {
 .home,
 .trails,
 .browse,
-.community {
+.community,
+.logout {
     height: 50px;
     background-color: #414346;
     font-weight: 400;
@@ -102,29 +109,30 @@ span#logo-span {
     text-decoration: none;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
 }
 
 .home {
-    width: 73px;
+    width: 75px;
     border: none;
 
 }
 
 .trails {
-    width: 99px;
+    width: 127px;
     border: none;
 }
 
 .browse {
-    width: 100px;
+    width: 150px;
     border: none;
 }
 
 .community {
-    width: 130px;
+    width: 170px;
     border: none;
     margin-right: 10px;
+    padding-bottom: 12px;
 }
 
 /* Search Bar Input Styles */
@@ -132,9 +140,8 @@ span#logo-span {
     margin: 10px;
     width: 388px;
     height: 30px;
-    border-radius: 20px;
+    border-radius: 5px;
     border: 1px solid rgb(100, 100, 100);
-
 }
 
 .search__bar::placeholder {

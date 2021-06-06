@@ -67,7 +67,14 @@ a.return {
     margin-top: 10px;
 }
 
-a.return:hover {
+a.return:hover, a.create:hover {
     transition: all 0.4s ease 0s;
     color: #5e5e5e;
+}
+.create {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 15px;
 }

@@ -1,0 +1,19 @@
+body{
+    background-color: #2B2B2B;
+}
+
+.states-trails-container{
+    color:  white;
+    background-color: #5A5A5A;
+    margin: auto;
+    width: 1200px;
+    height: 1000px;
+
+}
+
+.states-trails-header{
+    margin: 20px 50px;
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 3em;
+}

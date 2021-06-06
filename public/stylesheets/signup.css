@@ -65,7 +65,7 @@ form input:focus {
     cursor: pointer;
 }
 
-a.return {
+a.return, .already {
     text-align: center;
     text-decoration: none;
     font-weight: 600;
@@ -74,7 +74,7 @@ a.return {
     margin-top: 10px;
 }
 
-a.return:hover {
+a.return:hover, .already:hover {
     transition: all 0.4s ease 0s;
     color: #5e5e5e;
 }

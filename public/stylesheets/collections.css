@@ -1,5 +1,5 @@
 body {
-    background-color: #2B2B2B;
+    background-color: #222629;
 }
 
 /* .div {
@@ -14,7 +14,7 @@ body {
     width: 1200px;
     height: 1000px;
     margin: auto;
-    background-color: #5A5A5A;
+    background-color: #222629;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,6 +33,7 @@ body {
     font-weight: bold;
     justify-content: center;
     margin-bottom: 10px;
+    margin-top: 20px;
 }
 .li {
     list-style: none;
@@ -40,10 +41,10 @@ body {
 
 button {
     margin-top: 6px;
-    color: #FAED26;
+    color: #86C232;
     background-color: #2B2B2B;
     background-image: none;
-    border-color: #FAED26;
+    border-color: #86C232;
     display: block;
     width: 100%;
     font-weight: 700;
@@ -55,14 +56,14 @@ button {
     font-size: 1.25rem;
     line-height: 1.5;
     border-radius: .3rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: all 0.4s ease 0s;
 }
 
 button:hover {
     color: #2B2B2B;
-    background-color: #FAED26;
+    background-color: #86C232;
     background-image: none;
-    border-color: #FAED26;
+    border-color: #86C232;
 }
 
 button:not(:disabled):not(.disabled) {
@@ -71,11 +72,11 @@ button:not(:disabled):not(.disabled) {
 
 .toggled {
     color: #2B2B2B;
-    background-color: #FAED26;
+    background-color: #86C232;
 }
 
 .toggled:hover {
-    color: #FAED26;
+    color: #86C232;
     background-color: #2B2B2B;
 }
 
@@ -126,15 +127,15 @@ img.trail-image{
     margin-bottom: 5px;
     background-color: #2B2B2B;
     font-size: 1.2em;
-    color: #FAED26;
-    border: 1px solid #FAED26;
+    color: #86C232;
+    border: 1px solid #86C232;
     border-radius: 5px;
     padding: 5px;
 }
 
 .trail-state{
     margin-bottom: 10px;
-    background-color: black;
+    background-color: #2b2b2b;
     border-radius: 3px;
     padding: 3px;
 }

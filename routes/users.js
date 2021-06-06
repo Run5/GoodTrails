@@ -1,6 +1,6 @@
 /***********************External Packages***********************/
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
@@ -8,6 +8,11 @@ const bcrypt = require("bcryptjs");
 const { csrfProtection, asyncHandler } = require("../utils");
 const { User } = require("../db/models");
 const { loginUser, logoutUser ,restoreUser} = require("../auth");
+
+router.get('/home', asyncHandler(async(req, res) => {
+  const user = await User.findByPk(req.session.auth.UserId);
+  res.render('landing', {title: 'Good Trails', user})
+}))
 
 // GET /users/register
 router.get("/register", csrfProtection, (req, res, next) => {
