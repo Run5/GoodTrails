@@ -60,7 +60,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/trails', trailsRouter);
 app.use('/my-trails', collectionsRouter);
-app.use('/reviews', reviewsRouter);
+app.use(reviewsRouter);
 
 // catch 404 and forward to error handler
 // app.use(function (req, res, next) {

@@ -2,10 +2,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Grab the elements on the page to manipulate
   const trailHeader = document.querySelector('h1');
-  // Grab the trail id passed in through the pug template
+  const user = await fetch('/users/current')
+  // fetch user from server instead of pug
   const trailId = trailHeader.id;
-  const userId = trailHeader.classList[0]
-  const userName = trailHeader.classList[1]
+  const userId = user.id
+  const userName = user.username
   const visited = document.querySelector('.visited');
   const interested = document.querySelector('.interested');
 
@@ -178,10 +179,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const reviewDisplayContainer = document.querySelector('.review-display-container')
   const submitReviewButton = document.querySelector('.submit-review')
   const cancelReviewButton = document.querySelector('.cancel-review')
+  const deleteReviewButton = document.querySelector('.delete-review')
 
   let newToken = ""
 
-  const { review, csrfToken } = await fetchReviews(trailId)
+  const { review, csrfToken } = await getReviews(trailId)
   newToken = csrfToken
   renderReviews(review, reviewDisplayContainer)
 
@@ -202,9 +204,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const textBox = document.querySelector(".review-text-area");
       const textToSend = textBox.value;
-      const {updatedReviews} = await postReview(`/reviews/${trailId}`, textToSend, userId, trailId, newToken)
-
-      console.log("line 209 updatedReviews array", updatedReviews);
+      const { updatedReviews } = await postReview(`/trails/${trailId}/reviews`, textToSend, userId, newToken)
       renderReviews(updatedReviews, reviewDisplayContainer)
 
       // clear and hide the form
@@ -222,42 +222,43 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+  // Delete the review
+  if (deleteReviewButton) {
+    
+  }
+
 });//endEventListener
 
 /**************************************************/
 /*  Helper Functions (outside of eventListener)   */
 /**************************************************/
 
-async function fetchReviews(trailId) {
-  const reviewRes = await fetch(`/reviews/${trailId}`)
-
+async function getReviews(trailId) {
+  const reviewRes = await fetch(`/trails/${trailId}/reviews`)
   const { review, csrfToken } = await reviewRes.json()
   return { review, csrfToken };
 }
 
-async function postReview(postRoute, textToSend, userId, trailId, newToken) {
+async function postReview(postRoute, textToSend, userId, newToken) {
   try {
     const res = await fetch(postRoute, {
       credentials: 'same-origin',
       method: "POST",
       headers: {
-        "Content-Type": "application/json", 'CSRF-Token':newToken
+        "Content-Type": "application/json", 'CSRF-Token': newToken
       },
-      body: JSON.stringify({ textToSend, userId, trailId }),
+      body: JSON.stringify({ textToSend, userId }),
     });
-
     const data = await res.json();
-    console.log("line 252 data is a promise still?", data);
     return data;
 
   } catch (err) {
-    console.log("Error in trails.js public",err);
+    console.log("Error in trails.js public", err);
   }
 }
 
 //dynamically create review divs
 function renderReviews(reviews, reviewDisplayContainer) {
-  // console.log("line 259, reviews array has length?", reviews.length);
   try {
     if (reviews.length === 0) {
       const noReviewText = document.createElement("p")
