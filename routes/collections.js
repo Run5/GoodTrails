@@ -6,7 +6,7 @@ const { asyncHandler } = require('../utils');
 const { Op } = require("sequelize");
 
 router.get('/', restoreUser, asyncHandler(async (req, res) => {
-    const user = await User.findByPk(req.session.userId);
+    const user = await User.findByPk(req.session.auth.userId);
     res.render('collections', { user })
 }));
 
@@ -42,7 +42,7 @@ router.get('/visited', restoreUser, asyncHandler(async(req, res) => {
     res.json(collectionOfTrails);
 }));
 
-router.get('/want-to-visit', restoreUser, asyncHandler(async(req, res) => {
+router.get('/want_to_visit', restoreUser, asyncHandler(async(req, res) => {
     const user_id = req.session.auth.userId;
     const collectionOfTrails = await Collection.findAll({
         include: {
@@ -56,6 +56,4 @@ router.get('/want-to-visit', restoreUser, asyncHandler(async(req, res) => {
     })
     res.json(collectionOfTrails);
 }))
-
-
 module.exports = router;
