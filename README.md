@@ -2,21 +2,11 @@
 # [GoodTrails](https://good-trails.herokuapp.com/)
 GoodTrails is a goodreads.com clone which focuses on locating popular Trails in each state. Whether you're a novice or expert level hiker, GoodTrails is the place for you to keep track of your past adventures and/or upcoming desires.
 
-<<<<<<< HEAD
   * [Features](https://github.com/Run5/GoodTrails/wiki/Features)
   * [Schema](https://github.com/Run5/GoodTrails/wiki/Database-Schema)
   * [Frontend-Routes](https://github.com/Run5/GoodTrails/wiki/Frontend-Routes)
   * [API-Routes](https://github.com/Run5/GoodTrails/wiki/API-Documentation)
 
-
-=======
-  * [Features](https://github.com/Run5/GoodTrails/wiki/Features) 
-  * [Schema](https://github.com/Run5/GoodTrails/wiki/Database-Schema)
-  * [Frontend-Routes](https://github.com/Run5/GoodTrails/wiki/Frontend-Routes)
-  * [API-Routes](https://github.com/Run5/GoodTrails/wiki/API-Documentation)
-  
-  
->>>>>>> b0a7e1c8389220ed9c3bc817984224969700c888
 ### Database Schema
 ![dbdiagram](https://user-images.githubusercontent.com/65651149/120942110-a2c3e880-c6f4-11eb-9f4b-51467dcd920b.png)
 
@@ -26,11 +16,6 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
 ### Review and Comment
 ![GoodTrailsGif](https://user-images.githubusercontent.com/65651149/120942218-6f358e00-c6f5-11eb-8bd6-d3f920c2c1da.gif)
 
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> b0a7e1c8389220ed9c3bc817984224969700c888
  ### Technologies Used
  * JavaScript
  * Node.js
@@ -40,12 +25,13 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
  * Pug
  * CSS
 
- ### Users will have the ability to sign-up (edit)
+ ### Key Features
    * the authenticated user can create a collection of trails they are either interested in, or have previously visited.  This is accomplished by selecting state codes which houses the trail data for a variety of trails with ranging difficulties.
-   * ability to write reviews reflecting specific trails, and will have the ability to edit and delete these reviews.
+   * ability to write, and read reflecting specific trails
+   * ability to edit and delete these reviews.
 
  ### Brief Code Snippet
-  * Dynamically create review divs
+  * The code below ynamically create review divs
   ```javascript
 function renderReviews(reviews, reviewDisplayContainer) {
   // console.log("line 259, reviews array has length?", reviews.length);
@@ -75,12 +61,16 @@ function renderReviews(reviews, reviewDisplayContainer) {
   }
 }
   ```
+# Developers
 
- ## Discussion of both challenges faced and the way the team solved them
-<<<<<<< HEAD
-=======
-  
+ **Chase Brashear**
+  * https://github.com/run5
 
+ **Geoff Yang**
+  * https://github.com/geoffyang
 
+ **Michael Tufo**
+  * https://github.com/Machaelmus
 
->>>>>>> b0a7e1c8389220ed9c3bc817984224969700c888
+ **Nicholas Brancifort**
+  * htpps://github.com/brancifortnick
