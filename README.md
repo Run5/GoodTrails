@@ -63,14 +63,14 @@ function renderReviews(reviews, reviewDisplayContainer) {
   ```
 # Developers
 
- * Chase Brashear
+ **Chase Brashear**
   * https://github.com/run5/
 
- * Geoff Yang
+ **Geoff Yang**
   * https://github.com/geoffyang
 
- * Michale Tufo
+ **Michale Tufo**
   * https://github.com/Machaelmus
 
- * Nicholas Brancifort
-  * htpps://github.com/brancifortnick
+ **Nicholas Brancifort**
+  * https://github.com/brancifortnick
