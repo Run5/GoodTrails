@@ -7,6 +7,7 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
   * [Frontend-Routes](https://github.com/Run5/GoodTrails/wiki/Frontend-Routes)
   * [API-Routes](https://github.com/Run5/GoodTrails/wiki/API-Documentation)
   
+  
 ### Database Schema
 ![dbdiagram](https://user-images.githubusercontent.com/65651149/120942110-a2c3e880-c6f4-11eb-9f4b-51467dcd920b.png)
 
@@ -16,17 +17,7 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
 ### Review and Comment
 ![GoodTrailsGif](https://user-images.githubusercontent.com/65651149/120942218-6f358e00-c6f5-11eb-8bd6-d3f920c2c1da.gif)
 
-###
-
-  **Review a Trail**
-  ![GoodTrailsGif](https://user-images.githubusercontent.com/65651149/120941308-dea87f00-c6ef-11eb-98b8-843813c63ab5.gif)
-  
-  **Sign-up**
-  ![loginpage](https://user-images.githubusercontent.com/65651149/120941513-1c59d780-c6f1-11eb-96a1-85156fdfc4b0.jpg)
-  ** **
-
- INSERT IMAGE HERE COLLECTIONS-mytrails
-  
+ 
  ### Technologies Used
  * JavaScript
  * Node.js
@@ -40,7 +31,7 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
    * the authenticated user can create a collection of trails they are either interested in, or have previously visited.  This is accomplished by selecting state codes which houses the trail data for a variety of trails with ranging difficulties.
    * ability to write reviews reflecting specific trails, and will have the ability to edit and delete these reviews.
 
-## Discussion of two features that show off the team's technical abilities(!!need image!!)
+ ### Brief Code Snippet
   * Dynamically create review divs
   ```javascript
 function renderReviews(reviews, reviewDisplayContainer) {
@@ -73,9 +64,7 @@ function renderReviews(reviews, reviewDisplayContainer) {
   ```
 
  ## Discussion of both challenges faced and the way the team solved them
- 
- 
- ## Code snippets to highlight the best code
-  --INSERT IMAGES FROM md_images folder--(adding CODEimages branch)
+  
+
 
 
