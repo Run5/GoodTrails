@@ -162,7 +162,9 @@ router.post(
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
 
+
   res.redirect('/');
+
 });// End Logout POST route
 
 // temp route to render nav bar
