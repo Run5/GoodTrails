@@ -19,7 +19,6 @@ router.post('/:trail_id', restoreUser, csrfProtection, asyncHandler(async (req, 
         include: User,
         order: [["updatedAt", "DESC"]]
     })
-    console.log("line 22 refetched array", updatedReviews[0]);
     res.json({updatedReviews})
 })) //endPost
 
@@ -30,7 +29,6 @@ router.get('/:trail_id', restoreUser, csrfProtection, asyncHandler(async (req, r
         include: User,
         order: [["updatedAt", "DESC"]]
     })
-    console.log("this is review,", review);
     res.json({ review, csrfToken: req.csrfToken() })
 })) //endGet
 

@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   let newToken = ""
 
-  const { review, csrfToken } = await fetchReviews(trailId)
+  const { review, csrfToken } = await getReviews(trailId)
   newToken = csrfToken
   renderReviews(review, reviewDisplayContainer)
 
@@ -228,9 +228,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 /*  Helper Functions (outside of eventListener)   */
 /**************************************************/
 
-async function fetchReviews(trailId) {
+async function getReviews(trailId) {
   const reviewRes = await fetch(`/reviews/${trailId}`)
-
   const { review, csrfToken } = await reviewRes.json()
   return { review, csrfToken };
 }
@@ -245,9 +244,7 @@ async function postReview(postRoute, textToSend, userId, trailId, newToken) {
       },
       body: JSON.stringify({ textToSend, userId, trailId }),
     });
-
     const data = await res.json();
-    console.log("line 252 data is a promise still?", data);
     return data;
 
   } catch (err) {
@@ -257,7 +254,6 @@ async function postReview(postRoute, textToSend, userId, trailId, newToken) {
 
 //dynamically create review divs
 function renderReviews(reviews, reviewDisplayContainer) {
-  // console.log("line 259, reviews array has length?", reviews.length);
   try {
     if (reviews.length === 0) {
       const noReviewText = document.createElement("p")
