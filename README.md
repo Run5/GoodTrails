@@ -20,7 +20,6 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
  * Postgresql (Sequelize ORM)
  * Express.js
  * Heroku
- * JQuery
  * Pug
  * CSS
 
