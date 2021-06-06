@@ -69,7 +69,7 @@ function renderReviews(reviews, reviewDisplayContainer) {
  * Geoff Yang
   * https://github.com/geoffyang
 
- * Michale M
+ * Michale Tufo
   * https://github.com/Machaelmus
 
  * Nicholas Brancifort
