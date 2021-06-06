@@ -4,12 +4,12 @@
     padding: 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-@media only screen and (min-width: 973px) {
+@media only screen and (min-width: 1086px) {
     .dropDown {
         display: none;
     }
 }
-@media only screen and (max-width: 972px) {
+@media only screen and (max-width: 1085px) {
     .home,.trails,.browse,.community {
         display: none;
     }
@@ -50,6 +50,9 @@
     cursor: pointer;
     background-color: #86C232;
     color: white;
+}
+.dropDown:hover .menuDropUl {
+    display: block;
 }
 
 /* Navbar Logo Text */
@@ -102,22 +105,22 @@ span#logo-span {
     text-decoration: none;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
 }
 
 .home {
-    width: 73px;
+    width: 75px;
     border: none;
 
 }
 
 .trails {
-    width: 99px;
+    width: 110px;
     border: none;
 }
 
 .browse {
-    width: 100px;
+    width: 130px;
     border: none;
 }
 
@@ -159,19 +162,4 @@ div img:hover {
 .friends {
     margin: 10px;
     display: none;
-}
-
-.menuDropUl {
-    display: none;
-}
-.searchByState {
-    display: none;
-    background-color: #7c7c7c;
-    list-style: none;
-    position: relative;
-    top: 15px;
-}
-
-.community:hover .searchByState{
-    display: block;
 }

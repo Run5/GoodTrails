@@ -21,7 +21,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
         { model: Review, include: { model: User } }
       ]
   });
-  const loggedInUser = await User.findByPk(req.session.userId).toJSON();
+  const loggedInUser = await User.findByPk(req.session.userId);
   const state = await State.findByPk(trail.state_id);
 
   req.session.save(() => {
@@ -29,7 +29,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
       trail,
       state,
       title: "Trail",
-      loggedInUser: loggedInUser
+      loggedInUser: loggedInUser.toJSON()
     })
   });//end render
 }));//end GET route for a single trail

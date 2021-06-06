@@ -9,22 +9,69 @@ html
     div.navbar__container
       p.nav__logo Good<span id="logo-span">Trails</span>
       a.dropDown Menu
-        ul.menuDropUl
-          <li class="menuItems"><a href="/">Home</a></li>
-          <li class="menuItems"><a href="/my-trails">My trails</a></li>
-          <li class="menuItems"><a href="/trails/4">Trails</a></li>
-          li.menuItems
-            a(href="").searchState
-            ul.menuSearchByState
-              each state in states
-                li.secondStateDropdown=state.dataValues.state_code
       a.home(href="/") Home
       a.trails(href="/my-trails") My Trails
-      a.browse(href="/trails/4") Trail 4
-      a.community Search by state
-        ul.searchByState
-          each state in states
-            li.stateDropdown=state.dataValues.state_code
+      a.browse(href="trails/4") Demo Trail
+      select.community Search by state
+        option Alabama
+        option Alaska
+        option Arizona
+        option Arkansas
+        option California
+        option Colorado
+        option Connecticut
+        option Delaware
+        option Florida
+        option Georgia
+        //- 1
+         option Alabama
+        option Hawaii
+        option Idaho
+        option Illinois
+        option Indiana
+        option Iowa
+        option Kansas
+        option Kentucky
+        option Louisiana
+        option Maine
+        //- 2
+         option Alabama
+        option Maryland
+        option Massachusetts
+        option Michigan
+        option Minnesota
+        option Mississippi
+        option Missouri
+        option Montana
+        option Nebraska
+        option Nevada
+        //- 3
+         option Alabama
+        option New Hamshire
+        option New Jersey
+        option New Mexico
+        option New York
+        option North Carolina
+        option North Dakota
+        option Ohio
+        option Oklahoma
+        option Oregon
+        //- 4
+         option Alabama
+        option Pennsylvania
+        option Rhode Island
+        option South Carolina
+        option South Dakota
+        option Tennessee
+        option Texas
+        option Utah
+        option Vermont
+        option Virginia
+        option Washington
+        option West Virginia
+        option Wisconsin
+        option Wyoming
+        //- 5
       input(type="text" name="search" placeholder="Search Trails").search__bar
       img(src="/nav-images/NavbarBell.png", alt="Notifications").bell
       img(src="/nav-images/NavbarMsg.png", alt="Messages").msg
