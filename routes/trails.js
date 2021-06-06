@@ -115,4 +115,5 @@ router.post('/:trail_id/reviews', restoreUser, requireAuth, csrfProtection, asyn
 })) //endPost
 
 
+
 module.exports = router;

@@ -180,6 +180,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const submitReviewButton = document.querySelector('.submit-review')
   const cancelReviewButton = document.querySelector('.cancel-review')
 
+
+
   let newToken = ""
 
   const { review, csrfToken } = await getReviews(trailId)
@@ -202,7 +204,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       const textBox = document.querySelector(".review-text-area");
       const textToSend = textBox.value;
       const { updatedReviews } = await postReview(trailId, textToSend, newToken)
+
       renderReviews(updatedReviews, reviewDisplayContainer, userId)
+
       // clear and hide the form
       textBox.value = ""
       reviewFormContainer.style.display = "none"
@@ -220,6 +224,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // Delete the review
+
   const deleteReviewButtons = document.querySelectorAll('.delete-review')
   if (deleteReviewButtons) {
     deleteReviewButtons.forEach(review => {
@@ -277,6 +282,7 @@ function renderReviews(reviews, reviewDisplayContainer, userId) {
         const newReviewDiv = document.createElement("div");
         newReviewDiv.setAttribute("id", `review-${review.id}-div`);
         newReviewDiv.setAttribute("class", "each-review");
+
         const newReviewText = document.createElement("p")
         const newReviewUser = document.createElement("p")
 
