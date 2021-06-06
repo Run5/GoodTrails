@@ -2,11 +2,11 @@
 # [GoodTrails](https://good-trails.herokuapp.com/)
 GoodTrails is a goodreads.com clone which focuses on locating popular Trails in each state. Whether you're a novice or expert level hiker, GoodTrails is the place for you to keep track of your past adventures and/or upcoming desires.
 
-  * [Features](https://github.com/Run5/GoodTrails/wiki/Features) 
+  * [Features](https://github.com/Run5/GoodTrails/wiki/Features)
   * [Schema](https://github.com/Run5/GoodTrails/wiki/Database-Schema)
   * [Frontend-Routes](https://github.com/Run5/GoodTrails/wiki/Frontend-Routes)
   * [API-Routes](https://github.com/Run5/GoodTrails/wiki/API-Documentation)
-  
+
 ### Database Schema
 ![dbdiagram](https://user-images.githubusercontent.com/65651149/120942110-a2c3e880-c6f4-11eb-9f4b-51467dcd920b.png)
 
@@ -63,14 +63,14 @@ function renderReviews(reviews, reviewDisplayContainer) {
   ```
 # Developers
 
- * Chase Brashier
+ * Chase Brashear
   * https://github.com/run5/
 
  * Geoff Yang
   * https://github.com/geoffyang
-  
+
  * Michale M
   * https://github.com/Machaelmus
- 
+
  * Nicholas Brancifort
   * htpps://github.com/brancifortnick
