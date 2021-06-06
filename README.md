@@ -14,19 +14,44 @@ A Good Reads Clone which focuses on locating popular Trails in each state. Wheth
  * JQuery
  * Pug
  * CSS
-## Discussion of two features that show off the team's technical abilities
-  * Toggle Feature
-   *
 
 
+
+## Discussion of two features that show off the team's technical abilities(!!need image!!)
+  * Dynamically create review divs
+  ```javascript  
+function renderReviews(reviews, reviewDisplayContainer) {
+  // console.log("line 259, reviews array has length?", reviews.length);
+  try {
+    if (reviews.length === 0) {
+      const noReviewText = document.createElement("p")
+      noReviewText.innerHTML = "There are no reviews for this trail yet"
+      reviewDisplayContainer.appendChild(noReviewText);
+    } else {
+      // empty the reviewDisplayContainer
+      reviewDisplayContainer.innerHTML = "";
+      reviews.forEach(review => {
+        const newReviewDiv = document.createElement("div");
+        newReviewDiv.setAttribute("id", `review-${review.id}-div`);
+        newReviewDiv.setAttribute("class", "each-review");
+        // fill in review text and author
+        const newReviewText = document.createElement("p")
+        const newReviewUser = document.createElement("p")
+        newReviewText.innerHTML = review.review
+        newReviewUser.innerHTML = `-Reviewed by ${review.User.username}`
+        newReviewDiv.append(newReviewText, newReviewUser)
+        reviewDisplayContainer.append(newReviewDiv)
+      })
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+  ```
 
  ## Discussion of both challenges faced and the way the team solved them
  ## Code snippets to highlight the best code
    * [Review Routes](md_images/get-post route reviews Good_trails.jpg)
- ## How to start development environment
-
-
-
 
  ### Users will have the ability to sign-up (edit)
  * Authenticated Users will have the ability to login/logout
