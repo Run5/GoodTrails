@@ -1,18 +1,19 @@
 
 # [GoodTrails](https://good-trails.herokuapp.com/)
 GoodTrails is a goodreads.com clone which focuses on locating popular Trails in each state. Whether you're a novice or expert level hiker, GoodTrails is the place for you to keep track of your past adventures and/or upcoming desires.
-  * [GoodTrails](https://good-trails.herokuapp.com/)
   * [Features](https://github.com/Run5/GoodTrails/wiki/Features) 
   * [Schema](https://github.com/Run5/GoodTrails/wiki/Database-Schema)
+  * 
+ MAYBE INSERT dbdiagram.io image INSERT HERE--
+ 
   * [Frontend-Routes](https://github.com/Run5/GoodTrails/wiki/Frontend-Routes)
   * [API-Routes](https://github.com/Run5/GoodTrails/wiki/API-Documentation)
-  * 
+  
  INSERT HOME PAGE IMAGE-landing
  INSERT IMAGE HERE REGISTER PAGE-signup
  INSERT IMAGE HERE COLLECTIONS-mytrails
  INSERT IMAGE HERE COMMENTING ON SPECIFIC TRAIL-reviewing specific trail
- 
- 
+  
  ### Technologies Used
  * JavaScript
  * Node.js
@@ -22,6 +23,11 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
  * JQuery
  * Pug
  * CSS
+
+ ### Users will have the ability to sign-up (edit)
+   * the authenticated user can create a collection of trails they are either interested in, or have previously visited.  This is accomplished by selecting state codes which houses the trail data for a variety of trails with ranging difficulties.
+   *
+   * ability to write reviews reflecting specific trails, and will have the ability to edit and delete these reviews.
 
 ## Discussion of two features that show off the team's technical abilities(!!need image!!)
   * Dynamically create review divs
@@ -56,20 +62,9 @@ function renderReviews(reviews, reviewDisplayContainer) {
   ```
 
  ## Discussion of both challenges faced and the way the team solved them
+ 
+ 
  ## Code snippets to highlight the best code
-   * [Review Routes](md_images/get-post route reviews Good_trails.jpg)
+  --INSERT IMAGES FROM md_images folder--(adding CODEimages branch)
 
- ### Users will have the ability to sign-up (edit)
 
- --INSERT IMAGE HERE(REGISTER PAGE)--
-
-   * the authenticated user can create a collection of trails they are either interested in, or have previously visited.  This is accomplished by selecting state codes which houses the trail data for a variety of trails with ranging difficulties.
-   *
-
- --INSERT IMAGE HERE()
-
-   * ability to write reviews reflecting specific trails, and will have the ability to edit and delete these reviews.
-   
- --INSERT IMAGE HERE()
-
-   * ability to write reviews reflecting specific trails, and will have the ability to edit and delete these reviews.
