@@ -3,14 +3,14 @@ extends layout.pug
 append head
   script(src="/javascripts/collections.js" type="module" defer)
   link(rel="stylesheet", href="/stylesheets/collections.css")
+
 block content
   div.collections
     h1.header1 My Trails
-    h2.subheader1 Hey #{user.username} you can find all your collections of trails here!
+    h2.subheader1 You can find all your collections of trails here!
     div.buttonContainer
       button.allButton All Trails
       button.visitedButton Visited Trails
       button.wantToVisit Interested Trails
     div.errorContainer
       p.actualError
-    div.allContainer

@@ -9,12 +9,14 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 /***********************Internal Imports***********************/
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const trailsRouter = require('./routes/trails');
 const reviewsRouter = require('./routes/reviews');
 const collectionsRouter = require('./routes/collections');
 const { asyncHandler, csrfProtection } = require('./utils');
+
 
 const { restoreUser } = require('./auth')
 
