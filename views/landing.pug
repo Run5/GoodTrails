@@ -6,12 +6,14 @@ block content
     <video autoplay loop muted playsinline>
       <source src="/images/HomepageVideo_compressed.mp4">
     </video>
+    div.recommended
+      h2 Here are some recommended trials for you:
     div.allContainer
-    //- div.links-container
-      //- h2 View trails in your state:
-        //- div.state-links
-        //-   each state in states
-        //-     a(href=`/states/${state.dataValues.state_code}`)  #{state.dataValues.state_code}
+    div.links-container
+      h2 View trails in your state:
+        div.state-links
+          each state in states
+            a(href=`/states/${state.dataValues.state_code}`)  #{state.dataValues.state_code}
 
 append head
   //- add page specific styles by appending to the head

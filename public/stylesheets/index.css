@@ -24,6 +24,120 @@ body{
         background-color: #222629;
     }
 }
+
+.recommended{
+    position: absolute;
+    left: 30px;
+    top: 55px;
+    background-color: #2B2B2B;
+    width: 400px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #5A5A5A;
+    text-decoration: none;
+    color:white;
+}
+
+.allContainer{
+    padding: 10px;
+    height: fit-content;
+    width: 1200px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+img.trail-image{
+    object-fit: cover;
+    width: 200px;
+    justify-self: center;
+    border-radius: 3px;
+    border: 3px solid #2B2B2B;
+}
+
+.trail-info{
+    margin-left: 5px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.trail-container1{
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #7C7C7C;
+    border: 3px solid #2B2B2B;
+    border-radius: 5px;
+    position: absolute;
+    left: 30px;
+    top: 150px;
+    width: 400px;
+    text-decoration: none;
+    color:white;
+}
+
+.trail-container2{
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #7C7C7C;
+    border: 3px solid #2B2B2B;
+    border-radius: 5px;
+    position: absolute;
+    left: 30px;
+    top: 325px;
+    width: 400px;
+    text-decoration: none;
+    color:white;
+}
+
+.trail-container3{
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #7C7C7C;
+    border: 3px solid #2B2B2B;
+    border-radius: 5px;
+    position: absolute;
+    left: 30px;
+    top: 500px;
+    width: 400px;
+    text-decoration: none;
+    color:white;
+}
+
+.trail-container a{
+    text-decoration: none;
+}
+
+.trail-name{
+    width: 150px;
+    margin-bottom: 5px;
+    background-color: #2B2B2B;
+    font-size: 1.2em;
+    color: #86C232;
+    border: 1px solid #86C232;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.trail-state{
+    margin-bottom: 10px;
+    background-color: #2b2b2b;
+    border-radius: 3px;
+    padding: 3px;
+}
+
 .links-container {
     position: absolute;
     left: 30px;

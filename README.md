@@ -2,12 +2,21 @@
 # [GoodTrails](https://good-trails.herokuapp.com/)
 GoodTrails is a goodreads.com clone which focuses on locating popular Trails in each state. Whether you're a novice or expert level hiker, GoodTrails is the place for you to keep track of your past adventures and/or upcoming desires.
 
+<<<<<<< HEAD
   * [Features](https://github.com/Run5/GoodTrails/wiki/Features)
   * [Schema](https://github.com/Run5/GoodTrails/wiki/Database-Schema)
   * [Frontend-Routes](https://github.com/Run5/GoodTrails/wiki/Frontend-Routes)
   * [API-Routes](https://github.com/Run5/GoodTrails/wiki/API-Documentation)
 
 
+=======
+  * [Features](https://github.com/Run5/GoodTrails/wiki/Features) 
+  * [Schema](https://github.com/Run5/GoodTrails/wiki/Database-Schema)
+  * [Frontend-Routes](https://github.com/Run5/GoodTrails/wiki/Frontend-Routes)
+  * [API-Routes](https://github.com/Run5/GoodTrails/wiki/API-Documentation)
+  
+  
+>>>>>>> b0a7e1c8389220ed9c3bc817984224969700c888
 ### Database Schema
 ![dbdiagram](https://user-images.githubusercontent.com/65651149/120942110-a2c3e880-c6f4-11eb-9f4b-51467dcd920b.png)
 
@@ -17,7 +26,11 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
 ### Review and Comment
 ![GoodTrailsGif](https://user-images.githubusercontent.com/65651149/120942218-6f358e00-c6f5-11eb-8bd6-d3f920c2c1da.gif)
 
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> b0a7e1c8389220ed9c3bc817984224969700c888
  ### Technologies Used
  * JavaScript
  * Node.js
@@ -64,3 +77,10 @@ function renderReviews(reviews, reviewDisplayContainer) {
   ```
 
  ## Discussion of both challenges faced and the way the team solved them
+<<<<<<< HEAD
+=======
+  
+
+
+
+>>>>>>> b0a7e1c8389220ed9c3bc817984224969700c888

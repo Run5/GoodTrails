@@ -6,12 +6,13 @@ const bcrypt = require("bcryptjs");
 
 /***********************Internal Packages***********************/
 const { csrfProtection, asyncHandler } = require("../utils");
-const { User } = require("../db/models");
+const { User, State } = require("../db/models");
 const { loginUser, logoutUser ,restoreUser} = require("../auth");
 
 router.get('/home', asyncHandler(async(req, res) => {
   const user = await User.findByPk(req.session.auth.UserId);
-  res.render('landing', {title: 'Good Trails', user})
+  const states = await State.findAll();
+  res.render('landing', {title: 'Good Trails', user, states})
 }))
 
 // GET /users/register
@@ -162,7 +163,9 @@ router.post(
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
 
+
   res.redirect('/');
+
 });// End Logout POST route
 
 // temp route to render nav bar
