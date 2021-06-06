@@ -7,7 +7,6 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
   * [Frontend-Routes](https://github.com/Run5/GoodTrails/wiki/Frontend-Routes)
   * [API-Routes](https://github.com/Run5/GoodTrails/wiki/API-Documentation)
   
-  
 ### Database Schema
 ![dbdiagram](https://user-images.githubusercontent.com/65651149/120942110-a2c3e880-c6f4-11eb-9f4b-51467dcd920b.png)
 
@@ -17,7 +16,6 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
 ### Review and Comment
 ![GoodTrailsGif](https://user-images.githubusercontent.com/65651149/120942218-6f358e00-c6f5-11eb-8bd6-d3f920c2c1da.gif)
 
- 
  ### Technologies Used
  * JavaScript
  * Node.js
@@ -27,12 +25,13 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
  * Pug
  * CSS
 
- ### Users will have the ability to sign-up (edit)
+ ### Key Features
    * the authenticated user can create a collection of trails they are either interested in, or have previously visited.  This is accomplished by selecting state codes which houses the trail data for a variety of trails with ranging difficulties.
-   * ability to write reviews reflecting specific trails, and will have the ability to edit and delete these reviews.
+   * ability to write, and read reflecting specific trails
+   * ability to edit and delete these reviews.
 
  ### Brief Code Snippet
-  * Dynamically create review divs
+  * The code below ynamically create review divs
   ```javascript
 function renderReviews(reviews, reviewDisplayContainer) {
   // console.log("line 259, reviews array has length?", reviews.length);
@@ -62,9 +61,16 @@ function renderReviews(reviews, reviewDisplayContainer) {
   }
 }
   ```
+# Developers
 
- ## Discussion of both challenges faced and the way the team solved them
+ * Chase Brashier
+  * https://github.com/run5/
+
+ * Geoff Yang
+  * https://github.com/geoffyang
   
-
-
-
+ * Michale M
+  * https://github.com/Machaelmus
+ 
+ * Nicholas Brancifort
+  * htpps://github.com/brancifortnick
