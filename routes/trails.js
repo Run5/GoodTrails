@@ -1,6 +1,6 @@
 /***********************External Packages***********************/
-const express = require("express");
-const router = express.Router();
+var express = require("express");
+var router = express.Router();
 //const { check, validationResult } = require("express-validator");
 //const bcrypt = require("bcryptjs");
 
@@ -21,7 +21,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
         { model: Review, include: { model: User } }
       ]
   });
-  const loggedInUser = await User.findByPk(req.session.auth.userId).toJSON();
+  const loggedInUser = await User.findByPk(req.session.auth.userId);
   const state = await State.findByPk(trail.state_id);
 
   req.session.save(() => {
@@ -29,7 +29,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
       trail,
       state,
       title: "Trail",
-      loggedInUser: loggedInUser
+      loggedInUser: loggedInUser.toJSON()
     })
   });//end render
 }));//end GET route for a single trail
