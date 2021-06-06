@@ -9,12 +9,14 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 /***********************Internal Imports***********************/
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const trailsRouter = require('./routes/trails');
 const reviewsRouter = require('./routes/reviews');
 const collectionsRouter = require('./routes/collections');
 const { asyncHandler, csrfProtection } = require('./utils');
+
 
 const { restoreUser } = require('./auth')
 
@@ -61,19 +63,19 @@ app.use('/my-trails', collectionsRouter);
 app.use('/reviews', reviewsRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
+// app.use(function (req, res, next) {
+//   next(createError(404));
+// });
 
-// error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-  //console.log(err)
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+// // error handler
+// app.use(function (err, req, res, next) {
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
+//   //console.log(err)
+//   // render the error page
+//   res.status(err.status || 500);
+//   res.render('error');
+// });
 
 module.exports = app;

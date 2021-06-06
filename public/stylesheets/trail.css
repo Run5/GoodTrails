@@ -1,18 +1,23 @@
 /* Set up color variables */
 :root{
-  --main-background: #2B2B2B;
-  --secondary-background: #5A5A5A;
+  --main-background: #222629;
+  --secondary-background: #222629;
   --accent-color-neon: #86C232;
   --accent-color-normal: #7c7c7c;
   --text-color: white;
 }
 
 h1 {
+  color: white;
+}
+
+h1:hover {
+  transition: all 0.4s ease 0s;
   color: #86C232;
 }
 
 body{
-  background-color: #2B2B2B;
+  background-color: #222629;
 }
 
 button {
@@ -36,7 +41,8 @@ button {
 }
 
 button:hover {
-    color: #2B2B2B;
+    transition: all 0.5s ease 0s;
+    color: white;
     background-color: #86C232;
     background-image: none;
     border-color: #86C232;
@@ -47,7 +53,7 @@ button:not(:disabled):not(.disabled) {
 }
 
 .grid-container{
-  background-color: #5A5A5A;
+  background-color: #222629;
   max-width: 1200px;
   margin: auto;
   display: grid;
@@ -61,7 +67,7 @@ button:not(:disabled):not(.disabled) {
 .trail-banner {
   grid-area: "banner";
   margin: 5px;
-  margin-top:100px;
+  margin-top: 43px;
   display:absolute;
   max-width: 400px;
 }
@@ -85,7 +91,7 @@ img.trail-image{
 
 .toggled {
     color: #2B2B2B;
-    background-color: #86C232;
+    background-color: #61892F;
 }
 
 .toggled:hover {
@@ -101,14 +107,14 @@ img.trail-image{
 }
 
 .trail-state{
-  margin-left: 15px;
-  font-weight: 80;
+
+  font-weight: 400;
   font-size: 0.9em;
   font-style: italic;
 }
 
 .trail-info{
-  background-color: #2B2B2B;
+  background-color: #414346;
   border-radius: 10px;
   padding: 25px;
   margin: auto;
@@ -119,10 +125,11 @@ img.trail-image{
 .trail-dif-dis-container{
   background-color: #7c7c7c;
   padding: 10px;
-  border: 1px solid #86C232;
+  border: 1px solid #414346;
+  /* border: 1px solid #86C232; */
   border-radius: 5px;
   width: fit-content;
-  margin: 5px;
+  margin-top: 15px;
 }
 
 .trail-distance{
@@ -139,6 +146,11 @@ img.trail-image{
 
 .trail-description{
   margin-top: 20px;
+  background-color: #7c7c7c;
+  padding: 10px;
+  border-radius: 5px;
+  color: #303030;
+  font-weight: 500;
 }
 
 /* hidden form until .write-review button clicked */

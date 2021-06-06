@@ -9,13 +9,74 @@ html
     div.navbar__container
       p.nav__logo Good<span id="logo-span">Trails</span>
       a.dropDown Menu
-      a.home(href="/") Home
+      a.home(href="/users/home") Home
       a.trails(href="/my-trails") My Trails
-      a.browse(href="/trails/4") Trail 4
-      a.community  Community
+      a.browse(href="/trails/4") Demo Trail
+      select.community Search by state
+        option Alabama
+        option Alaska
+        option Arizona
+        option Arkansas
+        option California
+        option Colorado
+        option Connecticut
+        option Delaware
+        option Florida
+        option Georgia
+        //- 1
+         option Alabama
+        option Hawaii
+        option Idaho
+        option Illinois
+        option Indiana
+        option Iowa
+        option Kansas
+        option Kentucky
+        option Louisiana
+        option Maine
+        //- 2
+         option Alabama
+        option Maryland
+        option Massachusetts
+        option Michigan
+        option Minnesota
+        option Mississippi
+        option Missouri
+        option Montana
+        option Nebraska
+        option Nevada
+        //- 3
+         option Alabama
+        option New Hamshire
+        option New Jersey
+        option New Mexico
+        option New York
+        option North Carolina
+        option North Dakota
+        option Ohio
+        option Oklahoma
+        option Oregon
+        //- 4
+         option Alabama
+        option Pennsylvania
+        option Rhode Island
+        option South Carolina
+        option South Dakota
+        option Tennessee
+        option Texas
+        option Utah
+        option Vermont
+        option Virginia
+        option Washington
+        option West Virginia
+        option Wisconsin
+        option Wyoming
+        //- 5
+
       input(type="text" name="search" placeholder="Search Trails").search__bar
       img(src="/nav-images/NavbarBell.png", alt="Notifications").bell
       img(src="/nav-images/NavbarMsg.png", alt="Messages").msg
       img(src="/nav-images/NavBarMail.png", alt="Mail").mail
       img(src="/nav-images/NavbarFriends.png", alt="Friends").friends
+
     block content
