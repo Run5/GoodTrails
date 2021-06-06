@@ -9,11 +9,14 @@ html
     div.navbar__container
       p.nav__logo Good<span id="logo-span">Trails</span>
       a.dropDown Menu
-        ul
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
+        ul.menuDropUl
+          <li class="menuItems"><a href="/"></a></li>
+          <li class="menuItems"><a href="/my-trails"></a></li>
+          <li class="menuItems"><a href="/trails/4"></a></li>
+          <li class="menuItems">Search by state</li>
+            ul.menuSearchByState
+              each state in states
+                li.secondStateDropdown=state.dataValues.state_code
       a.home(href="/") Home
       a.trails(href="/my-trails") My Trails
       a.browse(href="/trails/4") Trail 4
