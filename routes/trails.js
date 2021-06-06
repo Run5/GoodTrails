@@ -1,6 +1,6 @@
 /***********************External Packages***********************/
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 //const { check, validationResult } = require("express-validator");
 //const bcrypt = require("bcryptjs");
 
@@ -127,4 +127,5 @@ router.delete('/:trail_id/reviews/:id', restoreUser, requireAuth, asyncHandler(a
   const reviews = await Review.findAll({ where: { trail_id } })
   res.json(reviews)
 }))
+
 module.exports = router;
