@@ -205,10 +205,14 @@ img.trail-image{
   padding:15px;
   height: 100px;
   width: 600px;
-  overflow-y: scroll;
-  background-color: var(--accent-color-normal)
+  /* overflow-y: scroll; */
+  background-color: var(--accent-color-normal);
+  display:flex;
+  justify-content:space-between;
 }
 
+/* delete review button */
 .delete-review{
-  width:20%;
+  /* width:20%; */
 }
+

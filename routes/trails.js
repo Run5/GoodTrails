@@ -12,7 +12,7 @@ const { requireAuth, restoreUser } = require("../auth");
 
 
 // GET /trails/:id
-router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
+router.get("/:id(\\d+)", restoreUser, requireAuth, asyncHandler(async (req, res, next) => {
   const trailId = parseInt(req.params.id, 10);
   const trail = await Trail.findByPk(trailId, {
     include:
@@ -34,7 +34,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
 }));//end GET route for a single trail
 
 // api GET /trails/toggles/:id
-router.get("/toggles/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
+router.get("/toggles/:id(\\d+)", restoreUser, requireAuth, asyncHandler(async (req, res) => {
     const trailId = parseInt(req.params.id, 10);
     const userId = res.locals.user.id;
     const trailToggles = await Collection.findAll({
@@ -50,7 +50,7 @@ router.get("/toggles/:id(\\d+)", requireAuth, asyncHandler(async (req, res) => {
 );//endGetRoute
 
 // api PUT /trails/toggles/:id
-router.put('/toggles/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
+router.put('/toggles/:id(\\d+)', restoreUser, requireAuth, asyncHandler(async (req, res) => {
   const userId = res.locals.user.id;
   const trailId = parseInt(req.params.id, 10);
   const trailToggles = await Collection.findAll({

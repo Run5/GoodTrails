@@ -52,7 +52,7 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
-app.use(restoreUser);
+// app.use(restoreUser);
 
 
 /*************** Paths ****************/

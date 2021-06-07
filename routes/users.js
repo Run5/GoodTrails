@@ -7,12 +7,14 @@ const bcrypt = require("bcryptjs");
 /***********************Internal Packages***********************/
 const { csrfProtection, asyncHandler } = require("../utils");
 const { User, State } = require("../db/models");
-const { loginUser, logoutUser ,restoreUser} = require("../auth");
+const { loginUser, logoutUser, restoreUser, requireAuth } = require("../auth");
 
-router.get('/home', asyncHandler(async(req, res) => {
+router.get('/home', restoreUser, requireAuth, asyncHandler(async (req, res) => {
+
   const user = await User.findByPk(req.session.auth.UserId);
   const states = await State.findAll();
-  res.render('landing', {title: 'Good Trails', user, states})
+  res.render('landing', { title: 'Good Trails', user, states })
+
 }))
 
 // GET /users/register
@@ -163,7 +165,6 @@ router.post(
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
   res.redirect('/');
-
 });// End Logout POST route
 
 // temp route to render nav bar
@@ -172,7 +173,7 @@ router.get('/navbar', (req, res) => {
 })
 
 // utility to get current user
-router.get('/current', async (req, res) => {
+router.get('/current', restoreUser, requireAuth, async (req, res) => {
   const user = await User.findByPk(req.session.auth.userId)
   res.json(user)
 })

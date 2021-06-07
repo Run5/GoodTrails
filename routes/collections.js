@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { restoreUser } = require('../auth')
+const { restoreUser, requireAuth } = require('../auth')
 const { User, State, Collection, Trail } = require('../db/models')
 const { asyncHandler } = require('../utils');
 const { Op } = require("sequelize");
@@ -11,7 +11,7 @@ router.get('/', restoreUser, asyncHandler(async (req, res) => {
 }));
 
 /* GET THE COLLECTION OF TRAILS */
-router.get('/all', restoreUser, asyncHandler(async (req, res) => {
+router.get('/all', restoreUser, requireAuth,asyncHandler(async (req, res) => {
     const user_id = req.session.auth.userId;
     const collectionOfTrails = await Collection.findAll({
         include: {
@@ -27,7 +27,7 @@ router.get('/all', restoreUser, asyncHandler(async (req, res) => {
 }));
 
 
-router.get('/visited', restoreUser, asyncHandler(async(req, res) => {
+router.get('/visited', restoreUser, requireAuth,asyncHandler(async(req, res) => {
     const user_id = req.session.auth.userId;
     const collectionOfTrails = await Collection.findAll({
         include: {
@@ -43,7 +43,7 @@ router.get('/visited', restoreUser, asyncHandler(async(req, res) => {
     res.json(collectionOfTrails);
 }));
 
-router.get('/want_to_visit', restoreUser, asyncHandler(async(req, res) => {
+router.get('/want_to_visit', restoreUser, requireAuth,asyncHandler(async(req, res) => {
     const user_id = req.session.auth.userId;
     const collectionOfTrails = await Collection.findAll({
         include: {

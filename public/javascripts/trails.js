@@ -251,7 +251,7 @@ function renderReviews(reviews, reviewDisplayContainer, userId) {
         newReviewDiv.setAttribute("id", `review-${review.id}-div`);
         newReviewDiv.setAttribute("class", "each-review");
 
-        const newReviewText = document.createElement("span")
+        const newReviewText = document.createElement("p")
         const newReviewUser = document.createElement("p")
 
         newReviewText.innerHTML = review.review
