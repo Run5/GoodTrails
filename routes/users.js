@@ -88,7 +88,7 @@ router.post(
       await user.save();
 
       loginUser(req, res, user);
-      res.redirect("/");
+      res.redirect("/users/home");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       console.log("errors2 *****", errors);
@@ -142,7 +142,7 @@ router.post(
         const passwordMatch = await bcrypt.compare(password, user.hashed_password.toString())
         if (passwordMatch) {
           loginUser(req, res, user)
-          return res.redirect('/')
+          return res.redirect('/users/home')
         }
       }
       errors.push('Login failed for provided email and password')
