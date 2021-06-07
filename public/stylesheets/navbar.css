@@ -156,9 +156,6 @@ span#logo-span {
 }
 
 /* Right side Icon styles */
-div img:hover {
-    cursor:not-allowed;
-}
 
 .bell,
 .msg,

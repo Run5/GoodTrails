@@ -19,6 +19,7 @@ router.get('/all', restoreUser, asyncHandler(async (req, res) => {
             include: State
         },
         where: {
+            user_id,
             [Op.or]: [{visited: true}, {want_to_visit: true}]
         }
     });

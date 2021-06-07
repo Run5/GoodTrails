@@ -1,6 +1,6 @@
 /***********************External Packages***********************/
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 //const { check, validationResult } = require("express-validator");
 //const bcrypt = require("bcryptjs");
 
@@ -113,6 +113,7 @@ router.post('/:trail_id/reviews', restoreUser, requireAuth, csrfProtection, asyn
   })
   res.json({ updatedReviews })
 })) //endPost
+
 
 
 module.exports = router;

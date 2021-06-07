@@ -14,6 +14,15 @@ router.get('/', asyncHandler(async (req, res, next) => {
   });
 }));
 
+// GET home page trails
+router.get("/trail/:id(\\d+)", asyncHandler(async (req, res) => {
+  const trailId = parseInt(req.params.id, 10);
+  const trail = await Trail.findByPk(trailId, {
+    include: State
+  });
+  res.json( trail )
+}));//endGetRoute
+
 // GET /states/state_code
 router.get('/states/:state_code', asyncHandler(async (req, res) => {
   let [trails] = await State.findAll({

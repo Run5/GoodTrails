@@ -18,5 +18,6 @@ router.delete('/:id', restoreUser, requireAuth, asyncHandler(async (req, res) =>
     const reviews = await Review.findAll({ where: { trail_id } })
     res.json(reviews)
 }))
+
 module.exports = router;
 
