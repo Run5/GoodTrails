@@ -9,7 +9,7 @@ block content
         form(action='/users/login' method='post').form
             h1 Log in
             input(type='hidden' name ='_csrf' value=csrfToken)
-            input(name='email' type='email' placeholder="Email" value=user.email required).email
+            input(name='email' type='email' placeholder="Email" required).email
             input(name='password' placeholder="Password" type='password' required).password
             button(type='submit').login Login
             a(href='/users/register').create Create an account
