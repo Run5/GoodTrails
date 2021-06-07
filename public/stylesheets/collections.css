@@ -39,7 +39,7 @@ body {
     list-style: none;
 }
 
-button {
+.allButton, .visitedButton, .wantToVisit {
     margin-top: 6px;
     color: #86C232;
     background-color: #2B2B2B;

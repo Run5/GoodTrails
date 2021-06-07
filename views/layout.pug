@@ -72,11 +72,11 @@ html
         option Wisconsin
         option Wyoming
         //- 5
-
       input(type="text" name="search" placeholder="Search Trails").search__bar
       img(src="/nav-images/NavbarBell.png", alt="Notifications").bell
       img(src="/nav-images/NavbarMsg.png", alt="Messages").msg
       img(src="/nav-images/NavBarMail.png", alt="Mail").mail
       img(src="/nav-images/NavbarFriends.png", alt="Friends").friends
-
+      form(action="/users/logout" method="post").logoutForm
+        button.logout Logout
     block content

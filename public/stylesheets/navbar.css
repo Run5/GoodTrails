@@ -36,7 +36,7 @@ body {
     background-color: #414346;
     backdrop-filter: blur(5px);
 }
-.dropDown {
+/* .dropDown {
     height: 50px;
     background-color: #414346;
     font-weight: 400;
@@ -55,7 +55,7 @@ body {
 }
 .dropDown:hover .menuDropUl {
     display: block;
-}
+} */
 
 /* Navbar Logo Text */
 .nav__logo {
@@ -100,8 +100,7 @@ span#logo-span {
 .home,
 .trails,
 .browse,
-.community,
-.logout {
+.community {
     height: 50px;
     background-color: #414346;
     font-weight: 400;
@@ -111,11 +110,21 @@ span#logo-span {
     text-align: center;
     padding: 15px;
 }
-
+.logout {
+    height: 50px;
+    background-color: #414346;
+    font-weight: 400;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    /* position: relative; */
+    border: none;
+}
 .home {
     width: 75px;
     border: none;
-
 }
 
 .trails {
