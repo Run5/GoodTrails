@@ -7,9 +7,9 @@ const bcrypt = require("bcryptjs");
 /***********************Internal Packages***********************/
 const { csrfProtection, asyncHandler } = require("../utils");
 const { User, State } = require("../db/models");
-const { loginUser, logoutUser ,restoreUser} = require("../auth");
+const { loginUser, logoutUser ,restoreUser, requireAuth} = require("../auth");
 
-router.get('/home', asyncHandler(async(req, res) => {
+router.get('/home', requireAuth, asyncHandler(async(req, res) => {
   const user = await User.findByPk(req.session.auth.UserId);
   const states = await State.findAll();
   res.render('landing', {title: 'Good Trails', user, states})
