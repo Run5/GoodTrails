@@ -188,7 +188,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   //open the text box
   if (reviewOpenButton) {
     reviewOpenButton.addEventListener("click", (e) => {
-      // display div with form, remove button.
       reviewFormContainer.style.display = "block";
       reviewOpenButton.style.display = "none";
     })
@@ -238,8 +237,6 @@ async function refreshReviews(reviewDisplayContainer, trailId, userId) {
   addDeleteListeners(reviewDisplayContainer, trailId, userId);
 }
 
-
-
 function renderReviews(reviews, reviewDisplayContainer, userId) {
   try {
     if (reviews.length === 0) {
@@ -254,7 +251,7 @@ function renderReviews(reviews, reviewDisplayContainer, userId) {
         newReviewDiv.setAttribute("id", `review-${review.id}-div`);
         newReviewDiv.setAttribute("class", "each-review");
 
-        const newReviewText = document.createElement("p")
+        const newReviewText = document.createElement("span")
         const newReviewUser = document.createElement("p")
 
         newReviewText.innerHTML = review.review
@@ -262,7 +259,7 @@ function renderReviews(reviews, reviewDisplayContainer, userId) {
 
         // delete button for logged in users
         if (userId === review.user_id) {
-          const deleteReviewButton = document.createElement("span")
+          const deleteReviewButton = document.createElement("button")
           deleteReviewButton.classList.add('delete-review')
           deleteReviewButton.setAttribute("id", `delete-${review.id}`)
           deleteReviewButton.innerHTML = 'Delete'
