@@ -174,7 +174,7 @@ router.get('/navbar', (req, res) => {
 })
 
 // utility to get current user
-router.get('/current',csrfProtection, restoreUser, async (req, res) => {
+router.get('/current', async (req, res) => {
   const user = await User.findByPk(req.session.auth.userId)
   res.json(user)
 })
