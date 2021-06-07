@@ -20,7 +20,7 @@ body{
   background-color: #222629;
 }
 
-button {
+.interested, .visited, .review-button {
     margin-top: 6px;
     color: #86C232;
     background-color: #2B2B2B;
