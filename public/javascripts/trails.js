@@ -224,6 +224,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (deleteReviewButtons) {
     deleteReviewButtons.forEach(review => {
       review.addEventListener("click", async (e) => {
+        const id = e.target.id.slice(7)
+        console.log("!!!!!!!!!!!!! ",id);
         const updatedReviews2 = await fetch(`/reviews/${review.id}`, {
           method: "DELETE"
         })
@@ -287,7 +289,7 @@ function renderReviews(reviews, reviewDisplayContainer, userId) {
         if (userId === review.user_id) {
           const deleteReviewButton = document.createElement("span")
           deleteReviewButton.classList.add('delete-review')
-          deleteReviewButton.setAttribute("id", `${review.id}`)
+          deleteReviewButton.setAttribute("id", `delete-${review.id}`)
           deleteReviewButton.innerHTML = 'Delete'
           newReviewDiv.append(newReviewText, newReviewUser, deleteReviewButton)
         } else { newReviewDiv.append(newReviewText, newReviewUser) }
