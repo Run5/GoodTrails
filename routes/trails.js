@@ -86,12 +86,12 @@ router.put('/toggles/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
 // GET /trails/:trail_id/reviews
 router.get('/:trail_id/reviews', restoreUser, requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const trail_id = req.params.trail_id
-  const review = await Review.findAll({
+  const reviews = await Review.findAll({
     where: { trail_id },
     include: User,
     order: [["updatedAt", "DESC"]]
   })
-  res.json({ review, csrfToken: req.csrfToken() })
+  res.json({ reviews, csrfToken: req.csrfToken() })
 })) //endGet
 
 // POST /trails/:trail_id/reviews/

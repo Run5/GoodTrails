@@ -211,4 +211,5 @@ img.trail-image{
 
 .delete-review{
   display:inline-flex;
+    background-color: var(--accent-color-neon)
 }

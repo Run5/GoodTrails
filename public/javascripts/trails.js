@@ -180,13 +180,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const submitReviewButton = document.querySelector('.submit-review')
   const cancelReviewButton = document.querySelector('.cancel-review')
 
+  const { reviews, csrfToken } = await getReviews(trailId)
 
-
-  let newToken = ""
-
-  const { review, csrfToken } = await getReviews(trailId)
-  newToken = csrfToken
-  renderReviews(review, reviewDisplayContainer, userId)
+  renderReviews(reviews, reviewDisplayContainer, userId)
+  addDeleteListeners(reviewDisplayContainer, trailId, userId)
 
   //open the text box
   if (reviewOpenButton) {
@@ -203,14 +200,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       e.preventDefault()
       const textBox = document.querySelector(".review-text-area");
       const textToSend = textBox.value;
-      const { updatedReviews } = await postReview(trailId, textToSend, newToken)
+      const { updatedReviews } = await postReview(trailId, textToSend, csrfToken)
 
       renderReviews(updatedReviews, reviewDisplayContainer, userId)
-
-      // clear and hide the form
-      textBox.value = ""
-      reviewFormContainer.style.display = "none"
-      //consider resetting reviewFormContainer to allow another review
+      addDeleteListeners(reviewDisplayContainer, trailId, userId)
+      // clear and hide the form, show review button
+      textBox.value = "";
+      reviewFormContainer.style.display = "none";
+      reviewOpenButton.style.display = "block";
     })
   }
 
@@ -223,22 +220,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // Delete the review
-
-  const deleteReviewButtons = document.querySelectorAll('.delete-review')
-  if (deleteReviewButtons) {
-    deleteReviewButtons.forEach(review => {
-      review.addEventListener("click", async (e) => {
-        const id = e.target.id.slice(7)
-        console.log("!!!!!!!!!!!!! ",id);
-        const updatedReviews2 = await fetch(`/reviews/${review.id}`, {
-          method: "DELETE"
-        })
-        renderReviews(updatedReviews2, reviewDisplayContainer, userId)
-      })
-    })
-  }
-
 });//endEventListener
 
 /**************************************************/
@@ -247,30 +228,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function getReviews(trailId) {
   const reviewRes = await fetch(`/trails/${trailId}/reviews`)
-  const { review, csrfToken } = await reviewRes.json()
-  return { review, csrfToken };
+  const { reviews, csrfToken } = await reviewRes.json()
+  return { reviews, csrfToken };
 }
 
-async function postReview(trailId, textToSend, newToken) {
-  try {
-    const postRoute = `/trails/${trailId}/reviews`
-
-    const res = await fetch(postRoute, {
-      credentials: 'same-origin',
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json", 'CSRF-Token': newToken
-      },
-      body: JSON.stringify({ textToSend }),
-    });
-    const data = await res.json();
-    return data;
-  } catch (err) {
-    console.log("Error in trails.js public", err);
-  }
+async function refreshReviews(reviewDisplayContainer, trailId, userId) {
+  const { reviews, csrfToken } = await getReviews(trailId);
+  renderReviews(reviews, reviewDisplayContainer, userId);
+  addDeleteListeners(reviewDisplayContainer, trailId, userId);
 }
 
-//dynamically create review divs
+
+
 function renderReviews(reviews, reviewDisplayContainer, userId) {
   try {
     if (reviews.length === 0) {
@@ -299,11 +268,44 @@ function renderReviews(reviews, reviewDisplayContainer, userId) {
           deleteReviewButton.innerHTML = 'Delete'
           newReviewDiv.append(newReviewText, newReviewUser, deleteReviewButton)
         } else { newReviewDiv.append(newReviewText, newReviewUser) }
-
         reviewDisplayContainer.append(newReviewDiv)
       })
     }
   } catch (error) {
     console.error(error);
+  }
+}
+
+function addDeleteListeners(reviewDisplayContainer, trailId, userId) {
+  const deleteReviewButtons = document.querySelectorAll('.delete-review')
+  if (deleteReviewButtons) {
+    deleteReviewButtons.forEach(review => {
+      review.addEventListener("click", async (e) => {
+        const id = e.target.id.slice(7)
+        const response = await fetch(`/reviews/${id}`, {
+          method: "DELETE"
+        })
+        refreshReviews(reviewDisplayContainer, trailId, userId)
+      })
+    })
+  }
+}
+
+async function postReview(trailId, textToSend, newToken) {
+  try {
+    const postRoute = `/trails/${trailId}/reviews`
+
+    const res = await fetch(postRoute, {
+      credentials: 'same-origin',
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", 'CSRF-Token': newToken
+      },
+      body: JSON.stringify({ textToSend }),
+    });
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log("Error in trails.js public", err);
   }
 }
