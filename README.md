@@ -31,7 +31,7 @@ GoodTrails is a goodreads.com clone which focuses on locating popular Trails in 
    * ability to edit and delete these reviews.
 
  ### Brief Code Snippet
-  * The code below ynamically create review divs
+  * The code below dynamically create review divs
   ```javascript
 function renderReviews(reviews, reviewDisplayContainer) {
   // console.log("line 259, reviews array has length?", reviews.length);
