@@ -56,7 +56,7 @@ app.use(restoreUser);
 
 
 /*************** Paths ****************/
-app.use('/', indexRouter);
+app.use(indexRouter);
 app.use('/users', usersRouter);
 app.use('/trails', trailsRouter);
 app.use('/my-trails', collectionsRouter);
