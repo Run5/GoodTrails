@@ -208,3 +208,7 @@ img.trail-image{
   overflow-y: scroll;
   background-color: var(--accent-color-normal)
 }
+
+.delete-review{
+  display:inline-flex;
+}

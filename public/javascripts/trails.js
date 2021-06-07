@@ -2,14 +2,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Grab the elements on the page to manipulate
   const trailHeader = document.querySelector('h1');
-  const user = await fetch('/users/current')
-  // fetch user from server instead of pug
+  const response = await fetch('/users/current')
+  const user = await response.json()
   const trailId = trailHeader.id;
   const userId = user.id
   const userName = user.username
   const visited = document.querySelector('.visited');
   const interested = document.querySelector('.interested');
-
 
   try {
     const res = await fetch(`/trails/toggles/${trailId}`);
@@ -25,6 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   catch (err) {
     console.error(err);
   }//endCatch
+
   visited.addEventListener("click", async (event) => {
     if (visited.classList.contains('toggled')) {
       try {
@@ -179,13 +179,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   const reviewDisplayContainer = document.querySelector('.review-display-container')
   const submitReviewButton = document.querySelector('.submit-review')
   const cancelReviewButton = document.querySelector('.cancel-review')
-  const deleteReviewButton = document.querySelector('.delete-review')
+
+
 
   let newToken = ""
 
   const { review, csrfToken } = await getReviews(trailId)
   newToken = csrfToken
-  renderReviews(review, reviewDisplayContainer)
+  renderReviews(review, reviewDisplayContainer, userId)
 
   //open the text box
   if (reviewOpenButton) {
@@ -198,18 +199,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // POST the review
   if (submitReviewButton) {
-
     submitReviewButton.addEventListener('click', async (e) => {
       e.preventDefault()
-
       const textBox = document.querySelector(".review-text-area");
       const textToSend = textBox.value;
-      const { updatedReviews } = await postReview(`/trails/${trailId}/reviews`, textToSend, userId, newToken)
-      renderReviews(updatedReviews, reviewDisplayContainer)
+      const { updatedReviews } = await postReview(trailId, textToSend, newToken)
+
+      renderReviews(updatedReviews, reviewDisplayContainer, userId)
 
       // clear and hide the form
       textBox.value = ""
       reviewFormContainer.style.display = "none"
+      //consider resetting reviewFormContainer to allow another review
     })
   }
 
@@ -223,8 +224,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // Delete the review
-  if (deleteReviewButton) {
-    
+
+  const deleteReviewButtons = document.querySelectorAll('.delete-review')
+  if (deleteReviewButtons) {
+    deleteReviewButtons.forEach(review => {
+      review.addEventListener("click", async (e) => {
+        const updatedReviews2 = await fetch(`/reviews/${review.id}`, {
+          method: "DELETE"
+        })
+        renderReviews(updatedReviews2, reviewDisplayContainer, userId)
+      })
+    })
   }
 
 });//endEventListener
@@ -239,44 +249,55 @@ async function getReviews(trailId) {
   return { review, csrfToken };
 }
 
-async function postReview(postRoute, textToSend, userId, newToken) {
+async function postReview(trailId, textToSend, newToken) {
   try {
+    const postRoute = `/trails/${trailId}/reviews`
+
     const res = await fetch(postRoute, {
       credentials: 'same-origin',
       method: "POST",
       headers: {
         "Content-Type": "application/json", 'CSRF-Token': newToken
       },
-      body: JSON.stringify({ textToSend, userId }),
+      body: JSON.stringify({ textToSend }),
     });
     const data = await res.json();
     return data;
-
   } catch (err) {
     console.log("Error in trails.js public", err);
   }
 }
 
 //dynamically create review divs
-function renderReviews(reviews, reviewDisplayContainer) {
+function renderReviews(reviews, reviewDisplayContainer, userId) {
   try {
     if (reviews.length === 0) {
       const noReviewText = document.createElement("p")
       noReviewText.innerHTML = "There are no reviews for this trail yet"
       reviewDisplayContainer.appendChild(noReviewText);
     } else {
-      // empty the reviewDisplayContainer
-      reviewDisplayContainer.innerHTML = "";
+      reviewDisplayContainer.innerHTML = ""; //clear container
       reviews.forEach(review => {
+        // create the review div: text, user, delete button
         const newReviewDiv = document.createElement("div");
         newReviewDiv.setAttribute("id", `review-${review.id}-div`);
         newReviewDiv.setAttribute("class", "each-review");
-        // fill in review text and author
+
         const newReviewText = document.createElement("p")
         const newReviewUser = document.createElement("p")
+
         newReviewText.innerHTML = review.review
         newReviewUser.innerHTML = `-Reviewed by ${review.User.username}`
-        newReviewDiv.append(newReviewText, newReviewUser)
+
+        // delete button for logged in users
+        if (userId === review.user_id) {
+          const deleteReviewButton = document.createElement("span")
+          deleteReviewButton.classList.add('delete-review')
+          deleteReviewButton.setAttribute("id", `${review.id}`)
+          deleteReviewButton.innerHTML = 'Delete'
+          newReviewDiv.append(newReviewText, newReviewUser, deleteReviewButton)
+        } else { newReviewDiv.append(newReviewText, newReviewUser) }
+
         reviewDisplayContainer.append(newReviewDiv)
       })
     }

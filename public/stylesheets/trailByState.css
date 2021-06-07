@@ -42,3 +42,7 @@ div p+p {
 .state__trails:first-child {
     font-weight: bold;
 }
+
+a {
+    text-decoration: none;
+}

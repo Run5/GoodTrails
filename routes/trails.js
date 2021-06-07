@@ -1,6 +1,6 @@
 /***********************External Packages***********************/
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 //const { check, validationResult } = require("express-validator");
 //const bcrypt = require("bcryptjs");
 
@@ -8,10 +8,9 @@ var router = express.Router();
 /***********************Internal Packages***********************/
 const { csrfProtection, asyncHandler } = require("../utils");
 const { Trail, State, User, Collection, Review } = require("../db/models");
-const { requireAuth } = require("../auth");
+const { requireAuth, restoreUser } = require("../auth");
 
 
-// GET route for displaying a single trail
 // GET /trails/:id
 router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
   const trailId = parseInt(req.params.id, 10);
@@ -29,7 +28,7 @@ router.get("/:id(\\d+)", asyncHandler(async (req, res, next) => {
       trail,
       state,
       title: "Trail",
-      loggedInUser: loggedInUser.toJSON()
+      loggedInUser: loggedInUser.toJSON() //currently not using this
     })
   });//end render
 }));//end GET route for a single trail
@@ -77,5 +76,44 @@ router.put('/toggles/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
   }//endElse
   return res.send();
 }));//endPutRoute
+
+/***********************************************/
+/*                                             */
+/*                   Reviews                   */
+/*                                             */
+/***********************************************/
+
+// GET /trails/:trail_id/reviews
+router.get('/:trail_id/reviews', restoreUser, requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+  const trail_id = req.params.trail_id
+  const review = await Review.findAll({
+    where: { trail_id },
+    include: User,
+    order: [["updatedAt", "DESC"]]
+  })
+  res.json({ review, csrfToken: req.csrfToken() })
+})) //endGet
+
+// POST /trails/:trail_id/reviews/
+router.post('/:trail_id/reviews', restoreUser, requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+  const { textToSend } = req.body;
+  const user_id = req.session.auth.userId;
+  const trail_id = req.params.trail_id;
+  const review = Review.build({
+    review: textToSend,
+    user_id:user_id,
+    trail_id: trail_id
+  })
+  await review.save()
+
+  const updatedReviews = await Review.findAll({
+    where: { trail_id },
+    include: User,
+    order: [["updatedAt", "DESC"]]
+  })
+  res.json({ updatedReviews })
+})) //endPost
+
+
 
 module.exports = router;
