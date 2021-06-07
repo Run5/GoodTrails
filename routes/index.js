@@ -7,10 +7,10 @@ const { asyncHandler } = require('../utils')
 
 /* GET home page not logged in. */
 router.get('/', asyncHandler(async (req, res, next) => {
-  const states = await State.findAll()
+  // const states = await State.findAll()
   res.render('user-login', {
     title: 'Welcome to Good Trails',
-    states
+    // states
   });
 }));
 

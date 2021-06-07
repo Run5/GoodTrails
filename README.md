@@ -73,4 +73,4 @@ function renderReviews(reviews, reviewDisplayContainer) {
   * https://github.com/Machaelmus
 
  **Nicholas Brancifort**
-  * htpps://github.com/brancifortnick
+  * https://github.com/brancifortnick
