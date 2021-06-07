@@ -88,7 +88,7 @@ router.post(
       await user.save();
 
       loginUser(req, res, user);
-      res.redirect("/");
+      res.redirect("/users/home");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       console.log("errors2 *****", errors);
@@ -126,7 +126,7 @@ const loginValidators = [
 // POST /users/login
 router.post(
   "/login",
-  csrfProtection,
+
   loginValidators,
   asyncHandler(async (req, res, next) => {
     const { email, password } = req.body;
@@ -142,7 +142,7 @@ router.post(
         const passwordMatch = await bcrypt.compare(password, user.hashed_password.toString())
         if (passwordMatch) {
           loginUser(req, res, user)
-          return res.redirect('/')
+          return res.redirect('/users/home')
         }
       }
       errors.push('Login failed for provided email and password')
@@ -154,7 +154,7 @@ router.post(
       title: 'Login',
       email,
       errors,
-      csrfToken: req.csrfToken()
+      // csrfToken: req.csrfToken()
     })
   })
 );// End Login POST route
@@ -162,8 +162,6 @@ router.post(
 // POST user logout
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
-
-
   res.redirect('/');
 
 });// End Logout POST route
@@ -178,5 +176,10 @@ router.get('/current',csrfProtection, restoreUser, async (req, res) => {
   const user = await User.findByPk(req.session.auth.userId)
   res.json(user)
 })
+
+router.get('/isLoggedIn', (req, res, next) => {
+  res.json(res.locals.authenticated);
+})
+//fetch this route, destructure res and check if its true or not to display the button
 
 module.exports = router;
