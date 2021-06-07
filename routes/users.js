@@ -150,7 +150,7 @@ router.post(
       errors = validatorErrors.array().map((err) => { err.msg })
     }
     res.render('user-login', {
-      user,
+      // user,
       title: 'Login',
       email,
       errors,
