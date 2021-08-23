@@ -4,13 +4,13 @@ append head
     link(rel="stylesheet", href="/stylesheets/login.css")
 
 block content
-    //- include error.pug
     .form-container
         form(action='/users/login' method='post').form
+            include error.pug
             h1 Log in
             input(type='hidden' name ='_csrf' value=csrfToken)
             input(name='email' type='email' placeholder="Email" required).email
             input(name='password' placeholder="Password" type='password' required).password
             button(type='submit').login Login
+            button(type='submit').login Demo User
             a(href='/users/register').create Create an account
-            a(href='/' ).return Return
