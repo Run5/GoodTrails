@@ -78,3 +78,20 @@ a.return:hover, a.create:hover {
     text-decoration: none;
     margin-top: 15px;
 }
+
+.errors {
+    width: 300px;
+    color: red;
+    background-color: white;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.errors li {
+    list-style-type: none;
+}
