@@ -2,6 +2,7 @@ extends layout.pug
 
 append head
     link(rel="stylesheet", href="/stylesheets/signup.css")
+
 block content
     include error.pug
 
@@ -15,4 +16,3 @@ block content
                     input(name='confirmPassword' placeholder="Confirm Password" type='password' required).confirm
                     button(type='submit').register Register
                     a(href='/users/login').already Already have an account?
-                    

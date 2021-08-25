@@ -39,7 +39,8 @@ form input:focus {
     outline: none;
 }
 
-button.login {
+button.login,
+button.demo {
     width: 180px;
     height: 50px;
     font-size: 15px;
@@ -52,7 +53,8 @@ button.login {
     margin-top: 5px;
 }
 
-button.login:hover {
+button.login:hover,
+button.demo:hover {
     transition: all 0.4s ease 0s;
     background-color: #61892f;
     cursor: pointer;

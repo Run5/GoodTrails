@@ -2,6 +2,7 @@ extends layout.pug
 
 append head
     link(rel="stylesheet", href="/stylesheets/login.css")
+    script(src='/javascripts/forms.js' type='text/javascript')
 
 block content
     .form-container
@@ -12,5 +13,5 @@ block content
             input(name='email' type='email' placeholder="Email" required).email
             input(name='password' placeholder="Password" type='password' required).password
             button(type='submit').login Login
-            button(type='submit').login Demo User
+            button(type='submit').demo Demo User
             a(href='/users/register').create Create an account
