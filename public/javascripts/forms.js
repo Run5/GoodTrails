@@ -8,4 +8,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     emailInput.setAttribute('value','email@email.com');
     pwInput.setAttribute('value','password');
   });//endSubmitEventListener
+  
 });//endDOMContentLoadedEventListener

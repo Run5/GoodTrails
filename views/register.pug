@@ -1,18 +1,20 @@
-extends layout.pug
-
-append head
-    link(rel="stylesheet", href="/stylesheets/signup.css")
+doctype html
+html
+  head
+    block head
+      title="Good Trails"
+      link(rel='stylesheet' href='/stylesheets/reset.css')
+      link(rel="stylesheet", href="/stylesheets/signup.css")
 
 block content
-    include error.pug
-
-            .form-container
-                form(action='/users/register' method='post')
-                    h1 Sign Up
-                    input(type='hidden' name ='_csrf' value=csrfToken)
-                    input(name='username' type='text' placeholder="Username").username
-                    input(name='email' type='email' placeholder="Email" required).email
-                    input(name='password' type='password' placeholder="Password" required).password
-                    input(name='confirmPassword' placeholder="Confirm Password" type='password' required).confirm
-                    button(type='submit').register Register
-                    a(href='/users/login').already Already have an account?
+  include error.pug
+    .form-container
+      form(action='/users/register' method='post')
+        h1 Sign Up
+        input(type='hidden' name ='_csrf' value=csrfToken)
+        input(name='username' type='text' placeholder="Username").username
+        input(name='email' type='email' placeholder="Email" required).email
+        input(name='password' type='password' placeholder="Password" required).password
+        input(name='confirmPassword' placeholder="Confirm Password" type='password' required).confirm
+        button(type='submit').register Register
+        a(href='/users/login').already Already have an account?
