@@ -30,7 +30,7 @@ body {
 .navbar__container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     height: 50px;
     box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.383);
     background-color: #414346;
@@ -171,5 +171,9 @@ span#logo-span {
 .mail,
 .friends {
     margin: 10px;
+    display: none;
+}
+
+.hidden {
     display: none;
 }

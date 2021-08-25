@@ -1,17 +1,20 @@
-extends layout.pug
-
-append head
-    link(rel="stylesheet", href="/stylesheets/login.css")
-    script(src='/javascripts/forms.js' type='text/javascript')
+doctype html
+html
+  head
+    block head
+      title="Good Trails"
+      link(rel='stylesheet' href='/stylesheets/reset.css')
+      link(rel="stylesheet", href="/stylesheets/login.css")
+      script(src='/javascripts/forms.js' type='text/javascript')
 
 block content
-    .form-container
-        form(action='/users/login' method='post').form
-            include error.pug
-            h1 Log in
-            input(type='hidden' name ='_csrf' value=csrfToken)
-            input(name='email' type='email' placeholder="Email" required).email
-            input(name='password' placeholder="Password" type='password' required).password
-            button(type='submit').login Login
-            button(type='submit').demo Demo User
-            a(href='/users/register').create Create an account
+  .form-container
+    form(action='/users/login' method='post').form
+      include error.pug
+      h1 Log in
+      input(type='hidden' name ='_csrf' value=csrfToken)
+      input(name='email' type='email' placeholder="Email" required).email
+      input(name='password' placeholder="Password" type='password' required).password
+      button(type='submit').login Login
+      button(type='submit').demo Demo User
+      a(href='/users/register').create Create an account
