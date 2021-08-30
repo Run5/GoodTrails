@@ -1,5 +1,6 @@
 /* Set up color variables */
-:root{
+
+:root {
   --main-background: #222629;
   --secondary-background: #222629;
   --accent-color-neon: #86C232;
@@ -16,135 +17,135 @@ h1:hover {
   color: #86C232;
 }
 
-body{
+body {
   background-color: #222629;
 }
 
 .interested, .visited, .review-button {
-    margin-top: 6px;
-    color: #86C232;
-    background-color: #2B2B2B;
-    background-image: none;
-    border-color: #86C232;
-    display: block;
-    width: 100%;
-    font-weight: 700;
-    text-align: center;
-    white-space: nowrap;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: .5rem 1rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    border-radius: .3rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  margin-top: 6px;
+  color: #86C232;
+  background-color: #2B2B2B;
+  background-image: none;
+  border-color: #86C232;
+  display: block;
+  width: 100%;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: .3rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 button:hover {
-    transition: all 0.5s ease 0s;
-    color: white;
-    background-color: #86C232;
-    background-image: none;
-    border-color: #86C232;
+  transition: all 0.5s ease 0s;
+  color: white;
+  background-color: #86C232;
+  background-image: none;
+  border-color: #86C232;
 }
 
 button:not(:disabled):not(.disabled) {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.grid-container{
+.grid-container {
   background-color: #222629;
   max-width: 1200px;
   margin: auto;
-  display: grid;
-  height:1000px;
-  grid-template-columns: 1fr 2fr;
-  grid-template-areas:
-    "banner" "content";
+  display: flex;
+  flex-flow: row nowrap;
+  /* height: 1000px; */
+  /* grid-template-columns: 1fr 3fr;
+  grid-template-areas: "banner" "content"; */
 }
 
 /* left panel */
+
 .trail-banner {
   grid-area: "banner";
   margin: 5px;
   margin-top: 43px;
-  display:absolute;
+  /* display:absolute; */
   max-width: 400px;
 }
 
 /* right panel */
+
 .trail-content {
   margin-top: 40px;
   grid-area: "content";
-  max-width: 800px;
+  /* max-width: 800px; */
   padding-left: 30px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   color: white;
   font-size: 1em;
 }
 
-img.trail-image{
+img.trail-image {
   object-fit: cover;
   width: 400px;
 }
 
-
 .toggled {
-    color: #2B2B2B;
-    background-color: #61892F;
+  color: #2B2B2B;
+  background-color: #61892F;
 }
 
 .toggled:hover {
-    color: #86C232;
-    background-color: #2B2B2B;
+  color: #86C232;
+  background-color: #2B2B2B;
 }
 
-.review-login{
-  background-color:#9D8D8f;
-  width:140px;
-  height:50px;
+.review-login {
+  background-color: #9D8D8f;
+  width: 140px;
+  height: 50px;
   color: #FFFFFF;
 }
 
-.trail-state{
-
+.trail-state {
   font-weight: 400;
   font-size: 0.9em;
   font-style: italic;
 }
 
-.trail-info{
+.trail-info {
   background-color: #414346;
   border-radius: 10px;
   padding: 25px;
   margin: auto;
-  width: fit-content;
-  height: fit-content;
+  /* width: fit-content; */
+  /* height: fit-content; */
 }
 
-.trail-dif-dis-container{
+.trail-dif-dis-container {
   background-color: #7c7c7c;
   padding: 10px;
   border: 1px solid #414346;
   /* border: 1px solid #86C232; */
   border-radius: 5px;
-  width: fit-content;
+  /* width: fit-content; */
   margin-top: 15px;
 }
 
-.trail-distance{
+.trail-distance {
   color: #2B2B2B;
   font-weight: bold;
   display: flex;
 }
 
-.trail-difficulty{
+.trail-difficulty {
   color: #2B2B2B;
   font-weight: bold;
   display: flex;
 }
 
-.trail-description{
+.trail-description {
   margin-top: 20px;
   background-color: #7c7c7c;
   padding: 10px;
@@ -154,72 +155,72 @@ img.trail-image{
 }
 
 /* hidden form until .write-review button clicked */
-.review-form-container{
-  display:none;
+
+.review-form-container {
+  display: none;
   background-color: var(--secondary-background);
-  overflow:hidden;
+  /* overflow: hidden; */
   height: auto;
-  padding:auto;
-  margin-top:20px
+  padding: auto;
+  margin-top: 20px
   /* z-index: 10; */
 }
 
-.review-button{
-  width : 10rem;
+.review-button {
+  width: 10rem;
 }
 
-.review-open-button{
-  margin:1rem;
-  display:flex;
+.review-open-button {
+  margin: 1rem;
+  display: flex;
 }
 
-.review-open-div{
-  display:flex;
-  justify-content:center;
+.review-open-div {
+  display: flex;
+  justify-content: center;
 }
 
-.review-form,
-.review-text-area,
-.submit-review,
-.cancel-review
-{
-  margin:10px;
+.review-form, .review-text-area, .submit-review, .cancel-review {
+  margin: 10px;
 }
 
-.submit-button-container{
-  display:flex;
-  margin:auto;
+.submit-button-container {
+  display: flex;
+  margin: auto;
 }
-.review-form{
+
+.review-form {
   /* justify-items:center; */
-  padding-left:50px;
+  padding-left: 50px;
 }
 
-.review-display-container{
-  margin-left:40px;
+.review-display-container {
+  margin-left: 40px;
 }
-.review-display-container div{
-  margin:10px;
-  border:3px solid var(--main-background);
+
+.review-display-container div {
+  margin: 10px;
+  border: 3px solid var(--main-background);
   border-radius: 5px;
-  padding:15px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   /* height: 100px; */
   width: 600px;
   /* overflow-y: scroll; */
   background-color: var(--accent-color-normal)
 }
 
-.each-review div{
-  height:auto;
+.each-review div {
+  height: auto;
   width: 50%;
   /* overflow-y:scroll; */
-  border:0px solid var(--main-background);
+  border: 0px solid var(--main-background);
 }
 
 /* delete review button */
-.delete-review{
-  width:20%;
+
+.delete-review {
+  width: 20%;
 }
