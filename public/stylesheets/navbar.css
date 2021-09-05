@@ -1,9 +1,10 @@
 /* UNIVERSAL */
+
 body {
     margin: 0;
     padding: 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* overflow: hidden; */
 }
 
 @media only screen and (min-width: 1086px) {
@@ -11,8 +12,9 @@ body {
         display: none;
     }
 }
+
 @media only screen and (max-width: 1085px) {
-    .home,.trails,.browse,.community {
+    .home, .trails, .browse, .community {
         display: none;
     }
     .search__bar {
@@ -22,11 +24,12 @@ body {
         display: block;
     }
     .nav__logo {
-       font-size: 30px;
+        font-size: 30px;
     }
-
 }
+
 /* Container Div for Navbar */
+
 .navbar__container {
     display: flex;
     flex-direction: row;
@@ -36,6 +39,7 @@ body {
     background-color: #414346;
     backdrop-filter: blur(5px);
 }
+
 /* .dropDown {
     height: 50px;
     background-color: #414346;
@@ -58,12 +62,13 @@ body {
 } */
 
 /* Navbar Logo Text */
+
 .nav__logo {
     margin-left: -20px;
     margin-right: 20px;
     font-size: 40px;
     align-self: center;
-    font-weight:bold;
+    font-weight: bold;
     color: white;
     text-align: center;
     padding-bottom: 5px;
@@ -74,33 +79,27 @@ body {
 }
 
 /* Span Tag inside Navbar Logo */
+
 span#logo-span {
-    color:#86C232;
+    color: #86C232;
     font-size: 40px;
     font-weight: 500;
-    background: linear-gradient(to right, #86C232, #7bb830, #446818 );
+    background: linear-gradient(to right, #86C232, #7bb830, #446818);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
 }
 
-
 /* Styles for the four left buttons */
-.home:hover,
-.trails:hover,
-.browse:hover,
-.community:hover,
-.logout:hover {
+
+.home:hover, .trails:hover, .browse:hover, .community:hover, .logout:hover {
     transition: all 0.5s ease 0s;
     cursor: pointer;
     background-color: #86C232;
     color: white;
 }
 
-.home,
-.trails,
-.browse,
-.community {
+.home, .trails, .browse, .community {
     height: 50px;
     background-color: #414346;
     font-weight: 400;
@@ -110,6 +109,7 @@ span#logo-span {
     text-align: center;
     padding: 15px;
 }
+
 .logout {
     height: 50px;
     background-color: #414346;
@@ -122,6 +122,7 @@ span#logo-span {
     /* position: relative; */
     border: none;
 }
+
 .home {
     width: 75px;
     border: none;
@@ -145,6 +146,7 @@ span#logo-span {
 }
 
 /* Search Bar Input Styles */
+
 .search__bar {
     margin: 10px;
     width: 388px;
@@ -166,10 +168,7 @@ span#logo-span {
 
 /* Right side Icon styles */
 
-.bell,
-.msg,
-.mail,
-.friends {
+.bell, .msg, .mail, .friends {
     margin: 10px;
     display: none;
 }
