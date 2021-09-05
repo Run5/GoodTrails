@@ -7,30 +7,15 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    /* overflow: hidden; */
+    overflow: hidden;
     font-size: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-@media only screen and (max-width: 1197px) {
-    .links-container {
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 1085px) {
-    video {
-        display: none;
-    }
-    body {
-        background-color: #222629;
-    }
-}
-
 .recommended {
-    /* position: absolute; */
+    position: absolute;
     left: 30px;
-    top: 55px;
+    top: 60px;
     background-color: #2B2B2B;
     width: 400px;
     padding: 10px;
@@ -38,11 +23,15 @@ body {
     border: 2px solid #5A5A5A;
     text-decoration: none;
     color: white;
+    z-index: 999999999999999999999999999;
 }
 
 .allContainer {
     padding: 10px;
+    top: 100px;
+    left: -12px;
     height: fit-content;
+    position: absolute;
     width: 1200px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
@@ -173,4 +162,19 @@ a {
 
 h2.trail-state {
     font-size: 0.9em;
+}
+
+@media only screen and (max-width: 1197px) {
+    .links-container {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1085px) {
+    video {
+        display: none;
+    }
+    body {
+        background-color: #222629;
+    }
 }
