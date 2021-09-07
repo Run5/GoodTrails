@@ -255,7 +255,7 @@ function renderReviews(reviews, reviewDisplayContainer, userId) {
         const newReviewUser = document.createElement("p")
 
         newReviewText.innerHTML = review.review
-        newReviewUser.innerHTML = `-Reviewed by ${review.User.username}`
+        newReviewUser.innerHTML = `- Reviewed by ${review.User.username}`
 
         // delete button for logged in users
         if (userId === review.user_id) {
@@ -263,7 +263,11 @@ function renderReviews(reviews, reviewDisplayContainer, userId) {
           deleteReviewButton.classList.add('delete-review')
           deleteReviewButton.setAttribute("id", `delete-${review.id}`)
           deleteReviewButton.innerHTML = 'Delete'
-          newReviewDiv.append(newReviewText, newReviewUser, deleteReviewButton)
+          const editReviewButton = document.createElement("button")
+          editReviewButton.classList.add('edit-review')
+          editReviewButton.setAttribute("id", `edit-${review.id}`)
+          editReviewButton.innerHTML = 'Edit'
+          newReviewDiv.append(newReviewText, newReviewUser, deleteReviewButton, editReviewButton)
         } else { newReviewDiv.append(newReviewText, newReviewUser) }
         reviewDisplayContainer.append(newReviewDiv)
       })
@@ -281,6 +285,21 @@ function addDeleteListeners(reviewDisplayContainer, trailId, userId) {
         const id = e.target.id.slice(7)
         const response = await fetch(`/reviews/${id}`, {
           method: "DELETE"
+        })
+        refreshReviews(reviewDisplayContainer, trailId, userId)
+      })
+    })
+  }
+}
+
+function addEditListeners(reviewDisplayContainer, trailId, userId) {
+  const editReviewButtons = document.querySelectorAll('.edit-review')
+  if (editReviewButtons) {
+    editReviewButtons.forEach(review => {
+      review.addEventListener("click", async (e) => {
+        const id = e.target.id.slice(7)
+        const response = await fetch(`/reviews/${id}`, {
+          method: "PUT"
         })
         refreshReviews(reviewDisplayContainer, trailId, userId)
       })

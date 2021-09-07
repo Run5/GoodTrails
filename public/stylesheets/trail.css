@@ -21,7 +21,7 @@ body {
   background-color: #222629;
 }
 
-.interested, .visited, .review-button {
+.interested, .visited, .review-button, .delete-review, .edit-review {
   margin-top: 6px;
   color: #86C232;
   background-color: #2B2B2B;
@@ -39,6 +39,12 @@ body {
   line-height: 1.5;
   border-radius: .3rem;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.delete-review, .edit-review {
+  width: 100px;
+  margin-top: 0;
+  margin-left: 10px;
 }
 
 button:hover {
