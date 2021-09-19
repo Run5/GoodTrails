@@ -257,7 +257,7 @@ function renderReviews(reviews, reviewDisplayContainer, userId) {
         newReviewText.innerHTML = review.review
         newReviewUser.innerHTML = `- Reviewed by ${review.User.username}`
 
-        // delete button for logged in users
+        // delete/edit button for logged in users
         if (userId === review.user_id) {
           const deleteReviewButton = document.createElement("button")
           deleteReviewButton.classList.add('delete-review')
@@ -299,8 +299,13 @@ function addEditListeners(reviewDisplayContainer, trailId, userId) {
       review.addEventListener("click", async (e) => {
         const id = e.target.id.slice(7)
         const response = await fetch(`/reviews/${id}`, {
-          method: "PUT"
-        })
+          credentials: 'same-origin',
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", 'CSRF-Token': newToken
+          },
+          body: JSON.stringify({ textToSend }),
+        });
         refreshReviews(reviewDisplayContainer, trailId, userId)
       })
     })
